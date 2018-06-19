@@ -6,8 +6,4 @@ public class PswdStorage {
     hash = "";
     return hash;
   }
-  
-  public String clientPswdHash(String Paciente) {
-    return clientPswdHash("Senha", "Nome Usuário");
-  }
 }
