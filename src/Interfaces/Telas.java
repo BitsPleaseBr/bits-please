@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class Telas {
@@ -29,7 +30,7 @@ public class Telas {
 		frmMain.setVisible(true);
 	}
 
-	private static void inicio () {
+	private static void inicio() {
 		
 		ImageIcon logo = new ImageIcon("src//Interfaces//img//logo.jpg");
 		
@@ -107,18 +108,60 @@ public class Telas {
 		txtNome.setBounds((int) campo.getBounds().getMinX()+35, lblNome.getY()+lblNome.getHeight()+10,150,25);
 		
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setBounds((int) txtNome.getBounds().getMaxX()+50, lblCabeçalho.getY()+lblCabeçalho.getHeight()+25, 125,25);
+		lblSobrenome.setBounds((int) txtNome.getBounds().getMaxX()+50, (int) (lblCabeçalho.getBounds().getMaxY()+25), 125,25);
 		
 		JTextField txtSobrenome = new JTextField();
-		txtSobrenome.setBounds((int) txtNome.getBounds().getMaxX()+50, lblSobrenome.getY()+lblSobrenome.getHeight()+10, 175,25);
+		txtSobrenome.setBounds((int) txtNome.getBounds().getMaxX()+50, (int) (lblSobrenome.getBounds().getMaxY()+10), 175,25);
 		
 		JLabel lblDataNasc = new JLabel("Data de Nascimento:");
 		lblDataNasc.setBounds((int) campo.getBounds().getMinX()+35, (int) txtNome.getBounds().getMaxY()+40, 200,25);
 		
+		JTextField txtDataNasc = new JTextField();
+		txtDataNasc.setBounds((int) campo.getBounds().getMinX()+35, (int) (lblDataNasc.getBounds().getMaxY()+10), 125,25);
+		
+		JLabel lblCPF = new JLabel("CPF:");
+		lblCPF.setBounds((int) lblDataNasc.getBounds().getMaxX()+50, (int) txtSobrenome.getBounds().getMaxY()+40, 100,25);
+		
+		JTextField txtCPF = new JTextField();
+		txtCPF.setBounds((int) lblDataNasc.getBounds().getMaxX()+50,(int) lblCPF.getBounds().getMaxY()+10, 175,25);
+		
+		JLabel lblTelefone = new JLabel("Telefone:");
+		lblTelefone.setBounds((int) txtCPF.getBounds().getMaxX()+50, (int) txtSobrenome.getBounds().getMaxY()+40, 100,25);
+		
+		JTextField txtTelefone = new JTextField();
+		txtTelefone.setBounds((int) txtCPF.getBounds().getMaxX()+50, (int) lblTelefone.getBounds().getMaxY()+10, 130,25);
+		
+		JLabel lblEmail = new JLabel("E-mail:");
+		lblEmail.setBounds((int) campo.getBounds().getMinX()+35, (int) txtDataNasc.getBounds().getMaxY()+50, 125,25);
+		
+		JTextField txtEmail = new JTextField();
+		txtEmail.setBounds((int) campo.getBounds().getMinX()+35, (int) lblEmail.getBounds().getMaxY()+10, 300,30);
+		
+		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setBounds((int) txtEmail.getBounds().getMaxX()+25, (int) txtCPF.getBounds().getMaxY()+50, 125,25);
+		
+		JPasswordField txtSenha = new JPasswordField();
+		txtSenha.setBounds((int) txtEmail.getBounds().getMaxX()+25, (int) lblSenha.getBounds().getMaxY()+10, 250,30);
+		
+		JButton btnProximo = new JButton("Próximo");
+		btnProximo.setBounds((int) (campo.getBounds().getCenterX()-62.5), (int) campo.getBounds().getMaxY()+10, 125,35);
+		
+		btnProximo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				confirmarCadastro();
+			}
+		});
+		
+		setFonte(new JComponent[] {lblNome,  txtNome, lblSobrenome, txtSobrenome, lblDataNasc, txtDataNasc, lblCPF, txtCPF, lblTelefone, txtTelefone, lblEmail, txtEmail, lblSenha, txtSenha, btnProximo}, 0, 20);
+		setLayout(new JComponent[] {lblCabeçalho, lblNome, txtNome, lblSobrenome, txtSobrenome, lblDataNasc, txtDataNasc, lblCPF, txtCPF, lblTelefone, txtTelefone, lblEmail, txtEmail, lblSenha, txtSenha, btnProximo, campo});
+	}
+	
+	private static void confirmarCadastro() {
 		
 		
-		setFonte(new JComponent[] {lblNome,  txtNome, lblSobrenome, txtSobrenome, lblDataNasc}, 0, 20);
-		setLayout(new JComponent[] {lblCabeçalho, lblNome, txtNome, lblSobrenome, txtSobrenome, lblDataNasc, campo});
 	}
 	
 	private static void setLayout(JComponent[] componentes) {
