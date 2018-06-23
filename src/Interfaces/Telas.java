@@ -10,19 +10,25 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
 public class Telas {
 	
-	private static JFrame frmMain = new JFrame();
-	private static JLabel popup = new JLabel();
-	private static JLabel lblLogo;
+	private JFrame frmMain = new JFrame();
+	private JLabel popup = new JLabel();
+	private JLabel lblLogo;
 
  	public static void main(String[] args) {
 		
-		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		new Telas();
+	}
+
+ 	public Telas() {
+ 		
+ 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMain.setSize(1238,700);
 		frmMain.setLocationRelativeTo(null);
 		frmMain.setLayout(null);
@@ -35,25 +41,25 @@ public class Telas {
 		inicio();
 		
 		frmMain.setVisible(true);
-	}
-
-	private static void inicio() {
+ 	}
+ 	
+	private void inicio() {
 		
 		ImageIcon logo = new ImageIcon("src//Interfaces//img//logo.jpg");
 		
 		JLabel lblLogo = new JLabel(logo);
 		lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
 		
-		JLabel campo = new JLabel();
-		campo.setBounds((int) 411.5,logo.getIconHeight()+100,415,255);
-		campo.setOpaque(true);
+		JPanel campo = new JPanel();
+		campo.setBounds(410, logo.getIconHeight()+100, 415, 255);
 		campo.setBackground(new Color(247,247,247));
+		campo.setLayout(null);
 		
 		JButton btnProfissional = new JButton("Profissional");
-		btnProfissional.setBounds((int) campo.getBounds().getMinX()+50,(int) campo.getBounds().getMinY()+50,(int) campo.getBounds().getWidth()-100,50);
+		btnProfissional.setBounds(50, 50, 315, 50);
 		
 		JButton btnPaciente = new JButton("Paciente");
-		btnPaciente.setBounds((int) campo.getBounds().getMinX()+50,(int) campo.getBounds().getMaxY()-100,(int) campo.getBounds().getWidth()-100,50);
+		btnPaciente.setBounds(50, 150, 315, 50);
 		
 		btnPaciente.addActionListener(new ActionListener() {
 			
@@ -64,10 +70,13 @@ public class Telas {
 			}
 		});
 		
-		setLayout(new JComponent[] {lblLogo, btnPaciente, btnProfissional, campo});
+		campo.add(btnProfissional);
+		campo.add(btnPaciente);
+		
+		setLayout(new JComponent[] {lblLogo, campo});
 	}
 
-	private static void login(){
+	private void login(){
 		
 		ImageIcon logo = new ImageIcon("src//Interfaces//img//logo.jpg");
 		
@@ -75,15 +84,15 @@ public class Telas {
 		lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
 		
 		JLabel campo = new JLabel();
-		campo.setBounds((int) 411.5,logo.getIconHeight()+100,415,255);
+		campo.setBounds(410, logo.getIconHeight()+100, 415, 255);
 		campo.setOpaque(true);
 		campo.setBackground(new Color(247,247,247));
 		
 		JLabel exemplo = new JLabel("LOGIN");
-		exemplo.setBounds((int) campo.getBounds().getMinX()+150,(int) campo.getBounds().getMinY()+100,50,25);
+		exemplo.setBounds((int) campo.getBounds().getMinX()+150, (int) campo.getBounds().getMinY()+100, 50, 25);
 		
 		JButton btnCadastrar = new JButton("Novo? Cadastrar-se já");
-		btnCadastrar.setBounds((int) campo.getBounds().getMaxX()-250,(int) campo.getBounds().getMinY()+25, 200,25);
+		btnCadastrar.setBounds((int) campo.getBounds().getMaxX()-250, (int) campo.getBounds().getMinY()+25, 200, 25);
 		
 		btnCadastrar.addActionListener(new ActionListener() {
 			
@@ -137,40 +146,47 @@ public class Telas {
 		setLayout(new JComponent[] {lblLogo, exemplo, btnCadastrar, btnEsqueciSenha, campo});
 	}
 	
-	private static void preCadastroPaciente() {
+	private void preCadastroPaciente() {
 		
-		JLabel campo = new JLabel();
-		campo.setBounds((int) 281.5,(int) 90, frmMain.getWidth()-563, frmMain.getHeight()-255);
-		campo.setOpaque(true);
+		JPanel campo = new JPanel();
+		campo.setBounds(280,(int) 90, frmMain.getWidth()-563, frmMain.getHeight()-255);
 		campo.setBackground(new Color(247,247,247));
 		
-		JLabel lblCabeçalho = new JLabel("<html>Para poder concluir o cadastro informe<br><center>os dados abaixo porfavor.</center></html>");
+		JLabel lblCabeçalho = new JLabel("<html><center>Para poder concluir o cadastro informe<br>os dados abaixo por favor.</center></html>");
 		lblCabeçalho.setFont(new Font("Georgean", Font.BOLD, 23));
-		lblCabeçalho.setBounds((int) (campo.getBounds().getMinX()+120),(int) campo.getBounds().getMinY()+25,435,70);
+		lblCabeçalho.setBounds(120, 25, frmMain.getWidth()-563,70);
+		
+		int coluna1 = 35;
+		int coluna2 = 245;
+		
+		int linha1 = 120;
+		int linha2 = 225;		
+		
+		int widthCampos = 175;
 		
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds((int) campo.getBounds().getMinX()+35, (int) lblCabeçalho.getBounds().getMaxY()+25, 100,25);
+		lblNome.setBounds(coluna1, linha1, 100,25);
 		
 		JTextField txtNome = new JTextField();
-		txtNome.setBounds((int) campo.getBounds().getMinX()+35, (int) lblNome.getBounds().getMaxY()+10,150,25);
+		txtNome.setBounds(coluna1, linha1 + 35, widthCampos, 25);
 		
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setBounds((int) txtNome.getBounds().getMaxX()+50, (int) lblCabeçalho.getBounds().getMaxY()+25, 125,25);
+		lblSobrenome.setBounds(coluna2, linha1, 125,25);
 		
 		JTextField txtSobrenome = new JTextField();
-		txtSobrenome.setBounds((int) txtNome.getBounds().getMaxX()+50, (int) lblSobrenome.getBounds().getMaxY()+10, 175,25);
+		txtSobrenome.setBounds(coluna2, linha1 + 35, widthCampos,25);
 		
 		JLabel lblDataNasc = new JLabel("Data de Nascimento:");
-		lblDataNasc.setBounds((int) campo.getBounds().getMinX()+35, (int) txtNome.getBounds().getMaxY()+40, 200,25);
+		lblDataNasc.setBounds(coluna1, linha2, 200,25);
 		
 		JTextField txtDataNasc = new JTextField();
-		txtDataNasc.setBounds((int) campo.getBounds().getMinX()+35, (int) lblDataNasc.getBounds().getMaxY()+10, 125,25);
+		txtDataNasc.setBounds(coluna1, linha2 + 35, widthCampos, 25);
 		
 		JLabel lblCPF = new JLabel("CPF:");
-		lblCPF.setBounds((int) lblDataNasc.getBounds().getMaxX()+50, (int) txtSobrenome.getBounds().getMaxY()+40, 100,25);
+		lblCPF.setBounds(coluna2, linha2, 100, 25);
 		
 		JTextField txtCPF = new JTextField();
-		txtCPF.setBounds((int) lblDataNasc.getBounds().getMaxX()+50,(int) lblCPF.getBounds().getMaxY()+10, 175,25);
+		txtCPF.setBounds(coluna2, linha2 + 35, widthCampos, 25);
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		lblTelefone.setBounds((int) txtCPF.getBounds().getMaxX()+50, (int) txtSobrenome.getBounds().getMaxY()+40, 100,25);
@@ -202,11 +218,29 @@ public class Telas {
 			}
 		});
 		
-		setFonte(new JComponent[] {lblNome,  txtNome, lblSobrenome, txtSobrenome, lblDataNasc, txtDataNasc, lblCPF, txtCPF, lblTelefone, txtTelefone, lblEmail, txtEmail, lblSenha, txtSenha, btnProximo}, 0, 20);
-		setLayout(new JComponent[] {lblCabeçalho, lblNome, txtNome, lblSobrenome, txtSobrenome, lblDataNasc, txtDataNasc, lblCPF, txtCPF, lblTelefone, txtTelefone, lblEmail, txtEmail, lblSenha, txtSenha, btnProximo, campo});
+		campo.add(lblCabeçalho);
+		campo.add(lblNome);
+		campo.add(txtNome);
+		campo.add(lblSobrenome);
+		campo.add(txtSobrenome);
+		campo.add(lblDataNasc);
+		campo.add(txtDataNasc);
+		campo.add(lblCPF);
+		campo.add(txtCPF);
+		campo.add(lblTelefone);
+		campo.add(txtTelefone);
+		campo.add(lblEmail);
+		campo.add(txtEmail);
+		campo.add(lblSenha);
+		campo.add(txtSenha);
+		campo.add(btnProximo);
+		
+		setFonte(new JComponent[] {lblNome,  txtNome, lblSobrenome, txtSobrenome, lblDataNasc, txtDataNasc, lblCPF, txtCPF, lblTelefone, txtTelefone, 
+								   lblEmail, txtEmail, lblSenha, txtSenha, btnProximo}, 0, 20);
+		setLayout(new JComponent[] {campo});
 	}
 	
-	private static void confirmarCadastro() {
+	private void confirmarCadastro() {
 		
 		JLabel campo = new JLabel();
 		campo.setOpaque(true);
@@ -261,7 +295,7 @@ public class Telas {
 		setLayout(new JComponent[] {lblCabeçalho, lblEmail, txtEmail, lblSenha, txtSenha, btnProximo, campo});
 	}
 
-	private static void addPopup(JComponent[] componentes) {
+	private void addPopup(JComponent[] componentes) {
 				
 		frmMain.remove(lblLogo);
 		
@@ -274,7 +308,7 @@ public class Telas {
 		frmMain.getContentPane().repaint();
 	}
 
-	private static void setLayout(JComponent[] componentes) {
+	private void setLayout(JComponent[] componentes) {
 		
 		frmMain.getContentPane().removeAll();
 		frmMain.getContentPane().repaint();
@@ -285,7 +319,7 @@ public class Telas {
 		
 	}
 
-	private static void setFonte(JComponent[] componente, int estilo, int tamanho) {
+	private void setFonte(JComponent[] componente, int estilo, int tamanho) {
 		
 		for(int i=0; i<componente.length; i++) {
 			componente[i].setFont(new Font("Georgean", estilo, tamanho));
