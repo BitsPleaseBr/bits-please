@@ -12,212 +12,283 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 public class Telas {
-	
+
 	private JFrame frmMain = new JFrame();
-	private JLabel popup = new JLabel();
+	private JPanel popup = new JPanel();
 	private JLabel lblLogo;
 
- 	public static void main(String[] args) {
-		
+	//Diretório onde as imagens ficam
+	private String imageDir = "src//Interfaces//img//";
+
+	private Color corBackgroundCampo = new Color(247, 247, 247);
+
+	//Fontes usadas nas telas
+	private Font fonteTitulos = new Font("Gregorian", Font.PLAIN, 23);
+	private Font fonteTituloTxt = new Font("Gregorian", Font.PLAIN, 20);
+	private Font fonteTituloTxtLogin = new Font("Gregorian", Font.PLAIN, 15);
+	
+	public static void main(String[] args) {
+
 		new Telas();
 	}
 
- 	public Telas() {
- 		
- 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMain.setSize(1238,700);
+	public Telas() {
+
+		//Configurando a janela
+		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMain.setSize(1238, 700);
 		frmMain.setLocationRelativeTo(null);
 		frmMain.setLayout(null);
-		frmMain.getContentPane().setBackground(new Color(221,233,232));
-		
-		popup.setBounds((int) 346.5, 50, 545,250);
-		popup.setOpaque(true);
-		popup.setBackground(new Color(247,247,247));
-	
+		frmMain.getContentPane().setBackground(new Color(221, 233, 232));
+
+		//Configurando o popup
+		popup.setBounds(346, 50, 545, 250);
+		popup.setBackground(corBackgroundCampo);
+
 		inicio();
-		
+
 		frmMain.setVisible(true);
- 	}
- 	
+	}
+
+	
 	private void inicio() {
-		
-		ImageIcon logo = new ImageIcon("src//Interfaces//img//logo.jpg");
-		
+
+		//Obtendo icone da logo
+		ImageIcon logo = getIcon("logo");
+
+		//Configurando label da logo
 		JLabel lblLogo = new JLabel(logo);
 		lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
-		
+
+		//Configurando painel principal
 		JPanel campo = new JPanel();
-		campo.setBounds(410, logo.getIconHeight()+100, 415, 255);
-		campo.setBackground(new Color(247,247,247));
+		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
+		campo.setBackground(corBackgroundCampo);
 		campo.setLayout(null);
-		
+
+		//Configurando botoes
 		JButton btnProfissional = new JButton("Profissional");
 		btnProfissional.setBounds(50, 50, 315, 50);
-		
+
 		JButton btnPaciente = new JButton("Paciente");
 		btnPaciente.setBounds(50, 150, 315, 50);
-		
+
 		btnPaciente.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				login();
 			}
 		});
-		
+
 		campo.add(btnProfissional);
 		campo.add(btnPaciente);
-		
-		setLayout(new JComponent[] {lblLogo, campo});
+
+		setLayout(new JComponent[] { lblLogo, campo});
 	}
 
-	private void login(){
-		
-		ImageIcon logo = new ImageIcon("src//Interfaces//img//logo.jpg");
-		
+	private void login() {
+
+		//Obtendo icone da logo
+		ImageIcon logo = getIcon("logo");
+
+		//Configurando label da logo
 		lblLogo = new JLabel(logo);
 		lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
+
+		//Configurando painel principal
+		JPanel campo = new JPanel();
+		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
+		campo.setBackground(corBackgroundCampo);
+
+		//Configurando componentes
+		JLabel lblLogin = new JLabel("LOGIN");
+		lblLogin.setBounds(0, 25, 415, 25);
+		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogin.setFont(fonteTitulos);
+
+		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setFont(fonteTituloTxtLogin);
+		lblEmail.setSize(lblEmail.getPreferredSize());
+		lblEmail.setLocation(50, 77);
 		
-		JLabel campo = new JLabel();
-		campo.setBounds(410, logo.getIconHeight()+100, 415, 255);
-		campo.setOpaque(true);
-		campo.setBackground(new Color(247,247,247));
+		ETextField txtEmail = new ETextField();
+		txtEmail.setBounds(115, 75, 250, 30);
+
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(fonteTituloTxtLogin);
+		lblSenha.setSize(lblSenha.getPreferredSize());
+		lblSenha.setLocation(50, 127);
 		
-		JLabel exemplo = new JLabel("LOGIN");
-		exemplo.setBounds((int) campo.getBounds().getMinX()+150, (int) campo.getBounds().getMinY()+100, 50, 25);
+		EPasswordField txtSenha = new EPasswordField();
+		txtSenha.setBounds(115, 125, 250, 30);
 		
-		JButton btnCadastrar = new JButton("Novo? Cadastrar-se já");
-		btnCadastrar.setBounds((int) campo.getBounds().getMaxX()-250, (int) campo.getBounds().getMinY()+25, 200, 25);
+		JLabel lblEsqueciSenha = new JLabel("Esqueci minha senha");
+		lblEsqueciSenha.setLocation(125, 160);
+		lblEsqueciSenha.setSize(lblEsqueciSenha.getPreferredSize());
+
+		//Adicionando listener para quando o label de Esqueci Minha Senha for clickado abrir o popup de Esqueci Minha Senha
+		lblEsqueciSenha.addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+
+			@Override
+			public void run() {
+
+				popupEsqueciSenha();
+			}
+		}));
+
+		JButton btnEntrar = new JButton("Entrar");
+		btnEntrar.setBounds(55, 200, 150, 30);
 		
-		btnCadastrar.addActionListener(new ActionListener() {
+		//Adicionando listener para quando o botao Entrar for clickado verificar se o email e senha sao válidos e logar
+		btnEntrar.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				
+				//Verifica se o email e a senha sao válidos
+				if ((txtEmail.getText().matches("^\\S+@[a-zA-Z]+[\\.[a-zA-Z]{2,3}]+$")) && (String.valueOf(txtSenha.getPassword()).matches("^\\w+$"))) {
+					
+					System.out.println("pode logar");
+				} else {
+					
+					mensagem("E-mail ou senha inválidos.");
+				}
+			}
+		});
+		
+		JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se já");
+		lblCadastrar.setLocation(230, 207);
+		lblCadastrar.setSize(lblCadastrar.getPreferredSize());
+		
+		//Adicionando listener para quando o label de Cadastrar for clickado abrir a tela de cadastro do usuário
+		lblCadastrar.addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+
+			@Override
+			public void run() {
+
 				preCadastroPaciente();
 			}
-		});
+		}));
 		
-		//Recuperação de senha
-		JLabel lblCPF = new JLabel("CPF:");
-		lblCPF.setBounds((int) popup.getBounds().getMinX()+50, (int) popup.getBounds().getMinY()+40, 100,25);
-		
-		JTextField txtCPF = new JTextField();
-		txtCPF.setBounds((int) popup.getBounds().getMinX()+50,(int) lblCPF.getBounds().getMaxY()+10, 175,25);
-		
-		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds((int) popup.getBounds().getMinX()+50, (int) txtCPF.getBounds().getMaxY()+25, 100,25);
-		
-		JTextField txtEmail = new JTextField();
-		txtEmail.setBounds((int) popup.getBounds().getMinX()+50, (int) lblEmail.getBounds().getMaxY()+10, 300,30);
-		
-		JButton btnEnviar = new JButton(">");
-		btnEnviar.setBounds((int) popup.getBounds().getMaxX()-75, (int) popup.getBounds().getMaxY()-50, 50,25); 
-		
-		btnEnviar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
+		campo.add(lblLogin);
+		campo.add(lblCadastrar);
+		campo.add(lblEsqueciSenha);
+		campo.add(lblEmail);
+		campo.add(txtEmail);
+		campo.add(lblSenha);
+		campo.add(txtSenha);
+		campo.add(btnEntrar);
 
-				System.out.println("Enviado para o e-mail");
-				
-				login();
-			}
-		});
-		
-		JButton btnEsqueciSenha = new JButton("Esqueci minha senha");
-		btnEsqueciSenha.setBounds((int) campo.getBounds().getMaxX()-250,(int) campo.getBounds().getMaxY()-50, 200,25);
-		
-		btnEsqueciSenha.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				addPopup(new JComponent[] {lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar});
-			}
-		});
-
-		setFonte(new JComponent[] {lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar}, 0, 20);
-		setLayout(new JComponent[] {lblLogo, exemplo, btnCadastrar, btnEsqueciSenha, campo});
+		setLayout(new JComponent[] { lblLogo, campo });
 	}
-	
+
 	private void preCadastroPaciente() {
-		
+
+		int larguraCampo = frmMain.getWidth() - 563;
+
+		//Configurando painel principal
 		JPanel campo = new JPanel();
-		campo.setBounds(280,(int) 90, frmMain.getWidth()-563, frmMain.getHeight()-255);
-		campo.setBackground(new Color(247,247,247));
-		
+		campo.setBounds(280, 75, larguraCampo, frmMain.getHeight() - 200);
+		campo.setBackground(corBackgroundCampo);
+
+		//Configurando cabeçalho
 		JLabel lblCabeçalho = new JLabel("<html><center>Para poder concluir o cadastro informe<br>os dados abaixo por favor.</center></html>");
 		lblCabeçalho.setFont(new Font("Georgean", Font.BOLD, 23));
-		lblCabeçalho.setBounds(120, 25, frmMain.getWidth()-563,70);
-		
-		int coluna1 = 35;
-		int coluna2 = 245;
-		
-		int linha1 = 120;
-		int linha2 = 225;		
-		
+		lblCabeçalho.setBounds(120, 25, larguraCampo, 70);
+
+		//Calculando coordenadas das colunas e linhas para padronizar a tela
+		int distColunas = 35;
+		int distLinhas = 35;
+		int distLblTxt = 10;
+
 		int widthCampos = 175;
-		
+		int widthCamposLargos = (widthCampos * 3 + distColunas * 2) / 2 - distColunas / 2;
+		int alturaCampos = 30;
+
+		int coluna1 = 35;
+		int coluna2 = coluna1 + widthCampos + distColunas;
+		int coluna3 = coluna2 + widthCampos + distColunas;
+		int coluna4 = coluna1 + widthCamposLargos + distColunas;
+
+		int linha1Lbl = 120;
+		int linha1Txt = linha1Lbl + alturaCampos + distLblTxt;
+
+		int linha2Lbl = linha1Txt + alturaCampos + distLinhas;
+		int linha2Txt = linha2Lbl + alturaCampos + distLblTxt;
+
+		int linha3Lbl = linha2Txt + alturaCampos + distLinhas;
+		int linha3Txt = linha3Lbl + alturaCampos + distLblTxt;
+
+		int linha4 = linha3Txt + alturaCampos + distLinhas;
+
+		//Configurando componentes
 		JLabel lblNome = new JLabel("Nome:");
-		lblNome.setBounds(coluna1, linha1, 100,25);
-		
-		JTextField txtNome = new JTextField();
-		txtNome.setBounds(coluna1, linha1 + 35, widthCampos, 25);
-		
+		lblNome.setBounds(coluna1, linha1Lbl, 100, alturaCampos);
+
+		ETextField txtNome = new ETextField();
+		txtNome.setBounds(coluna1, linha1Txt, widthCamposLargos, alturaCampos);
+
 		JLabel lblSobrenome = new JLabel("Sobrenome:");
-		lblSobrenome.setBounds(coluna2, linha1, 125,25);
-		
-		JTextField txtSobrenome = new JTextField();
-		txtSobrenome.setBounds(coluna2, linha1 + 35, widthCampos,25);
-		
+		lblSobrenome.setBounds(coluna4, linha1Lbl, 125, alturaCampos);
+
+		ETextField txtSobrenome = new ETextField();
+		txtSobrenome.setBounds(coluna4, linha1Txt, widthCamposLargos, alturaCampos);
+
 		JLabel lblDataNasc = new JLabel("Data de Nascimento:");
-		lblDataNasc.setBounds(coluna1, linha2, 200,25);
-		
-		JTextField txtDataNasc = new JTextField();
-		txtDataNasc.setBounds(coluna1, linha2 + 35, widthCampos, 25);
-		
+		lblDataNasc.setBounds(coluna1, linha2Lbl, 200, alturaCampos);
+
+		ETextField txtDataNasc = new ETextField();
+		txtDataNasc.setBounds(coluna1, linha2Txt, widthCampos, alturaCampos);
+
 		JLabel lblCPF = new JLabel("CPF:");
-		lblCPF.setBounds(coluna2, linha2, 100, 25);
-		
-		JTextField txtCPF = new JTextField();
-		txtCPF.setBounds(coluna2, linha2 + 35, widthCampos, 25);
-		
+		lblCPF.setBounds(coluna2, linha2Lbl, 100, alturaCampos);
+
+		ETextField txtCPF = new ETextField();
+		txtCPF.setBounds(coluna2, linha2Txt, widthCampos, alturaCampos);
+
 		JLabel lblTelefone = new JLabel("Telefone:");
-		lblTelefone.setBounds((int) txtCPF.getBounds().getMaxX()+50, (int) txtSobrenome.getBounds().getMaxY()+40, 100,25);
-		
-		JTextField txtTelefone = new JTextField();
-		txtTelefone.setBounds((int) txtCPF.getBounds().getMaxX()+50, (int) lblTelefone.getBounds().getMaxY()+10, 130,25);
-		
+		lblTelefone.setBounds(coluna3, linha2Lbl, 100, alturaCampos);
+
+		ETextField txtTelefone = new ETextField();
+		txtTelefone.setBounds(coluna3, linha2Txt, widthCampos, alturaCampos);
+
 		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds((int) campo.getBounds().getMinX()+35, (int) txtDataNasc.getBounds().getMaxY()+50, 125,25);
-		
-		JTextField txtEmail = new JTextField();
-		txtEmail.setBounds((int) campo.getBounds().getMinX()+35, (int) lblEmail.getBounds().getMaxY()+10, 300,30);
-		
+		lblEmail.setBounds(coluna1, linha3Lbl, 125, alturaCampos);
+
+		ETextField txtEmail = new ETextField();
+		txtEmail.setBounds(coluna1, linha3Txt, widthCamposLargos, alturaCampos);
+
 		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setBounds((int) txtEmail.getBounds().getMaxX()+25, (int) txtCPF.getBounds().getMaxY()+50, 125,25);
-		
-		JPasswordField txtSenha = new JPasswordField();
-		txtSenha.setBounds((int) txtEmail.getBounds().getMaxX()+25, (int) lblSenha.getBounds().getMaxY()+10, 250,30);
-		
+		lblSenha.setBounds(coluna4, linha3Lbl, 125, alturaCampos);
+
+		EPasswordField txtSenha = new EPasswordField();
+		txtSenha.setBounds(coluna4, linha3Txt, widthCamposLargos, alturaCampos);
+
 		JButton btnProximo = new JButton("Próximo");
-		btnProximo.setBounds((int) (campo.getBounds().getCenterX()-62.5), (int) campo.getBounds().getMaxY()+10, 125,35);
-		
+		btnProximo.setBounds(larguraCampo / 2 - 60, linha4, 120, 35);
+
+		//Adicionando listener para quando o botao Próximo for clickado verificar se os campos foram preenchidos corretamente e seguir para a próxima tela
 		btnProximo.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				
-				confirmarCadastro();
+
+				if (validarInfoUser(new JComponent[] {txtNome, txtSobrenome, txtDataNasc, txtCPF, txtTelefone, txtEmail, txtSenha})) {
+					
+					confirmarCadastro(txtEmail.getText(), String.valueOf(txtSenha.getPassword()));
+				} else {
+					
+					mensagem("Voce preencheu algum(s) campo(s) errado.");
+				}
 			}
 		});
-		
+
 		campo.add(lblCabeçalho);
 		campo.add(lblNome);
 		campo.add(txtNome);
@@ -234,96 +305,280 @@ public class Telas {
 		campo.add(lblSenha);
 		campo.add(txtSenha);
 		campo.add(btnProximo);
+
+		setFonte(new JComponent[] { lblNome, txtNome, lblSobrenome, txtSobrenome, lblDataNasc, txtDataNasc, lblCPF,
+				txtCPF, lblTelefone, txtTelefone, lblEmail, txtEmail, lblSenha, txtSenha, btnProximo }, fonteTituloTxt);
+		setLayout(new JComponent[] { campo });
+	}
+
+	private void confirmarCadastro(String email, String senha) {
+
+		//Configurando painel principal
+		JPanel campo = new JPanel();
+		campo.setBackground(corBackgroundCampo);
+		campo.setBounds(381, 132, 475, 355);
+
+		//Configurando cabeçalho
+		JLabel lblCabeçalho = new JLabel("<html><center>Confirme os dados abaixo<br>por favor</center></html>");
+		lblCabeçalho.setFont(fonteTitulos);
+		lblCabeçalho.setLocation(0, 25);
+		lblCabeçalho.setSize(lblCabeçalho.getPreferredSize());
+		centralizar(lblCabeçalho, campo);
 		
-		setFonte(new JComponent[] {lblNome,  txtNome, lblSobrenome, txtSobrenome, lblDataNasc, txtDataNasc, lblCPF, txtCPF, lblTelefone, txtTelefone, 
-								   lblEmail, txtEmail, lblSenha, txtSenha, btnProximo}, 0, 20);
+		//Configurando componentes
+		JLabel lblEmail = new JLabel("E-mail:");
+		lblEmail.setBounds(35, 115, 100, 25);
+
+		ETextField txtEmail = new ETextField();
+		txtEmail.setBounds(35, 150, 405, 30);
+
+		JLabel lblSenha = new JLabel("Senha:");
+		lblSenha.setBounds(35, 210, 125, 25);
+
+		JPasswordField txtSenha = new JPasswordField();
+		txtSenha.setBounds(35, 245, 405, 30);
+
+		JButton btnProximo = new JButton("Confirmar");
+		btnProximo.setBounds(0, 300, 150, 35);
+		centralizar(btnProximo, campo);
+
+		//Adicionando listener para quando o botao Confirmar for clickado verificar se o email e senha 
+		//informados correspondem com os do cadastro e voltar para a tela de login
+		btnProximo.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if ((txtEmail.getText().equals(email)) && (String.valueOf(txtSenha.getPassword()).equals(senha))) {
+					
+					login();
+					
+					mensagem("Foi enviado um e-mail de verificação. Por favor, confirme seu e-mail.");
+				} else {
+					
+					mensagem("Voce preencheu algo errado.");
+				}
+			}
+		});
+
+		campo.add(lblCabeçalho);
+		campo.add(lblEmail);
+		campo.add(txtEmail);
+		campo.add(lblSenha);
+		campo.add(txtSenha);
+		campo.add(btnProximo);
+		
+		setFonte(new JComponent[] {lblEmail, txtEmail, lblSenha, txtSenha, btnProximo}, fonteTituloTxt);
 		setLayout(new JComponent[] {campo});
 	}
-	
-	private void confirmarCadastro() {
+
+	private void popupEsqueciSenha() {
 		
-		JLabel campo = new JLabel();
-		campo.setOpaque(true);
-		campo.setBackground(new Color(247,247,247));
-		campo.setBounds((int) 381.5, (int) 132.5, 475, 355);
+		//Configurando componentes
+		JLabel lblCPF = new JLabel("CPF:");
+		lblCPF.setBounds(0, 30, 300, 25);
+		centralizar(lblCPF, popup);
 		
-		JLabel lblCabeçalho = new JLabel("<html>Confirme os dados abaixo para<br><center>certificação porfavor.</center></html>");
-		lblCabeçalho.setFont(new Font("Georgean", Font.BOLD, 23));
-		lblCabeçalho.setBounds((int) campo.getBounds().getMinX()+65, (int) campo.getBounds().getMinY()+25, 435,70); 
+		ETextField txtCPF = new ETextField();
+		txtCPF.setBounds(0, 65, 300, 30);
+		centralizar(txtCPF, popup);
 		
 		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds((int) campo.getBounds().getMinX()+35, (int) lblCabeçalho.getBounds().getMaxY()+25, 100,25);
+		lblEmail.setBounds(0, 115, 300, 25);
+		centralizar(lblEmail, popup);
 		
-		JTextField txtEmail = new JTextField();
-		txtEmail.setBounds((int) campo.getBounds().getMinX()+35, (int) lblEmail.getBounds().getMaxY()+10, 300,30);
+		ETextField txtEmail = new ETextField();
+		txtEmail.setBounds(0, 150, 300, 30);
+		centralizar(txtEmail, popup);
 		
-		JLabel lblSenha = new JLabel("Senha:");
-		lblSenha.setBounds((int) campo.getBounds().getMinX()+35, (int) txtEmail.getBounds().getMaxY()+30, 125,25);
+		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.setBounds(0, 200, 100, 30);
+		centralizar(btnEnviar, popup);
 		
-		JPasswordField txtSenha = new JPasswordField();
-		txtSenha.setBounds((int) campo.getBounds().getMinX()+35, (int) lblSenha.getBounds().getMaxY()+10, 250,30);
-		
-		JLabel lblEmailEnviado = new JLabel("<html><center>Foi enviado um e-mail de verificação.<br><br>Por favor, confirme seu e-mail.<br><br>Estamos aqui para ajuda-lo.</center></html>");
-		lblEmailEnviado.setBounds((int) (popup.getBounds().getCenterX()-162.5), (int) popup.getBounds().getCenterY()-70, 325,130);
+		//Adicionando listener para quando o botao Enviar for clickado voltar para a tela de login
+		//E mostrar uma mensagem informando que um email foi enviado
+		btnEnviar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				login();
 				
-		JButton btnProximo = new JButton(">");
-		btnProximo.setBounds((int) (campo.getBounds().getMaxX()-115), (int) campo.getBounds().getMaxY()-45, 100,35);
+				mensagem("E-mail de recuperaçao enviado");
+			}
+		});
 		
-		btnProximo.addActionListener(new ActionListener() {
+		setFonte(new JComponent[] { lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar }, fonteTituloTxt);
+		addPopup(new JComponent[] { lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar});
+	}
+	
+	
+	private void mensagem(String msg) {
+		
+		//Configurando label que vai aparecer a mensagem
+		JLabel lbl = new JLabel("<html><p style='max-width: 500px; margin: auto;'>" + msg + "</p></html>");
+		lbl.setSize(lbl.getPreferredSize());
+		lbl.setLocation(10, 10);
+		lbl.setHorizontalAlignment(SwingConstants.CENTER);
+		lbl.setForeground(Color.WHITE);
+		
+		int lblWidth = lbl.getWidth();
+		int lblHeight = lbl.getHeight();
+		
+		//Configurando painel
+		JPanel pane = new JPanel();
+		pane.setSize(lblWidth + 20, lblHeight + 20);
+		pane.setOpaque(true);
+		pane.setBackground(new Color(50, 50, 50));
+		
+		pane.add(lbl);
+		
+		int paneX = frmMain.getWidth() / 2 - pane.getWidth() / 2;
+		int paneY = frmMain.getHeight() - pane.getHeight() - 100;
+		
+		pane.setLocation(paneX, paneY);
+		
+		//Adicionando painel na primeira layer da tela para ficar na frente de tudo
+		frmMain.getLayeredPane().add(pane, 0);
+		frmMain.repaint();
+		
+		//Criando temporizador para quando passarem 5 segundos a mensagem sumir
+		Timer timer = new Timer(5000, new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				login();
-				
-				addPopup(new JComponent[] {lblEmailEnviado});
-				
-				Timer temporizador = new Timer(3000, new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						login();
-					}
-				});
-				temporizador.setRepeats(false);
-				temporizador.start();
+				frmMain.getLayeredPane().remove(pane);
+				frmMain.repaint();
 			}
 		});
 		
-		setFonte(new JComponent[] {lblEmail, txtEmail, lblSenha, txtSenha, btnProximo, lblEmailEnviado}, 0, 20);
-		setLayout(new JComponent[] {lblCabeçalho, lblEmail, txtEmail, lblSenha, txtSenha, btnProximo, campo});
+		timer.setRepeats(false);
+		timer.start();
 	}
-
+	
 	private void addPopup(JComponent[] componentes) {
-				
+
 		frmMain.remove(lblLogo);
+
+		popup.removeAll();
 		
-		for(int i=0; i<componentes.length; i++) {
-			frmMain.add(componentes[i]);
+		for (int i = 0; i < componentes.length; i++) {
+
+			popup.add(componentes[i]);
 		}
+
 		frmMain.add(popup);
-		frmMain.add(lblLogo);
-		
+
 		frmMain.getContentPane().repaint();
 	}
 
 	private void setLayout(JComponent[] componentes) {
-		
+
 		frmMain.getContentPane().removeAll();
 		frmMain.getContentPane().repaint();
-		
-		for(int i=0; i<componentes.length; i++) {
+
+		for (int i = 0; i < componentes.length; i++) {
 			frmMain.add(componentes[i]);
 		}
-		
-	}
 
-	private void setFonte(JComponent[] componente, int estilo, int tamanho) {
+	}
+	
+	private void setFonte(JComponent[] componente, Font font) {
 		
-		for(int i=0; i<componente.length; i++) {
-			componente[i].setFont(new Font("Georgean", estilo, tamanho));
+		for (JComponent comp : componente) {
+			
+			comp.setFont(font);
 		}
 	}
 
+	private void centralizar(JComponent comp, JPanel pane) {
+
+		int compWidth = comp.getWidth();
+		int compY = comp.getY();
+		int paneWidth = pane.getWidth();
+
+		comp.setLocation(paneWidth / 2 - compWidth / 2, compY);
+	}
+
+	private boolean validarInfoUser(JComponent[] componentes) {
+		
+		boolean retorno = true;
+		
+		//Obtém as informaçoes inseridas
+		String nome = ((ETextField) componentes[0]).getText();
+		String sobrenome = ((ETextField) componentes[1]).getText();
+		String dataNasc = ((ETextField) componentes[2]).getText();
+		String CPF = ((ETextField) componentes[3]).getText();
+		String Telefone = ((ETextField) componentes[4]).getText();
+		String email = ((ETextField) componentes[5]).getText();
+		String senha = String.valueOf(((EPasswordField) componentes[6]).getPassword());
+		
+		for (JComponent comp : componentes) {
+			
+			try {
+				
+				((ETextField) comp).limpar();
+			} catch (Exception e) {
+				
+				((EPasswordField) comp).limpar();
+			}
+		}
+		
+		//Verifica se o nome inserido é válido
+		if (!nome.matches("^[a-zA-Z]+$")) {
+			
+			((ETextField) componentes[0]).erro();
+			retorno = false;
+		}
+		
+		//Verifica se o sobrenome inserido é válido
+		if (!sobrenome.matches("^[a-zA-Z]+$")) {
+
+			((ETextField) componentes[1]).erro();
+			retorno = false;
+		}
+		
+		//Verifica se a data de nascimento inserida é válida
+		if (!dataNasc.matches("^\\d{2}/\\d{2}/\\d{4}$")) {
+
+			((ETextField) componentes[2]).erro();
+			retorno = false;
+		}
+		
+		//Verifica se o cpf inserido é válido
+		if (!CPF.matches("^\\d{3}.\\d{3}.\\d{3}-\\d{2}$")) {
+
+			((ETextField) componentes[3]).erro();
+			retorno = false;
+		}
+		
+		//Verifica se o telefone inserido é válido
+		if (!Telefone.matches("^\\d{4,5}-\\d{4}$")) {
+
+			((ETextField) componentes[4]).erro();
+			retorno = false;
+		}
+		
+		//Verifica se o email inserido é válido
+		if (!email.matches("^\\S+@[a-zA-Z]+[\\.[a-zA-Z]{2,3}]+$")) {
+
+			((ETextField) componentes[5]).erro();
+			retorno = false;
+		}
+		
+		//Verifica se a senha inserida é válida
+		if (!senha.matches("^\\w+$")) {
+			
+			((EPasswordField) componentes[6]).erro();
+			retorno = false;
+		}
+		
+		return retorno;
+	}
+	
+	private ImageIcon getIcon(String icon) {
+
+		return new ImageIcon(imageDir + icon + ".png");
+	}
 }
