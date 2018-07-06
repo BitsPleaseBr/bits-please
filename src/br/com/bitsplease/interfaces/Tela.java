@@ -1,4 +1,4 @@
-package Interfaces;
+package br.com.bitsplease.interfaces;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -15,28 +15,36 @@ import javax.swing.JPasswordField;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
-public class Telas {
+import br.com.bitsplease.controllers.MainController;
+import br.com.bitsplease.interfaces.componentes.EPasswordField;
+import br.com.bitsplease.interfaces.componentes.ETextField;
+import br.com.bitsplease.interfaces.componentes.LblMouseListener;
+import br.com.bitsplease.interfaces.componentes.MainPanel;
+import br.com.bitsplease.interfaces.paineis.PanelLogin;
+
+public class Tela extends JFrame {
 
 	private JFrame frmMain = new JFrame();
 	private JPanel popup = new JPanel();
 	private JLabel lblLogo;
 
 	//Diretório onde as imagens ficam
-	private String imageDir = "src//Interfaces//img//";
+	private static String imageDir = "src//Interfaces//img//";
 
-	private Color corBackgroundCampo = new Color(247, 247, 247);
+	public static Color corBackgroundCampo = new Color(247, 247, 247);
 
 	//Fontes usadas nas telas
-	private Font fonteTitulos = new Font("Gregorian", Font.PLAIN, 23);
-	private Font fonteTituloTxt = new Font("Gregorian", Font.PLAIN, 20);
-	private Font fonteTituloTxtLogin = new Font("Gregorian", Font.PLAIN, 15);
+	public static Font fonteTitulos = new Font("Gregorian", Font.PLAIN, 23);
+	public static Font fonteTituloTxt = new Font("Gregorian", Font.PLAIN, 20);
+	public static Font fonteTituloTxtLogin = new Font("Gregorian", Font.PLAIN, 15);
+	
 	
 	public static void main(String[] args) {
 
-		new Telas();
+		new Tela();
 	}
 
-	public Telas() {
+	public Tela() {
 
 		//Configurando a janela
 		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -86,106 +94,13 @@ public class Telas {
 			}
 		});
 
-		campo.add(btnProfissional);
-		campo.add(btnPaciente);
-
-		setLayout(new JComponent[] { lblLogo, campo});
+		add(btnProfissional);
+		add(btnPaciente);
 	}
 
 	private void login() {
 
-		//Obtendo icone da logo
-		ImageIcon logo = getIcon("logo");
-
-		//Configurando label da logo
-		lblLogo = new JLabel(logo);
-		lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
-
-		//Configurando painel principal
-		JPanel campo = new JPanel();
-		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
-		campo.setBackground(corBackgroundCampo);
-
-		//Configurando componentes
-		JLabel lblLogin = new JLabel("LOGIN");
-		lblLogin.setBounds(0, 25, 415, 25);
-		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogin.setFont(fonteTitulos);
-
-		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setFont(fonteTituloTxtLogin);
-		lblEmail.setSize(lblEmail.getPreferredSize());
-		lblEmail.setLocation(50, 77);
-		
-		ETextField txtEmail = new ETextField();
-		txtEmail.setBounds(115, 75, 250, 30);
-
-		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setFont(fonteTituloTxtLogin);
-		lblSenha.setSize(lblSenha.getPreferredSize());
-		lblSenha.setLocation(50, 127);
-		
-		EPasswordField txtSenha = new EPasswordField();
-		txtSenha.setBounds(115, 125, 250, 30);
-		
-		JLabel lblEsqueciSenha = new JLabel("Esqueci minha senha");
-		lblEsqueciSenha.setLocation(125, 160);
-		lblEsqueciSenha.setSize(lblEsqueciSenha.getPreferredSize());
-
-		//Adicionando listener para quando o label de Esqueci Minha Senha for clickado abrir o popup de Esqueci Minha Senha
-		lblEsqueciSenha.addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
-
-			@Override
-			public void run() {
-
-				popupEsqueciSenha();
-			}
-		}));
-
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(55, 200, 150, 30);
-		
-		//Adicionando listener para quando o botao Entrar for clickado verificar se o email e senha sao válidos e logar
-		btnEntrar.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				//Verifica se o email e a senha sao válidos
-				if ((txtEmail.getText().matches("^\\S+@[a-zA-Z]+[\\.[a-zA-Z]{2,3}]+$")) && (String.valueOf(txtSenha.getPassword()).matches("^\\w+$"))) {
-					
-					System.out.println("pode logar");
-				} else {
-					
-					mensagem("E-mail ou senha inválidos.");
-				}
-			}
-		});
-		
-		JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se já");
-		lblCadastrar.setLocation(230, 207);
-		lblCadastrar.setSize(lblCadastrar.getPreferredSize());
-		
-		//Adicionando listener para quando o label de Cadastrar for clickado abrir a tela de cadastro do usuário
-		lblCadastrar.addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
-
-			@Override
-			public void run() {
-
-				preCadastroPaciente();
-			}
-		}));
-		
-		campo.add(lblLogin);
-		campo.add(lblCadastrar);
-		campo.add(lblEsqueciSenha);
-		campo.add(lblEmail);
-		campo.add(txtEmail);
-		campo.add(lblSenha);
-		campo.add(txtSenha);
-		campo.add(btnEntrar);
-
-		setLayout(new JComponent[] { lblLogo, campo });
+		setContentPane(new PanelLogin());
 	}
 
 	private void preCadastroPaciente() {
@@ -577,7 +492,7 @@ public class Telas {
 		return retorno;
 	}
 	
-	private ImageIcon getIcon(String icon) {
+	public static ImageIcon getIcon(String icon) {
 
 		return new ImageIcon(imageDir + icon + ".png");
 	}

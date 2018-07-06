@@ -1,6 +1,6 @@
-package classes;
+package br.com.bitsplease.beans;
 
-public class Paciente {
+public class PacienteBean {
 	
 	//variaveis
 	private int cpf;

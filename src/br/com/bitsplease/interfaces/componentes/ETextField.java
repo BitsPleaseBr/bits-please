@@ -1,4 +1,4 @@
-package Interfaces;
+package br.com.bitsplease.interfaces.componentes;
 
 import java.awt.Color;
 

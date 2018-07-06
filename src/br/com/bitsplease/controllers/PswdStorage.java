@@ -1,4 +1,4 @@
-package controller;
+package br.com.bitsplease.controllers;
 
 public class PswdStorage {
   public String clientPswdHash(String pswd, String nome) {
