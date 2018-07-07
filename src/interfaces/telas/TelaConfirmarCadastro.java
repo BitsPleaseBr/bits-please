@@ -47,7 +47,7 @@ public class TelaConfirmarCadastro extends MainPanel {
 		lblCabecalho.setFont(Tela.fonteTitulos);
 		lblCabecalho.setLocation(0, 25);
 		lblCabecalho.setSize(lblCabecalho.getPreferredSize());
-		Tela.centralizar(lblCabecalho, this);
+		centralizar(lblCabecalho, this);
 
 		// Configurando componentes
 		JLabel lblEmail = new JLabel("E-mail:");
@@ -64,7 +64,7 @@ public class TelaConfirmarCadastro extends MainPanel {
 
 		JButton btnProximo = new JButton("Confirmar");
 		btnProximo.setBounds(0, 300, 150, 35);
-		Tela.centralizar(btnProximo, campo);
+		centralizar(btnProximo, campo);
 
 		// Adicionando listener para quando o botao Confirmar for clickado verificar se
 		// o email e senha

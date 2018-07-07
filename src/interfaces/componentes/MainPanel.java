@@ -2,8 +2,10 @@ package interfaces.componentes;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.util.HashMap;
 
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -51,6 +53,24 @@ public abstract class MainPanel extends JPanel {
 		addListeners();
 		
 		frame.revalidate();
+	}
+	
+
+	public static void setFonte(JComponent[] componente, Font font) {
+		
+		for (JComponent comp : componente) {
+			
+			comp.setFont(font);
+		}
+	}
+
+	public static void centralizar(JComponent comp, JPanel pane) {
+
+		int compWidth = comp.getWidth();
+		int compY = comp.getY();
+		int paneWidth = pane.getWidth();
+
+		comp.setLocation(paneWidth / 2 - compWidth / 2, compY);
 	}
 	
 	protected MainPanel getThis() {

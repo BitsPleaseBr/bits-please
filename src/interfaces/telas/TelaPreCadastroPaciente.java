@@ -109,7 +109,7 @@ public class TelaPreCadastroPaciente extends MainPanel {
 		JButton btnProximo = new JButton("Próximo");
 		btnProximo.setBounds(larguraCampo / 2 - 60, linha4, 120, 35);
 
-		Tela.setFonte(new JComponent[] {lblNome,
+		setFonte(new JComponent[] {lblNome,
 										txtNome,
 										lblSobrenome,
 										txtSobrenome,

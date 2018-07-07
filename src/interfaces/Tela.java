@@ -26,7 +26,6 @@ import interfaces.telas.TelaLogin;
 public class Tela extends JFrame {
 
 	private JPanel popup = new JPanel();
-	private JLabel lblLogo;
 
 	//Diretório onde as imagens ficam
 	private static String imageDir = "src//Interfaces//img//";
@@ -98,23 +97,6 @@ public class Tela extends JFrame {
 		setFonte(new JComponent[] { lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar }, fonteTituloTxt);
 	}
 	
-	public static void setFonte(JComponent[] componente, Font font) {
-		
-		for (JComponent comp : componente) {
-			
-			comp.setFont(font);
-		}
-	}
-
-	public static void centralizar(JComponent comp, JPanel pane) {
-
-		int compWidth = comp.getWidth();
-		int compY = comp.getY();
-		int paneWidth = pane.getWidth();
-
-		comp.setLocation(paneWidth / 2 - compWidth / 2, compY);
-	}
-
 	public static ImageIcon getIcon(String icon) {
 
 		return new ImageIcon(imageDir + icon + ".png");
