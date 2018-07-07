@@ -1,4 +1,4 @@
-package br.com.bitsplease.interfaces.componentes;
+package interfaces.componentes;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

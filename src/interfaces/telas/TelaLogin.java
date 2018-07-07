@@ -1,4 +1,4 @@
-package br.com.bitsplease.interfaces.paineis;
+package interfaces.telas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,25 +9,29 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import br.com.bitsplease.interfaces.Tela;
-import br.com.bitsplease.interfaces.componentes.EPasswordField;
-import br.com.bitsplease.interfaces.componentes.ETextField;
-import br.com.bitsplease.interfaces.componentes.LblMouseListener;
-import br.com.bitsplease.interfaces.componentes.MainPanel;
+import interfaces.Tela;
+import interfaces.componentes.EPasswordField;
+import interfaces.componentes.ETextField;
+import interfaces.componentes.LblMouseListener;
+import interfaces.componentes.MainPanel;
+import interfaces.popups.PopupEsqueciSenha;
 
-public class PanelLogin extends MainPanel {
+public class TelaLogin extends MainPanel {
+
+	
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void configurar() {
-		// TODO Auto-generated method stub
-
+		
+		setLayout(null);
 	}
 
 	@Override
 	protected void addComponents() {
 
 		// Obtendo icone da logo
-		ImageIcon logo = ((Tela) this.frame).getIcon("logo");
+		ImageIcon logo = Tela.getIcon("logo");
 
 		// Configurando label da logo
 		JLabel lblLogo = new JLabel(logo);
@@ -67,7 +71,7 @@ public class PanelLogin extends MainPanel {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setBounds(55, 200, 150, 30);
 
-		JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se já");
+		JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se jï¿½");
 		lblCadastrar.setLocation(230, 207);
 		lblCadastrar.setSize(lblCadastrar.getPreferredSize());
 
@@ -85,14 +89,14 @@ public class PanelLogin extends MainPanel {
 	protected void addListeners() {
 
 		// Adicionando listener para quando o label de Cadastrar for clickado abrir a
-		// tela de cadastro do usuário
+		// tela de cadastro do usuÃ¡rio
 		((JLabel) getObject("lblCadastrar"))
 				.addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
 
 					@Override
 					public void run() {
 
-						preCadastroPaciente();
+						frame.setContentPane(new TelaPreCadastroPaciente());
 					}
 				}));
 
@@ -104,18 +108,18 @@ public class PanelLogin extends MainPanel {
 					@Override
 					public void run() {
 
-						popupEsqueciSenha();
+						new PopupEsqueciSenha();
 					}
 				}));
 
 		// Adicionando listener para quando o botao Entrar for clickado verificar se o
-		// email e senha sao válidos e logar
+		// email e senha sao vÃ¡lidos e logar
 		((JButton) getObject("btnEntrar")).addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				controlador.login();
+				controlador.login(getThis());
 			}
 		});
 	}

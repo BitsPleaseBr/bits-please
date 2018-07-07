@@ -1,4 +1,4 @@
-package br.com.bitsplease.interfaces.componentes;
+package interfaces.componentes;
 
 import java.awt.Component;
 import java.util.HashMap;
@@ -7,7 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import br.com.bitsplease.controllers.MainController;
+import control.MainController;
+import control.MainValidator;
 
 public abstract class MainPanel extends JPanel {
 
@@ -17,6 +18,7 @@ public abstract class MainPanel extends JPanel {
 	private HashMap<Object, Object> objetos = new HashMap<>();
 	protected JFrame frame;
 	protected MainController controlador = new MainController();
+	protected MainValidator validador = new MainValidator();
 	
 	public MainPanel() {
 		
@@ -49,6 +51,11 @@ public abstract class MainPanel extends JPanel {
 		configurar();
 		addComponents();
 		addListeners();
+	}
+	
+	protected MainPanel getThis() {
+		
+		return this;
 	}
 
 	protected abstract void configurar();

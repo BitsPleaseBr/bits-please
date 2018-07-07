@@ -1,9 +1,11 @@
-package br.com.bitsplease.dao;
+package control.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 import javax.swing.JOptionPane;
+
+import control.bean.PacienteBean;
 
 public class PacienteDao {
 

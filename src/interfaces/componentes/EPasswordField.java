@@ -1,16 +1,13 @@
-package br.com.bitsplease.interfaces.componentes;
+package interfaces.componentes;
 
 import java.awt.Color;
 
-import javax.swing.JTextField;
+import javax.swing.JPasswordField;
 
-public class ETextField extends JTextField {
+public class EPasswordField extends JPasswordField {
 
-	
-	private static final long serialVersionUID = 1L;
 
-	
-	public ETextField() {
+	public EPasswordField() {
 		
 		config();
 	}
