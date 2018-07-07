@@ -10,6 +10,5 @@ public class CryptoTest {
     
     String hash = PswdStorage.clientPswdHash(senha, email);
     System.out.println(hash);
-  }
 
 }
