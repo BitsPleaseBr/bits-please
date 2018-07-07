@@ -96,7 +96,9 @@ public class TelaLogin extends MainPanel {
 					@Override
 					public void run() {
 
-						frame.setContentPane(new TelaPreCadastroPaciente());
+						TelaPreCadastroPaciente tela = new TelaPreCadastroPaciente();
+						frame.setContentPane(tela);
+						tela.construir();
 					}
 				}));
 

@@ -54,7 +54,9 @@ public class TelaInicio extends MainPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				frame.setContentPane(new TelaLogin());
+				TelaLogin login = new TelaLogin();
+				frame.setContentPane(login);
+				login.construir();
 			}
 		});
 	}

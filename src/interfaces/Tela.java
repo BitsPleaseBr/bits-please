@@ -54,7 +54,9 @@ public class Tela extends JFrame {
 		frmMain.setLayout(null);
 		frmMain.getContentPane().setBackground(new Color(221, 233, 232));
 
-		setContentPane(new TelaInicio());
+		TelaInicio inicio = new TelaInicio();
+		setContentPane(inicio);
+		inicio.construir();
 		
 		frmMain.setVisible(true);
 	}
@@ -100,7 +102,7 @@ public class Tela extends JFrame {
 	}
 	
 	
-	public static void mensagem(String msg) {
+	public void mensagem(String msg) {
 		
 		//Configurando label que vai aparecer a mensagem
 		JLabel lbl = new JLabel("<html><p style='max-width: 500px; margin: auto;'>" + msg + "</p></html>");
@@ -120,14 +122,14 @@ public class Tela extends JFrame {
 		
 		pane.add(lbl);
 		
-		int paneX = frmMain.getWidth() / 2 - pane.getWidth() / 2;
-		int paneY = frmMain.getHeight() - pane.getHeight() - 100;
+		int paneX = getWidth() / 2 - pane.getWidth() / 2;
+		int paneY = getHeight() - pane.getHeight() - 100;
 		
 		pane.setLocation(paneX, paneY);
 		
 		//Adicionando painel na primeira layer da tela para ficar na frente de tudo
-		frmMain.getLayeredPane().add(pane, 0);
-		frmMain.repaint();
+		getLayeredPane().add(pane, 0);
+		repaint();
 		
 		//Criando temporizador para quando passarem 5 segundos a mensagem sumir
 		Timer timer = new Timer(5000, new ActionListener() {

@@ -20,12 +20,6 @@ public abstract class MainPanel extends JPanel {
 	protected MainController controlador = new MainController();
 	protected MainValidator validador = new MainValidator();
 	
-	public MainPanel() {
-		
-		frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-		construir();
-	}
-	
 	
 	public Component add(Component comp, String key) {
 		
@@ -44,9 +38,11 @@ public abstract class MainPanel extends JPanel {
 		
 		objetos.put(key, value);
 	}
-
 	
-	private void construir() {
+	
+	public void construir() {
+		
+		frame = (JFrame) SwingUtilities.getWindowAncestor(this);
 		
 		configurar();
 		addComponents();

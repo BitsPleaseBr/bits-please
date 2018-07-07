@@ -142,7 +142,7 @@ public class TelaPreCadastroPaciente extends MainPanel {
 					new TelaConfirmarCadastro(getThis());
 				} else {
 
-					Tela.mensagem("Voce preencheu algum(s) campo(s) errado.");
+					System.out.println("Voce preencheu algum(s) campo(s) errado.");
 				}
 			}
 		});

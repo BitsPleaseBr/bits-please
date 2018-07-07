@@ -76,12 +76,14 @@ public class TelaConfirmarCadastro extends MainPanel {
 
 				if ((txtEmail.getText().equals(email)) && (String.valueOf(txtSenha.getPassword()).equals(senha))) {
 
-					frame.setContentPane(new TelaLogin());
+					TelaLogin tela = new TelaLogin();
+					frame.setContentPane(tela);
+					tela.construir();
 
-					Tela.mensagem("Foi enviado um e-mail de verificação. Por favor, confirme seu e-mail.");
+					System.out.println("Foi enviado um e-mail de verificação. Por favor, confirme seu e-mail.");;
 				} else {
 
-					Tela.mensagem("Voce preencheu algo errado.");
+					System.out.println("Voce preencheu algo errado.");;
 				}
 			}
 		});
