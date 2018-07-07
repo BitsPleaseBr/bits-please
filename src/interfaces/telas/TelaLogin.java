@@ -41,6 +41,7 @@ public class TelaLogin extends MainPanel {
 		JPanel campo = new JPanel();
 		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
 		campo.setBackground(Tela.corBackgroundCampo);
+		campo.setLayout(null);
 
 		// Configurando componentes
 		JLabel lblLogin = new JLabel("LOGIN");
@@ -71,18 +72,25 @@ public class TelaLogin extends MainPanel {
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.setBounds(55, 200, 150, 30);
 
-		JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se j�");
+		JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se já");
 		lblCadastrar.setLocation(230, 207);
 		lblCadastrar.setSize(lblCadastrar.getPreferredSize());
 
-		add(lblLogin);
-		add(lblCadastrar, "lblCadastrar");
-		add(lblEsqueciSenha, "lblEsqueciSenha");
-		add(lblEmail);
-		add(txtEmail);
-		add(lblSenha);
-		add(txtSenha);
-		add(btnEntrar, "btnEntrar");
+		campo.add(lblLogin);
+		campo.add(lblCadastrar);
+		campo.add(lblEsqueciSenha);
+		campo.add(lblEmail);
+		campo.add(txtEmail);
+		campo.add(lblSenha);
+		campo.add(txtSenha);
+		campo.add(btnEntrar);
+		
+		add(lblLogo);
+		add(campo);
+		
+		addObject("lblCadastrar", lblCadastrar);
+		addObject("lblEsqueciSenha", lblEsqueciSenha);
+		addObject("btnEntrar", btnEntrar);
 	}
 
 	@Override

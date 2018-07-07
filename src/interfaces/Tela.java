@@ -25,7 +25,6 @@ import interfaces.telas.TelaLogin;
 
 public class Tela extends JFrame {
 
-	private JFrame frmMain = new JFrame();
 	private JPanel popup = new JPanel();
 	private JLabel lblLogo;
 
@@ -48,17 +47,16 @@ public class Tela extends JFrame {
 	public Tela() {
 
 		//Configurando a janela
-		frmMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMain.setSize(1238, 700);
-		frmMain.setLocationRelativeTo(null);
-		frmMain.setLayout(null);
-		frmMain.getContentPane().setBackground(new Color(221, 233, 232));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(1238, 700);
+		setLocationRelativeTo(null);
+		getContentPane().setBackground(new Color(221, 233, 232));
 
 		TelaInicio inicio = new TelaInicio();
 		setContentPane(inicio);
 		inicio.construir();
 		
-		frmMain.setVisible(true);
+		setVisible(true);
 	}
 
 	private void popupEsqueciSenha() {
@@ -93,84 +91,11 @@ public class Tela extends JFrame {
 
 				login();
 				
-				mensagem("E-mail de recupera�ao enviado");
+				System.out.println("E-mail de recupera�ao enviado");
 			}
 		});
 		
 		setFonte(new JComponent[] { lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar }, fonteTituloTxt);
-		addPopup(new JComponent[] { lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar});
-	}
-	
-	
-	public void mensagem(String msg) {
-		
-		//Configurando label que vai aparecer a mensagem
-		JLabel lbl = new JLabel("<html><p style='max-width: 500px; margin: auto;'>" + msg + "</p></html>");
-		lbl.setSize(lbl.getPreferredSize());
-		lbl.setLocation(10, 10);
-		lbl.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl.setForeground(Color.WHITE);
-		
-		int lblWidth = lbl.getWidth();
-		int lblHeight = lbl.getHeight();
-		
-		//Configurando painel
-		JPanel pane = new JPanel();
-		pane.setSize(lblWidth + 20, lblHeight + 20);
-		pane.setOpaque(true);
-		pane.setBackground(new Color(50, 50, 50));
-		
-		pane.add(lbl);
-		
-		int paneX = getWidth() / 2 - pane.getWidth() / 2;
-		int paneY = getHeight() - pane.getHeight() - 100;
-		
-		pane.setLocation(paneX, paneY);
-		
-		//Adicionando painel na primeira layer da tela para ficar na frente de tudo
-		getLayeredPane().add(pane, 0);
-		repaint();
-		
-		//Criando temporizador para quando passarem 5 segundos a mensagem sumir
-		Timer timer = new Timer(5000, new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				frmMain.getLayeredPane().remove(pane);
-				frmMain.repaint();
-			}
-		});
-		
-		timer.setRepeats(false);
-		timer.start();
-	}
-	
-	private void addPopup(JComponent[] componentes) {
-
-		frmMain.remove(lblLogo);
-
-		popup.removeAll();
-		
-		for (int i = 0; i < componentes.length; i++) {
-
-			popup.add(componentes[i]);
-		}
-
-		frmMain.add(popup);
-
-		frmMain.getContentPane().repaint();
-	}
-
-	private void setLayout(JComponent[] componentes) {
-
-		frmMain.getContentPane().removeAll();
-		frmMain.getContentPane().repaint();
-
-		for (int i = 0; i < componentes.length; i++) {
-			frmMain.add(componentes[i]);
-		}
-
 	}
 	
 	public static void setFonte(JComponent[] componente, Font font) {

@@ -1,5 +1,6 @@
 package interfaces.componentes;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.util.HashMap;
 
@@ -13,7 +14,7 @@ import control.MainValidator;
 public abstract class MainPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-
+	
 	
 	private HashMap<Object, Object> objetos = new HashMap<>();
 	protected JFrame frame;
@@ -43,10 +44,13 @@ public abstract class MainPanel extends JPanel {
 	public void construir() {
 		
 		frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+		setBackground(new Color(221, 233, 232));
 		
 		configurar();
 		addComponents();
 		addListeners();
+		
+		frame.revalidate();
 	}
 	
 	protected MainPanel getThis() {

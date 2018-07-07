@@ -18,8 +18,7 @@ public class TelaPreCadastroPaciente extends MainPanel {
 
 	@Override
 	protected void configurar() {
-		// TODO Auto-generated method stub
-
+		setLayout(null);
 	}
 
 	@Override
@@ -31,8 +30,9 @@ public class TelaPreCadastroPaciente extends MainPanel {
 		JPanel campo = new JPanel();
 		campo.setBounds(280, 75, larguraCampo, frame.getHeight() - 200);
 		campo.setBackground(Tela.corBackgroundCampo);
+		campo.setLayout(null);
 
-		// Configurando cabe�alho
+		// Configurando cabeçalho
 		JLabel lblCabecalho = new JLabel(
 				"<html><center>Para poder concluir o cadastro informe<br>os dados abaixo por favor.</center></html>");
 		lblCabecalho.setFont(new Font("Georgean", Font.BOLD, 23));
@@ -106,25 +106,52 @@ public class TelaPreCadastroPaciente extends MainPanel {
 		EPasswordField txtSenha = new EPasswordField();
 		txtSenha.setBounds(coluna4, linha3Txt, widthCamposLargos, alturaCampos);
 
-		JButton btnProximo = new JButton("Pr�ximo");
+		JButton btnProximo = new JButton("Próximo");
 		btnProximo.setBounds(larguraCampo / 2 - 60, linha4, 120, 35);
 
+		Tela.setFonte(new JComponent[] {lblNome,
+										txtNome,
+										lblSobrenome,
+										txtSobrenome,
+										lblDataNasc,
+										txtDataNasc,
+										lblCPF,
+										txtCPF,
+										lblTelefone,
+										txtTelefone,
+										lblEmail,
+										txtEmail,
+										lblSenha,
+										txtSenha,
+										btnProximo}, Tela.fonteTituloTxt);
+		
 		campo.add(lblCabecalho);
 		campo.add(lblNome);
-		campo.add(txtNome, "txtNome");
+		campo.add(txtNome);
 		campo.add(lblSobrenome);
-		campo.add(txtSobrenome, "txtSobrenome");
+		campo.add(txtSobrenome);
 		campo.add(lblDataNasc);
-		campo.add(txtDataNasc, "txtDataNasc");
+		campo.add(txtDataNasc);
 		campo.add(lblCPF);
-		campo.add(txtCPF, "txtCPF");
+		campo.add(txtCPF);
 		campo.add(lblTelefone);
-		campo.add(txtTelefone, "txtTelefone");
+		campo.add(txtTelefone);
 		campo.add(lblEmail);
-		campo.add(txtEmail, "txtEmail");
+		campo.add(txtEmail);
 		campo.add(lblSenha);
-		campo.add(txtSenha, "txtSenha");
-		campo.add(btnProximo, "btnProximo");
+		campo.add(txtSenha);
+		campo.add(btnProximo);
+		
+		add(campo);
+		
+		addObject("txtNome", txtNome);
+		addObject("txtSobrenome", txtSobrenome);
+		addObject("txtDataNasc", txtDataNasc);
+		addObject("txtCPF", txtCPF);
+		addObject("txtTelefone", txtTelefone);
+		addObject("txtEmail", txtEmail);
+		addObject("txtSenha", txtSenha);
+		addObject("btnProximo", btnProximo);
 	}
 
 	@Override

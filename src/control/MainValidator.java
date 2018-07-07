@@ -13,7 +13,7 @@ public class MainValidator {
 		boolean retorno = true;
 
 		JComponent[] componentes = { pnl.getObject("txtNome"), pnl.getObject("txtSobrenome"),
-				pnl.getObject("txtDataNasc"), pnl.getObject("txtCPF"), pnl.getObject("txtCPF"),
+				pnl.getObject("txtDataNasc"), pnl.getObject("txtCPF"),
 				pnl.getObject("txtTelefone"), pnl.getObject("txtEmail"), pnl.getObject("txtSenha") };
 
 		// Obtém as informações inseridas

@@ -19,7 +19,7 @@ public class MainController {
 			System.out.println("pode logar");
 		} else {
 
-			Tela.mensagem("E-mail ou senha inválidos.");
+			System.out.println("E-mail ou senha inválidos.");
 		}
 	}
 

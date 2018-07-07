@@ -42,14 +42,19 @@ public class TelaInicio extends MainPanel {
 		JButton btnPaciente = new JButton("Paciente");
 		btnPaciente.setBounds(50, 150, 315, 50);
 
-		add(btnProfissional, "btnProfissional");
-		add(btnPaciente);
+		campo.add(btnProfissional);
+		campo.add(btnPaciente);
+		
+		add(lblLogo);
+		add(campo);
+		addObject("btnProfissional", btnProfissional);
+		addObject("btnPaciente", btnPaciente);
 	}
 
 	@Override
 	protected void addListeners() {
 		
-		((JButton) getObject("btnProfissional")).addActionListener(new ActionListener() {
+		((JButton) getObject("btnPaciente")).addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
