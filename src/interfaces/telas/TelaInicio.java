@@ -23,7 +23,7 @@ public class TelaInicio extends MainPanel {
 	protected void addComponents() {
 
 		// Obtendo icone da logo
-		ImageIcon logo = Tela.getIcon("logo");
+		ImageIcon logo = getIcon("logo");
 
 		// Configurando label da logo
 		JLabel lblLogo = new JLabel(logo);
@@ -32,7 +32,7 @@ public class TelaInicio extends MainPanel {
 		// Configurando painel principal
 		JPanel campo = new JPanel();
 		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
-		campo.setBackground(Tela.corBackgroundCampo);
+		campo.setBackground(corBackgroundCampo);
 		campo.setLayout(null);
 
 		// Configurando botoes

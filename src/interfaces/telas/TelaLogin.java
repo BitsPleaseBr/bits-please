@@ -31,7 +31,7 @@ public class TelaLogin extends MainPanel {
 	protected void addComponents() {
 
 		// Obtendo icone da logo
-		ImageIcon logo = Tela.getIcon("logo");
+		ImageIcon logo = getIcon("logo");
 
 		// Configurando label da logo
 		JLabel lblLogo = new JLabel(logo);
@@ -40,17 +40,17 @@ public class TelaLogin extends MainPanel {
 		// Configurando painel principal
 		JPanel campo = new JPanel();
 		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
-		campo.setBackground(Tela.corBackgroundCampo);
+		campo.setBackground(corBackgroundCampo);
 		campo.setLayout(null);
 
 		// Configurando componentes
 		JLabel lblLogin = new JLabel("LOGIN");
 		lblLogin.setBounds(0, 25, 415, 25);
 		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogin.setFont(Tela.fonteTitulos);
+		lblLogin.setFont(fonteTitulos);
 
 		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setFont(Tela.fonteTituloTxtLogin);
+		lblEmail.setFont(fonteTituloTxtLogin);
 		lblEmail.setSize(lblEmail.getPreferredSize());
 		lblEmail.setLocation(50, 77);
 
@@ -58,7 +58,7 @@ public class TelaLogin extends MainPanel {
 		txtEmail.setBounds(115, 75, 250, 30);
 
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setFont(Tela.fonteTituloTxtLogin);
+		lblSenha.setFont(fonteTituloTxtLogin);
 		lblSenha.setSize(lblSenha.getPreferredSize());
 		lblSenha.setLocation(50, 127);
 
@@ -118,7 +118,7 @@ public class TelaLogin extends MainPanel {
 					@Override
 					public void run() {
 
-						new PopupEsqueciSenha();
+						((Tela) frame).addPopup(new PopupEsqueciSenha());
 					}
 				}));
 

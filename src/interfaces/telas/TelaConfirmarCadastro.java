@@ -15,6 +15,8 @@ import interfaces.componentes.MainPanel;
 
 public class TelaConfirmarCadastro extends MainPanel {
 
+	private static final long serialVersionUID = 1L;
+	
 	
 	String email, senha;
 	
@@ -39,15 +41,15 @@ public class TelaConfirmarCadastro extends MainPanel {
 
 		// Configurando painel principal
 		JPanel campo = new JPanel();
-		campo.setBackground(Tela.corBackgroundCampo);
+		campo.setBackground(corBackgroundCampo);
 		campo.setBounds(381, 132, 475, 355);
 
 		// Configurando cabecalho
 		JLabel lblCabecalho = new JLabel("<html><center>Confirme os dados abaixo<br>por favor</center></html>");
-		lblCabecalho.setFont(Tela.fonteTitulos);
+		lblCabecalho.setFont(fonteTitulos);
 		lblCabecalho.setLocation(0, 25);
 		lblCabecalho.setSize(lblCabecalho.getPreferredSize());
-		centralizar(lblCabecalho, this);
+		centralizar(lblCabecalho, campo);
 
 		// Configurando componentes
 		JLabel lblEmail = new JLabel("E-mail:");

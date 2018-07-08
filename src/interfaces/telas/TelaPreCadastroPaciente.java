@@ -29,7 +29,7 @@ public class TelaPreCadastroPaciente extends MainPanel {
 		// Configurando painel principal
 		JPanel campo = new JPanel();
 		campo.setBounds(280, 75, larguraCampo, frame.getHeight() - 200);
-		campo.setBackground(Tela.corBackgroundCampo);
+		campo.setBackground(corBackgroundCampo);
 		campo.setLayout(null);
 
 		// Configurando cabeçalho
@@ -123,7 +123,7 @@ public class TelaPreCadastroPaciente extends MainPanel {
 										txtEmail,
 										lblSenha,
 										txtSenha,
-										btnProximo}, Tela.fonteTituloTxt);
+										btnProximo}, fonteTituloTxt);
 		
 		campo.add(lblCabecalho);
 		campo.add(lblNome);
