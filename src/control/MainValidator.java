@@ -78,7 +78,7 @@ public class MainValidator {
 			retorno = false;
 		}
 
-		// Verifica se a senha inserida � v�lida
+		// Verifica se a senha inserida é válida
 		if (!senha.matches("^\\w+$")) {
 
 			((EPasswordField) componentes[6]).erro();
