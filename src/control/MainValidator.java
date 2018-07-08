@@ -50,7 +50,7 @@ public class MainValidator {
 			retorno = false;
 		}
 
-		// Verifica se a data de nascimento inserida � v�lida
+		// Verifica se a data de nascimento inserida é válida
 		if (!dataNasc.matches("^\\d{2}/\\d{2}/\\d{4}$")) {
 
 			((ETextField) componentes[2]).erro();
