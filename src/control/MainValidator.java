@@ -36,14 +36,14 @@ public class MainValidator {
 			}
 		}
 
-		// Verifica se o nome inserido � v�lido
+		// Verifica se o nome inserido é válido
 		if (!nome.matches("^[a-zA-Z]+$")) {
 
 			((ETextField) componentes[0]).erro();
 			retorno = false;
 		}
 
-		// Verifica se o sobrenome inserido � v�lido
+		// Verifica se o sobrenome inserido é válido
 		if (!sobrenome.matches("^[a-zA-Z]+$")) {
 
 			((ETextField) componentes[1]).erro();
@@ -57,21 +57,21 @@ public class MainValidator {
 			retorno = false;
 		}
 
-		// Verifica se o cpf inserido � v�lido
+		// Verifica se o cpf inserido é válido
 		if (!CPF.matches("^\\d{3}.\\d{3}.\\d{3}-\\d{2}$")) {
 
 			((ETextField) componentes[3]).erro();
 			retorno = false;
 		}
 
-		// Verifica se o telefone inserido � v�lido
+		// Verifica se o telefone inserido é válido
 		if (!Telefone.matches("^\\d{4,5}-\\d{4}$")) {
 
 			((ETextField) componentes[4]).erro();
 			retorno = false;
 		}
 
-		// Verifica se o email inserido � v�lido
+		// Verifica se o email inserido é válido
 		if (!email.matches("^\\S+@[a-zA-Z]+[\\.[a-zA-Z]{2,3}]+$")) {
 
 			((ETextField) componentes[5]).erro();
