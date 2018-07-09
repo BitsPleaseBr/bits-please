@@ -1,13 +1,16 @@
-package Interfaces;
+package interfaces.componentes;
 
 import java.awt.Color;
 
-import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
-public class EPasswordField extends JPasswordField {
+public class ETextField extends JTextField {
 
+	
+	private static final long serialVersionUID = 1L;
 
-	public EPasswordField() {
+	
+	public ETextField() {
 		
 		config();
 	}

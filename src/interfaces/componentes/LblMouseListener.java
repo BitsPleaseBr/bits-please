@@ -1,4 +1,4 @@
-package Interfaces;
+package interfaces.componentes;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
