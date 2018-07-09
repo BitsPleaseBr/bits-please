@@ -1,6 +1,6 @@
-package classes;
+package control.bean;
 
-public class Paciente {
+public class PacienteBean {
 	
 	//variaveis
 	private int cpf;
@@ -52,7 +52,7 @@ public class Paciente {
 	}
 	
 	
-	//retorna o comado de inserção no banco de dados
+	//retorna o comado de inserï¿½ï¿½o no banco de dados
 	public void pre_cadastrar() {
 		System.out.println("INSERT INTO pre_cadastro VALUES("+this.getNome()+", "
 							+this.getSobrenome()+", "
