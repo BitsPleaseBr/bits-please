@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 
 import control.bean.PacienteBean;
 
+import model.conexao.ConnectionFactory;
+
 public class PacienteDao {
 
 	private Connection conexao;
@@ -14,8 +16,7 @@ public class PacienteDao {
 	//Construtor contendo a instancia da classe ConnectionFactory
 	public PacienteDao (){
 		
-		ConnectionFactory cf = new ConnectionFactory();
-		cf.obterConexao();			
+		conexao = ConnectionFactory.getConnection();	
 	}
 	
 	//Método para efetuar o pré cadastro que permite o acesso de usuário no sistema

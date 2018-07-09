@@ -1,15 +1,26 @@
 package control.bean;
 
+import java.sql.Date;
+
 public class PacienteBean {
 	
 	//variaveis
-	private int cpf;
+	private int cpf, telefone;
+	private Date dataNasc;
 	private String 	nome, 
 					sobrenome, 
 					email,
 					senha;
 	
 	//getters
+	public Date getDataNasc() {
+		return dataNasc;
+	}
+	
+	public int getTelefone() {
+		return telefone;
+	}
+
 	public int getCpf() {
 		return cpf;
 	}
@@ -31,6 +42,14 @@ public class PacienteBean {
 	}
 
 	//setters
+	public void setDataNasc(Date dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+	
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
+	}
+	
 	public void setCpf(int cpf) {
 		this.cpf = cpf;
 	}
@@ -51,13 +70,4 @@ public class PacienteBean {
 		this.senha = senha;
 	}
 	
-	
-	//retorna o comado de inser��o no banco de dados
-	public void pre_cadastrar() {
-		System.out.println("INSERT INTO pre_cadastro VALUES("+this.getNome()+", "
-							+this.getSobrenome()+", "
-							+this.getCpf()+", "
-							+this.getEmail()+")");
-	}
-
 }
