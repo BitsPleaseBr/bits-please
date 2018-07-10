@@ -13,6 +13,7 @@ import interfaces.componentes.EPasswordField;
 import interfaces.componentes.ETextField;
 import interfaces.componentes.MainPanel;
 
+@SuppressWarnings("serial")
 public class TelaPreCadastroPaciente extends MainPanel {
 
 	@Override

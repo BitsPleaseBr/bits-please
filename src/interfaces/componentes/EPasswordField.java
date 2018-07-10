@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import javax.swing.JPasswordField;
 
+@SuppressWarnings("serial")
 public class EPasswordField extends JPasswordField {
 
 

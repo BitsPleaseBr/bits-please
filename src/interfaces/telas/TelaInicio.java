@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 import interfaces.componentes.MainPanel;
 
+@SuppressWarnings("serial")
 public class TelaInicio extends MainPanel {
 
 	@Override
