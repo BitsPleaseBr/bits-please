@@ -6,38 +6,33 @@ import javax.swing.JTextField;
 
 public class ETextField extends JTextField {
 
-	
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	
-	public ETextField() {
-		
-		config();
-	}
+  public ETextField() {
 
-	
-	public void erro() {
-		
-		setBackground(new Color(200, 150, 150));
-	}
+    config();
+  }
 
-	public void limpar() {
-		
-		setBackground(Color.WHITE);
-	}
-	
-	
-	private void config() {
+  public void erro() {
 
-		addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+    setBackground(new Color(200, 150, 150));
+  }
 
-			@Override
-			public void run() {
-				
-				limpar();
-			}
-			
-			
-		}));
-	}
+  public void limpar() {
+
+    setBackground(Color.WHITE);
+  }
+
+  private void config() {
+
+    addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+
+      @Override
+      public void run() {
+
+        limpar();
+      }
+
+    }));
+  }
 }

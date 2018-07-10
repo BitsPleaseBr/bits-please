@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * @author Diogo Classe para criar uma conexão com o banco de dados. Não pode ser instanciada.
+ * @author Diogo Classe para criar uma conexão com o banco de dados. Não pode
+ *         ser instanciada.
  */
 public class ConnectionFactory {
   // Constantes para acessar o banco de dados
@@ -20,8 +21,8 @@ public class ConnectionFactory {
   /**
    * Método para retornar a conexão com o banco de dados
    * 
-   * @return Uma instância da conexão com o banco de dados se ela foi bem sucedida, caso contrário
-   *         retorna null.
+   * @return Uma instância da conexão com o banco de dados se ela foi bem
+   *         sucedida, caso contrário retorna null.
    */
   public static Connection getConnection() {
 
@@ -37,8 +38,8 @@ public class ConnectionFactory {
     }
     return conexao;
   }
-  
+
   private ConnectionFactory() {
-    
+
   }
 }

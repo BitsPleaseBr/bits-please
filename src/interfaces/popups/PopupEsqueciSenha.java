@@ -14,68 +14,66 @@ import interfaces.componentes.ScreenConfiguration;
 
 public class PopupEsqueciSenha extends Popup implements ScreenConfiguration {
 
-	private static final long serialVersionUID = 1L;
-	
+  private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void configurar() {
-		
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setLayout(null);
-		setSize(331, 266);
-		setTitle("Recuperaçao de senha");
-	}
+  @Override
+  protected void configurar() {
 
-	@Override
-	protected void addComponents() {
+    setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+    setLocationRelativeTo(null);
+    setLayout(null);
+    setSize(331, 266);
+    setTitle("Recuperaçao de senha");
+  }
 
-		// Configurando componentes
-		JLabel lblCPF = new JLabel("CPF:");
-		lblCPF.setBounds(15, 15, 300, 25);
-		centralizar(lblCPF, this);
+  @Override
+  protected void addComponents() {
 
-		ETextField txtCPF = new ETextField();
-		txtCPF.setBounds(15, 50, 300, 30);
-		centralizar(txtCPF, this);
+    // Configurando componentes
+    JLabel lblCPF = new JLabel("CPF:");
+    lblCPF.setBounds(15, 15, 300, 25);
+    centralizar(lblCPF, this);
 
-		JLabel lblEmail = new JLabel("E-mail:");
-		lblEmail.setBounds(15, 100, 300, 25);
-		centralizar(lblEmail, this);
+    ETextField txtCPF = new ETextField();
+    txtCPF.setBounds(15, 50, 300, 30);
+    centralizar(txtCPF, this);
 
-		ETextField txtEmail = new ETextField();
-		txtEmail.setBounds(15, 135, 300, 30);
-		centralizar(txtEmail, this);
+    JLabel lblEmail = new JLabel("E-mail:");
+    lblEmail.setBounds(15, 100, 300, 25);
+    centralizar(lblEmail, this);
 
-		JButton btnEnviar = new JButton("Enviar");
-		btnEnviar.setBounds(0, 185, 100, 30);
-		centralizar(btnEnviar, this);
+    ETextField txtEmail = new ETextField();
+    txtEmail.setBounds(15, 135, 300, 30);
+    centralizar(txtEmail, this);
 
+    JButton btnEnviar = new JButton("Enviar");
+    btnEnviar.setBounds(0, 185, 100, 30);
+    centralizar(btnEnviar, this);
 
-		setFonte(new JComponent[] { lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar }, fonteTituloTxt);
+    setFonte(new JComponent[] { lblCPF, txtCPF, lblEmail, txtEmail, btnEnviar }, fonteTituloTxt);
 
-		add(lblCPF);
-		add(txtCPF);
-		add(lblEmail);
-		add(txtEmail);
-		add(btnEnviar, "btnEnviar");
-		
-		setSize(346, 266);
-	}
+    add(lblCPF);
+    add(txtCPF);
+    add(lblEmail);
+    add(txtEmail);
+    add(btnEnviar, "btnEnviar");
 
-	@Override
-	protected void addListeners() {
-		
-		((JButton) getObject("btnEnviar")).addActionListener(new ActionListener() {
+    setSize(346, 266);
+  }
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				
-				dispose();
+  @Override
+  protected void addListeners() {
 
-				System.out.println("E-mail de recuperaçao enviado");
-			}
-		});
-	}
+    ((JButton) getObject("btnEnviar")).addActionListener(new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent arg0) {
+
+        dispose();
+
+        System.out.println("E-mail de recuperaçao enviado");
+      }
+    });
+  }
 
 }

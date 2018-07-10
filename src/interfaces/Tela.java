@@ -8,57 +8,54 @@ import interfaces.componentes.LblMouseListener;
 import interfaces.componentes.Popup;
 import interfaces.telas.TelaInicio;
 
-public class Tela extends JFrame {	
+public class Tela extends JFrame {
 
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	private ArrayList<Popup> popups = new ArrayList<>();
-	
-	
-	public static void main(String[] args) {
+  private ArrayList<Popup> popups = new ArrayList<>();
 
-		new Tela();
-	}
+  public static void main(String[] args) {
 
-	public Tela() {
+    new Tela();
+  }
 
-		//Configurando a janela
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(1238, 700);
-		setLocationRelativeTo(null);
+  public Tela() {
 
-		addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+    // Configurando a janela
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setSize(1238, 700);
+    setLocationRelativeTo(null);
 
-			@Override
-			public void run() {
-				
-				disposePopups();
-			}
-			
-			
-		}));
-		
-		TelaInicio inicio = new TelaInicio();
-		setContentPane(inicio);
-		inicio.construir();
-		
-		setVisible(true);
-	}
-	
-	public Tela addPopup(Popup popup) {
-		
-		popups.add(popup);
-		
-		return this;
-	}
-	
-	
-	private void disposePopups() {
-		
-		for (Popup popup : popups) {
-			
-			popup.dispose();
-			popup = null;
-		}
-	}
+    addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+
+      @Override
+      public void run() {
+
+        disposePopups();
+      }
+
+    }));
+
+    TelaInicio inicio = new TelaInicio();
+    setContentPane(inicio);
+    inicio.construir();
+
+    setVisible(true);
+  }
+
+  public Tela addPopup(Popup popup) {
+
+    popups.add(popup);
+
+    return this;
+  }
+
+  private void disposePopups() {
+
+    for (Popup popup : popups) {
+
+      popup.dispose();
+      popup = null;
+    }
+  }
 }

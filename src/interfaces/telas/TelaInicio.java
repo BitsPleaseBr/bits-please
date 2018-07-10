@@ -8,62 +8,62 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import interfaces.Tela;
 import interfaces.componentes.MainPanel;
 
+@SuppressWarnings("serial")
 public class TelaInicio extends MainPanel {
 
-	@Override
-	protected void configurar() {
-		
-		setLayout(null);
-	}
+  @Override
+  protected void configurar() {
 
-	@Override
-	protected void addComponents() {
+    setLayout(null);
+  }
 
-		// Obtendo icone da logo
-		ImageIcon logo = getIcon("logo");
+  @Override
+  protected void addComponents() {
 
-		// Configurando label da logo
-		JLabel lblLogo = new JLabel(logo);
-		lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
+    // Obtendo icone da logo
+    ImageIcon logo = getIcon("logo");
 
-		// Configurando painel principal
-		JPanel campo = new JPanel();
-		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
-		campo.setBackground(corBackgroundCampo);
-		campo.setLayout(null);
+    // Configurando label da logo
+    JLabel lblLogo = new JLabel(logo);
+    lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
 
-		// Configurando botoes
-		JButton btnProfissional = new JButton("Profissional");
-		btnProfissional.setBounds(50, 50, 315, 50);
+    // Configurando painel principal
+    JPanel campo = new JPanel();
+    campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
+    campo.setBackground(corBackgroundCampo);
+    campo.setLayout(null);
 
-		JButton btnPaciente = new JButton("Paciente");
-		btnPaciente.setBounds(50, 150, 315, 50);
+    // Configurando botoes
+    JButton btnProfissional = new JButton("Profissional");
+    btnProfissional.setBounds(50, 50, 315, 50);
 
-		campo.add(btnProfissional);
-		campo.add(btnPaciente);
-		
-		add(lblLogo);
-		add(campo);
-		addObject("btnProfissional", btnProfissional);
-		addObject("btnPaciente", btnPaciente);
-	}
+    JButton btnPaciente = new JButton("Paciente");
+    btnPaciente.setBounds(50, 150, 315, 50);
 
-	@Override
-	protected void addListeners() {
-		
-		((JButton) getObject("btnPaciente")).addActionListener(new ActionListener() {
+    campo.add(btnProfissional);
+    campo.add(btnPaciente);
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
+    add(lblLogo);
+    add(campo);
+    addObject("btnProfissional", btnProfissional);
+    addObject("btnPaciente", btnPaciente);
+  }
 
-				TelaLogin login = new TelaLogin();
-				frame.setContentPane(login);
-				login.construir();
-			}
-		});
-	}
+  @Override
+  protected void addListeners() {
+
+    ((JButton) getObject("btnPaciente")).addActionListener(new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+
+        TelaLogin login = new TelaLogin();
+        frame.setContentPane(login);
+        login.construir();
+      }
+    });
+  }
 
 }

@@ -13,52 +13,51 @@ import control.MainValidator;
 
 public abstract class MainPanel extends JPanel implements ScreenConfiguration {
 
-	private static final long serialVersionUID = 1L;
-	
-	
-	private HashMap<Object, Object> objetos = new HashMap<>();
-	protected JFrame frame;
-	protected MainController controlador = new MainController();
-	protected MainValidator validador = new MainValidator();
-	
-	
-	public Component add(Component comp, String key) {
-		
-		addObject(key, comp);
-		
-		return super.add(comp);
-	}
-	
-	@SuppressWarnings("unchecked")
-	public <T> T getObject(Object key) {
-		
-		return (T) objetos.get(key);
-	}
-	
-	public void addObject(Object key, Object value) {
-		
-		objetos.put(key, value);
-	}
-	
-	
-	public void construir() {
-		
-		frame = (JFrame) SwingUtilities.getWindowAncestor(this);
-		setBackground(new Color(221, 233, 232));
-		
-		configurar();
-		addComponents();
-		addListeners();
-		
-		frame.revalidate();
-	}
-	
-	protected MainPanel getThis() {
-		
-		return this;
-	}
+  private static final long serialVersionUID = 1L;
 
-	protected abstract void configurar();
-	protected abstract void addComponents();
-	protected abstract void addListeners();
+  private HashMap<Object, Object> objetos = new HashMap<>();
+  protected JFrame frame;
+  protected MainController controlador = new MainController();
+  protected MainValidator validador = new MainValidator();
+
+  public Component add(Component comp, String key) {
+
+    addObject(key, comp);
+
+    return super.add(comp);
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T> T getObject(Object key) {
+
+    return (T) objetos.get(key);
+  }
+
+  public void addObject(Object key, Object value) {
+
+    objetos.put(key, value);
+  }
+
+  public void construir() {
+
+    frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+    setBackground(new Color(221, 233, 232));
+
+    configurar();
+    addComponents();
+    addListeners();
+
+    frame.revalidate();
+  }
+
+  protected MainPanel getThis() {
+
+    return this;
+  }
+
+  protected abstract void configurar();
+
+  protected abstract void addComponents();
+
+  protected abstract void addListeners();
 }

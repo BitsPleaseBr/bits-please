@@ -11,55 +11,54 @@ import control.MainValidator;
 
 public abstract class Popup extends JDialog implements ScreenConfiguration {
 
-	private static final long serialVersionUID = 1L;
-	
-	
-	private HashMap<Object, Object> objetos = new HashMap<>();
-	protected MainController controlador = new MainController();
-	protected MainValidator validador = new MainValidator();
+  private static final long serialVersionUID = 1L;
 
-	
-	public Popup() {
-		
-		construir();
-	}
-	
-	
-	public Component add(Component comp, String key) {
+  private HashMap<Object, Object> objetos = new HashMap<>();
+  protected MainController controlador = new MainController();
+  protected MainValidator validador = new MainValidator();
 
-		addObject(key, comp);
+  public Popup() {
 
-		return super.add(comp);
-	}
+    construir();
+  }
 
-	@SuppressWarnings("unchecked")
-	public <T> T getObject(Object key) {
+  public Component add(Component comp, String key) {
 
-		return (T) objetos.get(key);
-	}
+    addObject(key, comp);
 
-	public void addObject(Object key, Object value) {
+    return super.add(comp);
+  }
 
-		objetos.put(key, value);
-	}
+  @SuppressWarnings("unchecked")
+  public <T> T getObject(Object key) {
 
-	public void construir() {
+    return (T) objetos.get(key);
+  }
 
-		setBackground(new Color(221, 233, 232));
+  public void addObject(Object key, Object value) {
 
-		configurar();
-		addComponents();
-		addListeners();
-		
-		setVisible(true);
-	}
+    objetos.put(key, value);
+  }
 
-	protected Popup getThis() {
+  public void construir() {
 
-		return this;
-	}
+    setBackground(new Color(221, 233, 232));
 
-	protected abstract void configurar();
-	protected abstract void addComponents();
-	protected abstract void addListeners();
+    configurar();
+    addComponents();
+    addListeners();
+
+    setVisible(true);
+  }
+
+  protected Popup getThis() {
+
+    return this;
+  }
+
+  protected abstract void configurar();
+
+  protected abstract void addComponents();
+
+  protected abstract void addListeners();
 }
