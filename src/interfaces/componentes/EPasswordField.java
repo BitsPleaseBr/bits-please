@@ -7,35 +7,31 @@ import javax.swing.JPasswordField;
 @SuppressWarnings("serial")
 public class EPasswordField extends JPasswordField {
 
+  public EPasswordField() {
 
-	public EPasswordField() {
-		
-		config();
-	}
+    config();
+  }
 
-	
-	public void erro() {
-		
-		setBackground(new Color(200, 150, 150));
-	}
+  public void erro() {
 
-	public void limpar() {
-		
-		setBackground(Color.WHITE);
-	}
-	
-	
-	private void config() {
+    setBackground(new Color(200, 150, 150));
+  }
 
-		addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+  public void limpar() {
 
-			@Override
-			public void run() {
-				
-				limpar();
-			}
-			
-			
-		}));
-	}
+    setBackground(Color.WHITE);
+  }
+
+  private void config() {
+
+    addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+
+      @Override
+      public void run() {
+
+        limpar();
+      }
+
+    }));
+  }
 }

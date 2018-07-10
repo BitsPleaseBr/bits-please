@@ -18,119 +18,121 @@ import interfaces.popups.PopupEsqueciSenha;
 
 public class TelaLogin extends MainPanel {
 
-	
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	@Override
-	protected void configurar() {
-		
-		setLayout(null);
-	}
+  @Override
+  protected void configurar() {
 
-	@Override
-	protected void addComponents() {
+    setLayout(null);
+  }
 
-		// Obtendo icone da logo
-		ImageIcon logo = getIcon("logo");
+  @Override
+  protected void addComponents() {
 
-		// Configurando label da logo
-		JLabel lblLogo = new JLabel(logo);
-		lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
+    // Obtendo icone da logo
+    ImageIcon logo = getIcon("logo");
 
-		// Configurando painel principal
-		JPanel campo = new JPanel();
-		campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
-		campo.setBackground(corBackgroundCampo);
-		campo.setLayout(null);
+    // Configurando label da logo
+    JLabel lblLogo = new JLabel(logo);
+    lblLogo.setBounds(244, 0, logo.getIconWidth(), logo.getIconHeight());
 
-		// Configurando componentes
-		JLabel lblLogin = new JLabel("LOGIN");
-		lblLogin.setBounds(0, 25, 415, 25);
-		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLogin.setFont(fonteTitulos);
+    // Configurando painel principal
+    JPanel campo = new JPanel();
+    campo.setBounds(410, logo.getIconHeight() + 100, 415, 255);
+    campo.setBackground(corBackgroundCampo);
+    campo.setLayout(null);
 
-		JLabel lblEmail = new JLabel("E-mail");
-		lblEmail.setFont(fonteTituloTxtLogin);
-		lblEmail.setSize(lblEmail.getPreferredSize());
-		lblEmail.setLocation(50, 77);
+    // Configurando componentes
+    JLabel lblLogin = new JLabel("LOGIN");
+    lblLogin.setBounds(0, 25, 415, 25);
+    lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+    lblLogin.setFont(fonteTitulos);
 
-		ETextField txtEmail = new ETextField();
-		txtEmail.setBounds(115, 75, 250, 30);
+    JLabel lblEmail = new JLabel("E-mail");
+    lblEmail.setFont(fonteTituloTxtLogin);
+    lblEmail.setSize(lblEmail.getPreferredSize());
+    lblEmail.setLocation(50, 77);
 
-		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setFont(fonteTituloTxtLogin);
-		lblSenha.setSize(lblSenha.getPreferredSize());
-		lblSenha.setLocation(50, 127);
+    ETextField txtEmail = new ETextField();
+    txtEmail.setBounds(115, 75, 250, 30);
 
-		EPasswordField txtSenha = new EPasswordField();
-		txtSenha.setBounds(115, 125, 250, 30);
+    JLabel lblSenha = new JLabel("Senha");
+    lblSenha.setFont(fonteTituloTxtLogin);
+    lblSenha.setSize(lblSenha.getPreferredSize());
+    lblSenha.setLocation(50, 127);
 
-		JLabel lblEsqueciSenha = new JLabel("Esqueci minha senha");
-		lblEsqueciSenha.setLocation(125, 160);
-		lblEsqueciSenha.setSize(lblEsqueciSenha.getPreferredSize());
+    EPasswordField txtSenha = new EPasswordField();
+    txtSenha.setBounds(115, 125, 250, 30);
 
-		JButton btnEntrar = new JButton("Entrar");
-		btnEntrar.setBounds(55, 200, 150, 30);
+    JLabel lblEsqueciSenha = new JLabel("Esqueci minha senha");
+    lblEsqueciSenha.setLocation(125, 160);
+    lblEsqueciSenha.setSize(lblEsqueciSenha.getPreferredSize());
 
-		JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se já");
-		lblCadastrar.setLocation(230, 207);
-		lblCadastrar.setSize(lblCadastrar.getPreferredSize());
+    JButton btnEntrar = new JButton("Entrar");
+    btnEntrar.setBounds(55, 200, 150, 30);
 
-		campo.add(lblLogin);
-		campo.add(lblCadastrar);
-		campo.add(lblEsqueciSenha);
-		campo.add(lblEmail);
-		campo.add(txtEmail);
-		campo.add(lblSenha);
-		campo.add(txtSenha);
-		campo.add(btnEntrar);
-		
-		add(lblLogo);
-		add(campo);
-		
-		addObject("lblCadastrar", lblCadastrar);
-		addObject("lblEsqueciSenha", lblEsqueciSenha);
-		addObject("btnEntrar", btnEntrar);
-	}
+    JLabel lblCadastrar = new JLabel("Novo? Cadastrar-se já");
+    lblCadastrar.setLocation(230, 207);
+    lblCadastrar.setSize(lblCadastrar.getPreferredSize());
 
-	@Override
-	protected void addListeners() {
+    campo.add(lblLogin);
+    campo.add(lblCadastrar);
+    campo.add(lblEsqueciSenha);
+    campo.add(lblEmail);
+    campo.add(txtEmail);
+    campo.add(lblSenha);
+    campo.add(txtSenha);
+    campo.add(btnEntrar);
 
-		// Adicionando listener para quando o label de Cadastrar for clickado abrir a
-		// tela de cadastro do usuário
-		((JLabel) getObject("lblCadastrar"))
-				.addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+    add(lblLogo);
+    add(campo);
 
-					@Override
-					public void run() {
+    addObject("lblCadastrar", lblCadastrar);
+    addObject("lblEsqueciSenha", lblEsqueciSenha);
+    addObject("btnEntrar", btnEntrar);
+  }
 
-						TelaPreCadastroPaciente tela = new TelaPreCadastroPaciente();
-						frame.setContentPane(tela);
-						tela.construir();
-					}
-				}));
+  @Override
+  protected void addListeners() {
 
-		// Adicionando listener para quando o label de Esqueci Minha Senha for clickado
-		// abrir o popup de Esqueci Minha Senha
-		((JLabel) getObject("lblEsqueciSenha"))
-				.addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
+    // Adicionando listener para quando o label de Cadastrar for clickado abrir
+    // a
+    // tela de cadastro do usuário
+    ((JLabel) getObject("lblCadastrar"))
+            .addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
 
-					@Override
-					public void run() {
+              @Override
+              public void run() {
 
-						((Tela) frame).addPopup(new PopupEsqueciSenha());
-					}
-				}));
+                TelaPreCadastroPaciente tela = new TelaPreCadastroPaciente();
+                frame.setContentPane(tela);
+                tela.construir();
+              }
+            }));
 
-		// Adicionando listener para quando o botao Entrar for clickado verificar se o
-		// email e senha sao válidos e logar
-		((JButton) getObject("btnEntrar")).addActionListener(new ActionListener() {
+    // Adicionando listener para quando o label de Esqueci Minha Senha for
+    // clickado
+    // abrir o popup de Esqueci Minha Senha
+    ((JLabel) getObject("lblEsqueciSenha"))
+            .addMouseListener(new LblMouseListener(LblMouseListener.CLICK, new Runnable() {
 
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
+              @Override
+              public void run() {
 
-				controlador.login(getThis());
-			}
-		});
-	}
+                ((Tela) frame).addPopup(new PopupEsqueciSenha());
+              }
+            }));
+
+    // Adicionando listener para quando o botao Entrar for clickado verificar se
+    // o
+    // email e senha sao válidos e logar
+    ((JButton) getObject("btnEntrar")).addActionListener(new ActionListener() {
+
+      @Override
+      public void actionPerformed(ActionEvent arg0) {
+
+        controlador.login(getThis());
+      }
+    });
+  }
 }

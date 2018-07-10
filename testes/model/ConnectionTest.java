@@ -15,12 +15,13 @@ public class ConnectionTest {
       System.out.println("Falha ao criar conexão com bits please no amazon");
     }
   }
-  
+
   public static boolean testeConexaoAmazonBitsPlease() {
     try {
       Connection conexao = ConnectionFactory.getConnection();
       DatabaseMetaData metaDados = (DatabaseMetaData) conexao.getMetaData();
-      System.out.println(metaDados.getDatabaseProductName() + ", " + metaDados.getDatabaseProductVersion() + ", " + metaDados.getDatabaseMajorVersion());
+      System.out.println(metaDados.getDatabaseProductName() + ", "
+              + metaDados.getDatabaseProductVersion() + ", " + metaDados.getDatabaseMajorVersion());
     } catch (Exception e) {
       e.printStackTrace();
       return false;
