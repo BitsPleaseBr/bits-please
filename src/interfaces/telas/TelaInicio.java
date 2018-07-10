@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import interfaces.Tela;
 import interfaces.componentes.MainPanel;
 
 public class TelaInicio extends MainPanel {

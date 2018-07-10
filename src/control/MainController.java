@@ -3,7 +3,6 @@ package control;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import interfaces.Tela;
 import interfaces.componentes.MainPanel;
 
 public class MainController {

@@ -1,7 +1,9 @@
 package model;
 
 import java.sql.Connection;
+
 import com.mysql.cj.jdbc.DatabaseMetaData;
+
 import model.conexao.ConnectionFactory;
 
 public class ConnectionTest {

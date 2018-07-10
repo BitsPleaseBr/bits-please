@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
 import control.bean.PacienteBean;
-
 import model.conexao.ConnectionFactory;
 
 public class PacienteDao {

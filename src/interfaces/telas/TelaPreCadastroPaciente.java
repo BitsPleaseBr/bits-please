@@ -9,7 +9,6 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import interfaces.Tela;
 import interfaces.componentes.EPasswordField;
 import interfaces.componentes.ETextField;
 import interfaces.componentes.MainPanel;
