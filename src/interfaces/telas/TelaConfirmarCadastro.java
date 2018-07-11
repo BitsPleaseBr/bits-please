@@ -22,7 +22,6 @@ public class TelaConfirmarCadastro extends MainPanel {
 
   String email, senha;
   MainPanel pnl;
-  PacienteDao acao = new PacienteDao();
 
   public TelaConfirmarCadastro(MainPanel pnl) {
 
@@ -116,16 +115,18 @@ public class TelaConfirmarCadastro extends MainPanel {
 	          
 	          Date data = Date.valueOf(arraytemp[2] +"-"+ arraytemp[1] +"-"+ arraytemp[0]);
 
+	          String cpf = ((ETextField) pnl.getObject("txtCPF")).getText();
+
 	          PacienteBean prepaciente = new PacienteBean();
 	          prepaciente.setNome(((ETextField) pnl.getObject("txtNome")).getText());
 	          prepaciente.setSobrenome(((ETextField) pnl.getObject("txtSobrenome")).getText());
 	          prepaciente.setDataNasc(data);
-	          prepaciente.setCpf(((ETextField) pnl.getObject("txtCPF")).getText());
+	          prepaciente.setCpf(cpf);
 	          prepaciente.setTelefone(Integer.parseInt(((ETextField) pnl.getObject("txtTelefone")).getText().replaceAll("-", "")));
 	          prepaciente.setEmail(((ETextField) getObject("txtEmail")).getText());
 	          prepaciente.setSenha(String.valueOf(((JPasswordField) getObject("txtSenha")).getPassword()));
 	          
-	          acao.pre_cadastrar(prepaciente);
+	          PacienteDao.pre_cadastrar(prepaciente);
 	          
 	          System.out.println("Foi enviado um e-mail de verificação. Por favor, confirme seu e-mail.");
 	        
