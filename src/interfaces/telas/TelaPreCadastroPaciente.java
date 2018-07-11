@@ -155,7 +155,9 @@ public class TelaPreCadastroPaciente extends MainPanel {
 
         if (validador.validarInfoUser(getThis())) {
 
-          new TelaConfirmarCadastro(getThis());
+          TelaConfirmarCadastro confirmar = new TelaConfirmarCadastro(getThis());
+          frame.setContentPane(confirmar);
+          confirmar.construir();
         } else {
 
           System.out.println("Voce preencheu algum(s) campo(s) errado.");
