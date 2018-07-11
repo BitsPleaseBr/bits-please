@@ -53,7 +53,7 @@ public class PacienteBean {
   }
 
   public void setCpf(String cpf) {
-    this.cpf = cpf;
+    this.cpf = cpf.replaceAll("[^\\d]", "");
   }
 
   public void setNome(String nome) {
