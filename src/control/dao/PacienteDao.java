@@ -10,6 +10,7 @@ public class PacienteDao {
 
   private static Connection conexao;
   private static String nomeTabela = "pre_cadastro_users";
+  private static PacienteDao dao = new PacienteDao();
 
   // Instancia a conexão com o banco de dados
   static {
@@ -48,5 +49,9 @@ public class PacienteDao {
       System.out.println("Cadastro não realizado");
       e.printStackTrace();
     }
+  }
+  
+  public static PacienteDao getInst() {
+    return dao;
   }
 }
