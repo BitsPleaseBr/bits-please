@@ -1,7 +1,9 @@
 package control.crypto;
 
 /**
- * @author Diogo Classe para armazenamento de password
+ * Classe para armazenamento de password
+ * 
+ * @author Diogo
  */
 public class PswdStorage {
   /**
