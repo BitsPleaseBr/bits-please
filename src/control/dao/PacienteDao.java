@@ -8,18 +8,13 @@ import model.conexao.ConnectionFactory;
 
 public class PacienteDao {
 
-  private static Connection conexao;
+  private static Connection conexao = ConnectionFactory.getConnection();;
   private static String nomeTabela = "pre_cadastro_users";
   private static PacienteDao dao = new PacienteDao();
 
-  // Instancia a conexão com o banco de dados
-  static {
-    conexao = ConnectionFactory.getConnection();
-  }
   // Construtor oculto para manter o padrão singleton
   private PacienteDao() {
 
-    
   }
 
   // Método para efetuar o pré cadastro que permite o acesso de usuário no
