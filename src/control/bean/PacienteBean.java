@@ -1,13 +1,14 @@
 package control.bean;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 
 public class PacienteBean {
 
   // variaveis
-  private int cpf, telefone;
+  private int telefone;
   private Date dataNasc;
-  private String nome, sobrenome, email, senha;
+  private String nome, sobrenome, email, senha, cpf;
 
   // getters
   public Date getDataNasc() {
@@ -18,7 +19,7 @@ public class PacienteBean {
     return telefone;
   }
 
-  public int getCpf() {
+  public String getCpf() {
     return cpf;
   }
 
@@ -37,6 +38,10 @@ public class PacienteBean {
   public String getSenha() {
     return senha;
   }
+  
+  public byte[] getSenhaBytes() {
+    return senha.getBytes(StandardCharsets.UTF_8);
+  }
 
   // setters
   public void setDataNasc(Date dataNasc) {
@@ -47,7 +52,7 @@ public class PacienteBean {
     this.telefone = telefone;
   }
 
-  public void setCpf(int cpf) {
+  public void setCpf(String cpf) {
     this.cpf = cpf;
   }
 
