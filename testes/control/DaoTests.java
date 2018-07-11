@@ -17,7 +17,7 @@ public class DaoTests {
       LocalDate data = LocalDate.parse("23/01/1991",
               new DateTimeFormatterBuilder().appendPattern("dd/MM/yyyy").toFormatter());
       paciente.setDataNasc(Date.valueOf(data));
-      paciente.setEmail("diogodklein@gmail.com");
+      paciente.setEmail("diogodklein2@gmail.com");
       paciente.setNome("Diogo");
       paciente.setSenha(PswdStorage.clientPswdHash("111111", "diogodklein@gmail.com"));
       paciente.setSobrenome("Derossi");
