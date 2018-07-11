@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
 import control.bean.PacienteBean;
+import control.dao.PacienteDao;
 import interfaces.componentes.EPasswordField;
 import interfaces.componentes.ETextField;
 import interfaces.componentes.MainPanel;
@@ -21,6 +22,7 @@ public class TelaConfirmarCadastro extends MainPanel {
 
   String email, senha;
   MainPanel pnl;
+  PacienteDao acao = new PacienteDao();
 
   public TelaConfirmarCadastro(MainPanel pnl) {
 
@@ -122,6 +124,8 @@ public class TelaConfirmarCadastro extends MainPanel {
 	          prepaciente.setTelefone(Integer.parseInt(((ETextField) pnl.getObject("txtTelefone")).getText().replaceAll("-", "")));
 	          prepaciente.setEmail(((ETextField) getObject("txtEmail")).getText());
 	          prepaciente.setSenha(String.valueOf(((JPasswordField) getObject("txtSenha")).getPassword()));
+	          
+	          acao.pre_cadastrar(prepaciente);
 	          
 	          System.out.println("Foi enviado um e-mail de verificação. Por favor, confirme seu e-mail.");
 	        
