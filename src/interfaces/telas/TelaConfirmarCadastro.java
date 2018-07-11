@@ -2,12 +2,15 @@ package interfaces.telas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
+import control.bean.PacienteBean;
 import interfaces.componentes.EPasswordField;
 import interfaces.componentes.ETextField;
 import interfaces.componentes.MainPanel;
@@ -17,9 +20,12 @@ public class TelaConfirmarCadastro extends MainPanel {
   private static final long serialVersionUID = 1L;
 
   String email, senha;
+  MainPanel pnl;
 
   public TelaConfirmarCadastro(MainPanel pnl) {
 
+	this.pnl = pnl;
+	  
     ETextField txtEmail = pnl.getObject("txtEmail");
     EPasswordField txtSenha = pnl.getObject("txtSenha");
 
@@ -29,7 +35,7 @@ public class TelaConfirmarCadastro extends MainPanel {
 
   @Override
   protected void configurar() {
-    // TODO Auto-generated method stub
+    setLayout(null);
 
   }
 
@@ -40,6 +46,7 @@ public class TelaConfirmarCadastro extends MainPanel {
     JPanel campo = new JPanel();
     campo.setBackground(corBackgroundCampo);
     campo.setBounds(381, 132, 475, 355);
+    campo.setLayout(null);
 
     // Configurando cabecalho
     JLabel lblCabecalho =
@@ -65,46 +72,66 @@ public class TelaConfirmarCadastro extends MainPanel {
     JButton btnProximo = new JButton("Confirmar");
     btnProximo.setBounds(0, 300, 150, 35);
     centralizar(btnProximo, campo);
+    
+    setFonte(new JComponent[] {lblEmail, txtEmail, lblSenha, txtSenha, btnProximo}, fonteTituloTxt);
 
-    // Adicionando listener para quando o botao Confirmar for clickado verificar
-    // se
-    // o email e senha
-    // informados correspondem com os do cadastro e voltar para a tela de login
-    btnProximo.addActionListener(new ActionListener() {
-
-      @Override
-      public void actionPerformed(ActionEvent arg0) {
-
-        if ((txtEmail.getText().equals(email))
-                && (String.valueOf(txtSenha.getPassword()).equals(senha))) {
-
-          TelaLogin tela = new TelaLogin();
-          frame.setContentPane(tela);
-          tela.construir();
-
-          System.out
-                  .println("Foi enviado um e-mail de verificação. Por favor, confirme seu e-mail.");
-          ;
-        } else {
-
-          System.out.println("Voce preencheu algo errado.");
-          ;
-        }
-      }
-    });
-
-    add(lblCabecalho);
-    add(lblEmail);
-    add(txtEmail);
-    add(lblSenha);
-    add(txtSenha);
-    add(btnProximo);
+    campo.add(lblCabecalho);
+    campo.add(lblEmail);
+    campo.add(txtEmail);
+    campo.add(lblSenha);
+    campo.add(txtSenha);
+    campo.add(btnProximo);
+    
+    add(campo);
+    
+    addObject("btnProximo", btnProximo);
+    addObject("txtEmail", txtEmail);
+    addObject("txtSenha", txtSenha);
   }
 
   @Override
   protected void addListeners() {
-    // TODO Auto-generated method stub
 
+	    // Adicionando listener para quando o botao Confirmar for clickado verificar
+	    // se
+	    // o email e senha
+	    // informados correspondem com os do cadastro e voltar para a tela de login
+	    ((JButton) getObject("btnProximo")).addActionListener(new ActionListener() {
+
+	      @Override
+	      public void actionPerformed(ActionEvent arg0) {
+
+	        if ((((ETextField) getObject("txtEmail")).getText().equals(email))
+	                && (String.valueOf(((JPasswordField) getObject("txtSenha")).getPassword()).equals(senha))) {
+
+	          TelaLogin tela = new TelaLogin();
+	          frame.setContentPane(tela);
+	          tela.construir();
+	          
+	          String temp = ((ETextField) pnl.getObject("txtDataNasc")).getText();
+	          
+	          String[] arraytemp = temp.split("/");
+	          
+	          Date data = Date.valueOf(arraytemp[2] +"-"+ arraytemp[1] +"-"+ arraytemp[0]);
+
+	          PacienteBean prepaciente = new PacienteBean();
+	          prepaciente.setNome(((ETextField) pnl.getObject("txtNome")).getText());
+	          prepaciente.setSobrenome(((ETextField) pnl.getObject("txtSobrenome")).getText());
+	          prepaciente.setDataNasc(data);
+	          prepaciente.setCpf(((ETextField) pnl.getObject("txtCPF")).getText());
+	          prepaciente.setTelefone(Integer.parseInt(((ETextField) pnl.getObject("txtTelefone")).getText().replaceAll("-", "")));
+	          prepaciente.setEmail(((ETextField) getObject("txtEmail")).getText());
+	          prepaciente.setSenha(String.valueOf(((JPasswordField) getObject("txtSenha")).getPassword()));
+	          
+	          System.out.println("Foi enviado um e-mail de verificação. Por favor, confirme seu e-mail.");
+	        
+	        } else {
+
+	          System.out.println("Voce preencheu algo errado.");
+	          ;
+	        }
+	      }
+	    });
   }
 
 }
