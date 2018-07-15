@@ -1,0 +1,73 @@
+.formularioLogin{
+	width: 400px;
+	margin: 20px auto;
+}
+
+.formularioLogin input{
+	margin-bottom: 10px !important;
+}
+
+.formularioLogin div{
+	display: none;
+}
+
+header{
+	background-color: #000;
+	overflow: auto;
+}
+
+header h1{
+	float: left;
+	color: #fff;
+	margin: 10px;
+	font-size: 14px;
+}
+
+header nav{
+	float: right;
+}
+
+header a{
+	display: inline-block;
+	margin: 10px;
+	color: #fff;
+}
+
+header a:hover{
+	color: #fff;
+	text-decoration: underline;
+}
+
+.frmCadastrarUsuario{
+	width: 500px;
+	margin: 30px auto;
+}
+
+.frmCadastrarUsuario input,
+.frmCadastrarUsuario select{
+	margin-bottom: 5px;
+}
+
+.tabelaListarUsuarios{
+	width: 500px;
+	margin: 30px auto;
+	border: solid 1px #ccc;
+}
+
+.tabelaListarUsuarios td{
+	padding: 5px;
+}
+
+.tabelaListarUsuarios tr:nth-child(odd){
+	background-color: #e8e8e8;
+}
+
+.tabelaListarUsuarios tr:first-child{
+	background-color: #000;
+	color: #fff;
+}
+
+.tabelaListarUsuarios td:nth-child(2),
+.tabelaListarUsuarios td:nth-child(3){
+	text-align: center;
+}
