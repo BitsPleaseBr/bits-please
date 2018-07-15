@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import control.dao.PacienteDao;
 import interfaces.Tela;
 import interfaces.componentes.EPasswordField;
 import interfaces.componentes.ETextField;
@@ -87,6 +88,8 @@ public class TelaLogin extends MainPanel {
     add(lblLogo);
     add(campo);
 
+    addObject("txtEmail", txtEmail);
+    addObject("txtSenha", txtSenha);
     addObject("lblCadastrar", lblCadastrar);
     addObject("lblEsqueciSenha", lblEsqueciSenha);
     addObject("btnEntrar", btnEntrar);
@@ -132,6 +135,10 @@ public class TelaLogin extends MainPanel {
       public void actionPerformed(ActionEvent arg0) {
 
         controlador.login(getThis());
+        
+        PacienteDao.login(((ETextField) getObject("txtEmail")).getText(), String.valueOf(((EPasswordField) getObject("txtSenha")).getPassword()));
+      
+      
       }
     });
   }

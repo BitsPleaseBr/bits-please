@@ -123,8 +123,8 @@ public class TelaConfirmarCadastro extends MainPanel {
 	          prepaciente.setDataNasc(data);
 	          prepaciente.setCpf(cpf);
 	          prepaciente.setTelefone(Integer.parseInt(((ETextField) pnl.getObject("txtTelefone")).getText().replaceAll("-", "")));
-	          prepaciente.setEmail(((ETextField) getObject("txtEmail")).getText());
-	          prepaciente.setSenha(String.valueOf(((JPasswordField) getObject("txtSenha")).getPassword()));
+	          prepaciente.setEmail(((ETextField) pnl.getObject("txtEmail")).getText());
+	          prepaciente.setSenha(String.valueOf(((JPasswordField) pnl.getObject("txtSenha")).getPassword()));
 	          
 	          PacienteDao.pre_cadastrar(prepaciente);
 	          

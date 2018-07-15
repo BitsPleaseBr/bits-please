@@ -35,6 +35,7 @@ public class PswdStorage {
   
   public static boolean compararHashClient(String senha, byte[] hash) {
     String hashString = new String(hash, StandardCharsets.UTF_8);
+    System.out.println(hashString);
     return BCrypt.checkpw(senha, hashString);
   }
 
