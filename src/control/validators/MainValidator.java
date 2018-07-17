@@ -1,4 +1,4 @@
-package control;
+package control.validators;
 
 import javax.swing.JComponent;
 
