@@ -4,31 +4,38 @@
   </head>
   <body>
   
+<!--Barra de navegação-->
+      
   <nav class="navbar sticky-top navbar-expand navbar-light" style="background-color: #75aef9;">
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 	  <span class="navbar-toggler-icon"></span>
  	</button>
      
-    <a class="navbar-brand" href="teste.jsp">
+      <!--Imagem Home-->
+      
+    <a class="navbar-brand" href="index.jsp">
       <img src="img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="Home">
       Home
     </a>
      
+      <!--Conteudo-->
+      
     <ul class="navbar-nav mr-auto">
      
      
     </ul>
 
+      <!--Botão Login/Cadastro-->
+      
     <form class="form-inline">
 	  <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modal_login">
 	    Acesse
 	  </button>
     </form>
-   </nav>
+   </nav>  
       
-   <header>
-   </header>
-    
+<!--Modal(PopUp) de Login-->
+      
 	<div class="modal fade" id="modal_login" role="dialog">
   	  <div class="modal-dialog">
     	<div class="modal-content">
@@ -58,6 +65,8 @@
         </div>
       </div>
     </div>
+      
+<!--Modal(PopUp) de Redefinição de Senha-->
     
     <div class="modal fade" id="modal_esqueci">
   	  <div class="modal-dialog">
@@ -83,6 +92,8 @@
         </div>
       </div>
     </div>
+      
+<!--Modal(PopUp) de Cadastro-->
 
     <div class="modal fade" id="modal_cadastrar">
   	  <div class="modal-dialog">
@@ -110,10 +121,14 @@
       </div>
     </div>
     
+   <header>
+       <img id="logo" alt="logo" src="img/logo.png">
+       
+   </header>
     
         
     <main>
-	<img id="logo" alt="logo" src="img/logo.png">
+	
 	
 	</main>
 	
@@ -122,75 +137,7 @@
 	
 	</footer>
           
-	<script>
-      $(document).ready(function(){
-    	  
-    	$(".cpf").mask('000.000.000-00', {reverse: true});
-    	$(".date").mask('00/00/0000', {reverse: true})
-    	      	  
-    	var form = $("#esqueci");
-	    form.validate({
-	    	rules: {
-	    		email: {
-	    			email: true
-	    		}
-	    	},
-	    	messages: {
-	    		cpf: "Precisamos identificar quem é você",
-	    		email: {
-	    			required: "Precisamos do seu e-mail para enviar a redefinição",
-	    			email: "Lembrando que tem que se parecer com: david@dominio.com"
-	    		}
-	    	}
-	    });
-    	
-        $("#btn_cadastrar").focus(function(){
-          $("#modal_login").modal("hide");
-          $("#modal_cadastrar").modal("show");
-          $("#modalPaciente").hide();
-          $("#modalProfissional").hide();
-    	  $("#modalConfirmacao").hide();
-        });
           
-        $("#modal_esqueci").on('show.bs.modal', function(){
-            $("#modal_login").modal('hide');
-        })
-        
-        $("#redefinir").click(function(){
-        	if(form.valid()){
-        	  $("#modal_esqueci").modal('hide');
-              $("#modal_esqueci").on('hidden.bs.modal', function(){
-                alert("Por favor verifique seu e-mail e redefina sua senha! :)");
-              })
-        	}
-        })
-        
-        $('button[name="groups"]').on('click change', function(e) {
-        
-          if(e.currentTarget.id =="paciente") {
-            $("#modalPaciente").show();
-            $("#modalProfissional").hide();
-          }else {
-            $("#modalProfissional").show();
-            $("#modalPaciente").hide();
-          }
-        });
-      
-        $(".modal").on('hidden.bs.modal', function(){
-    	  
-    	  $(".modal-body input").val("");
-    	  
-          if($("#modalConfirmacao").show()){
-            $("#modalConfirmacao").hide();
-            $("small").show();
-    		$("#escolha").show();
-    	  }else if(($("#modalPaciente").show()) || ($("#modalProfissional").show())){
-            $(this).hide();
-          }
-        
-          $("#modal_cadastrar").off('hidden.bs.modal');
-        });
-      });
-    </script>
+    <script src="js/funcoes.js" type="text/javascript"></script>
   </body>
 </html>

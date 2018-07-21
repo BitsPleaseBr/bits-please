@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<!--Formulário de cadastro do Profissional-->
+
 <form id="modalProfissional" method="post">
     <div class="form-group">
         <input type="email" class="form-control" placeholder="E-mail">
