@@ -1,43 +1,45 @@
 package control.bean;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import control.info.MedicoInfo;
-import control.info.PacienteInfo;
-import control.info.UserInfo;
 import control.info.Info;
-import model.conexao.ConnectionFactory;
 
-public abstract class Bean {
+public abstract class Bean<E extends Info> {
 
-	private HashMap<Enum<?>, Object> info = new HashMap<>();
-	private ArrayList<Enum<?>> infoIndex = new ArrayList<>();
+	protected HashMap<Enum<? extends Info>, Object> info = new HashMap<>();
+	protected ArrayList<Enum<? extends Info>> infoIndex = new ArrayList<>();
 	
 	
 	// Método para adicionar alguma informação no dicionário, embora não pareça pelo
 	// nome xd
-	public Bean setInfo(Enum<?> key, Object value) {
+	@SuppressWarnings("unchecked")
+	public Bean<E> setInfo(E key, Object value) {
 
-		if (!infoIndex.contains(key)) {
+		//Atribui o valor castado a uma variável pra não ficar castando o tempo todo
+		Enum<? extends Info> k = (Enum<? extends Info>) key;
+		
+		if (!infoIndex.contains(k)) {
 
-			infoIndex.add(key);
+			infoIndex.add(k);
 		}
 
-		info.put(key, value);
+		info.put(k, value);
 
 		return this;
 	}
 
 	// Método para remover alguma informação do dicionário, esse parece
-	public Bean removeInfo(Enum<?> key) {
+	@SuppressWarnings("unchecked")
+	public Bean<E> removeInfo(E key) {
 
-		if (infoIndex.contains(key)) {
+		//Atribui o valor castado a uma variável pra não ficar castando o tempo todo
+		Enum<? extends Info> k = (Enum<? extends Info>) key;
+		
+		if (infoIndex.contains(k)) {
 
-			infoIndex.remove(key);
-			info.remove(key);
+			infoIndex.remove(k);
+			info.remove(k);
 		}
 
 		return this;
@@ -45,13 +47,13 @@ public abstract class Bean {
 
 	// Método para obter alguma informação do dicionário
 	@SuppressWarnings("unchecked")
-	public <T extends Object> T getInfo(Enum<?> key) {
+	public <O extends Object> O getInfo(E key) {
 
-		return (T) info.get(key);
+		return (O) info.get((Enum<? extends Info>) key);
 	}
 
 	// Método para receber a lista de enum das informações do dicionário
-	public ArrayList<Enum<?>> getInfoIndex() {
+	public ArrayList<Enum<? extends Info>> getInfoIndex() {
 		
 		return this.infoIndex;
 	}
@@ -61,7 +63,7 @@ public abstract class Bean {
 	/*@SuppressWarnings("unchecked")
 	private Class<? extends Info>[] classesEnums = new Class[] {UserInfo.class, PacienteInfo.class, MedicoInfo.class};
 	
-	public <T extends Bean> void inserir(T bean) {
+	public <E extends Bean> void inserir(E bean) {
 		
 		String insert = "insert into insira_aqui_uma_tabela(";
 

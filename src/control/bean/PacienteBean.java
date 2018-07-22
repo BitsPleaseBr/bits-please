@@ -1,5 +1,7 @@
 package control.bean;
 
-public class PacienteBean extends UserBean {
+import control.info.PacienteInfo;
+
+public class PacienteBean extends UserBean<PacienteInfo> {
 	
 }
