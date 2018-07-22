@@ -14,7 +14,7 @@
       <!--Imagem Home-->
       
     <a class="navbar-brand" href="index.jsp">
-      <img src="img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="Home">
+      <img src="_img/icon.png" width="30" height="30" class="d-inline-block align-top" alt="Home">
       Home
     </a>
      
@@ -122,7 +122,7 @@
     </div>
     
    <header>
-       <img id="logo" alt="logo" src="img/logo.png">
+       <img id="logo" alt="logo" src="_img/logo.png">
        
    </header>
     
@@ -138,6 +138,6 @@
 	</footer>
           
           
-    <script src="js/funcoes.js" type="text/javascript"></script>
+    <script src="_js/funcoes.js" type="text/javascript"></script>
   </body>
 </html>
