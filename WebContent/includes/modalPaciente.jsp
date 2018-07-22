@@ -5,7 +5,7 @@
     
 <form id="modalPaciente" method="get">
     <p class="lead" style="font-size: 17px">Beleza, agora você coloca seus dados pessoais:</p>
-    <div class="form-row">
+    <div class="form-row" id="textos">
         <div class="form-group col-md-6">
             <input type="text" class="form-control" name="nome" placeholder="Nome" required>
         </div>

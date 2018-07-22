@@ -47,8 +47,25 @@ $(document).ready(function(){
 	       equalTo: "Tem que ser igual a de antes"
 		 }
 	   }
-	 });	 
-	    
+	 });
+	/* 
+	 $.validator.addMethod("dataBR", function(value, element) {            
+	     //contando chars 
+	    if(value.length!=10) return false;
+	    // verificando data
+	    var data        = value;
+	    var dia         = data.substr(0,2);
+	    var barra1      = data.substr(2,1);
+	    var mes         = data.substr(3,2);         
+	    var barra2      = data.substr(5,1);
+	    var ano         = data.substr(6,4);         
+	    if(data.length!=10||barra1!="/"||barra2!="/"||isNaN(dia)||isNaN(mes)||isNaN(ano)||dia>31||mes>12) return false; 
+	    if((mes==4||mes==6||mes==9||mes==11) && dia==31) return false;
+	    if(mes==2 && (dia>29||(dia==29 && ano%4!=0 || ano%100==0 && ano%400!=0))) return false;
+	    if(ano < 1900) return false;
+	    return true;        
+	}, "Informe uma data válida");
+	 */   
 	var formPaciente = $("#modalPaciente");
 	formPaciente.validate({
 	  rules: {
@@ -86,7 +103,21 @@ $(document).ready(function(){
 		}
 	  }
 	});
-    
+	
+	$('div[id="textos"] input').on("input", function(){
+	  var regexp = /[^a-záàâãéèêíïóôõöúçñ ]+$/gi;
+	  if(this.value.match(regexp)){
+	    $(this).val(this.value.replace(regexp,''));
+	  }
+	});
+	
+	/*$('input[type="datetime"]').on("input", function(){
+		  var regexp = /^((((0?[1-9]|[12]\d|3[01])[\.\-\/](0?[13578]|1[02])      [\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|((0?[1-9]|[12]\d|30)[\.\-\/](0?[13456789]|1[012])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|((0?[1-9]|1\d|2[0-8])[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|(29[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00)))|(((0[1-9]|[12]\d|3[01])(0[13578]|1[02])((1[6-9]|[2-9]\d)?\d{2}))|((0[1-9]|[12]\d|30)(0[13456789]|1[012])((1[6-9]|[2-9]\d)?\d{2}))|((0[1-9]|1\d|2[0-8])02((1[6-9]|[2-9]\d)?\d{2}))|(2902((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00))))$/;
+		  if(this.value.match(regexp)){
+		    $(this).val(this.value.replace(regexp,''));
+		  }
+		});
+    */
     //Validar campos na redefinição
     
     $("#redefinir").click(function(){
