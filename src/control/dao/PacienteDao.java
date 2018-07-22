@@ -2,8 +2,11 @@ package control.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import control.bean.PacienteBean;
+import control.crypto.PswdStorage;
+import interfaces.componentes.MainPanel;
 import model.conexao.ConnectionFactory;
 
 public class PacienteDao {
@@ -46,7 +49,39 @@ public class PacienteDao {
     }
   }
   
+  public static void login(String email, String senha) {
+		
+	  String sql = "select emailUser, pswdUser from "+nomeTabela+" where emailUser = ?";
+	  
+	  System.out.println(email);
+	  System.out.println(senha);
+	  
+	  try {
+		  PreparedStatement pstmt = conexao.prepareStatement(sql);
+		  pstmt.setString(1, email);
+
+		  ResultSet rs = pstmt.executeQuery();
+		  
+		  if(!rs.next()) {
+			  System.out.println("not login");
+		  }else {
+			  
+			  if(PswdStorage.compararHashClient(senha, rs.getBytes(2))) {
+				  System.out.println("success");
+			  }else {
+				  System.out.println("senha wrong");
+			  }
+		  }
+		  
+		  pstmt.close();
+	  }catch(Exception e) {
+		  System.out.println("Falha ao obter login");
+		  e.printStackTrace();
+	  }
+}
+  
   public static PacienteDao getInst() {
     return dao;
   }
+
 }

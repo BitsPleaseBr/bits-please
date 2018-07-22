@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+body{
+	background-color: #dfebfb;
+}
+
+#logo{
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+#icon{
+	width: 32px;
+    position: relative;
+    bottom: 5px;
+}
+
+.modal{
+	overflow: scroll;
+}
+
+#modalPaciente label,
+#modalConfirmacao label,
+#esqueci label{
+	font-size: 14px;
+    color: crimson;
+}
