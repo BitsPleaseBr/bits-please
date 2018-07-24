@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
 import control.bean.PacienteBean;
+import control.crypto.PswdStorage;
 import control.dao.PacienteDao;
 import interfaces.componentes.EPasswordField;
 import interfaces.componentes.ETextField;
@@ -124,7 +125,7 @@ public class TelaConfirmarCadastro extends MainPanel {
 	          prepaciente.setCpf(cpf);
 	          prepaciente.setTelefone(Integer.parseInt(((ETextField) pnl.getObject("txtTelefone")).getText().replaceAll("-", "")));
 	          prepaciente.setEmail(((ETextField) pnl.getObject("txtEmail")).getText());
-	          prepaciente.setSenha(String.valueOf(((JPasswordField) pnl.getObject("txtSenha")).getPassword()));
+	          prepaciente.setSenha(PswdStorage.clientPswdHash(senha, email));
 	          
 	          PacienteDao.pre_cadastrar(prepaciente);
 	          
