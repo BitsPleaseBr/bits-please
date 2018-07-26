@@ -1,4 +1,4 @@
-package control.info;
+package model.info;
 
 public enum UserInfo implements Info {
 	
@@ -6,7 +6,7 @@ public enum UserInfo implements Info {
 	 * Os valores das Strings sao meramente ilustrativos, depois devem ser trocados para os nomes dos campos da tabela no banco de dados
 	 */
 	
-	Nome("nome"), Sobrenome("sobrenome"), Email("email"), Senha("senha"), CPF("cpf"), DataNasc("dataNasc"), Telefone("telefone");
+	Nome("nomeUser"), Sobrenome("sobrenomeUser"), Email("emailUser"), Senha("senhaUser"), CPF("cpfUser"), DataNasc("nascimentoUser"), Telefone("telefoneUser");
 
 
 	//Campo que esse enum representa no banco

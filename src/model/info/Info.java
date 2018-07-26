@@ -1,4 +1,4 @@
-package control.info;
+package model.info;
 
 public interface Info {
 

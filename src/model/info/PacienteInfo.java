@@ -1,9 +1,9 @@
-package control.info;
+package model.info;
 
 public enum PacienteInfo implements Info {
 	
 	//Isso aqui é só pra nao ficar dando erro já que não ia ter nada
-	A("A");
+	IDUser("idUser");
 	
 	
 	//Campo que esse enum representa no banco

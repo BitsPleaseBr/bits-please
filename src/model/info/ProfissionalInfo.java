@@ -1,13 +1,13 @@
-package control.info;
+package model.info;
 
-public enum MedicoInfo implements Info {
+public enum ProfissionalInfo implements Info {
 
 	/*
 	 * Os valores das Strings sao meramente ilustrativos, depois devem ser trocados para os nomes dos campos da tabela no banco de dados
 	 */
 	
 	//Informações "gerais"
-	CRM("CRM"), Especializacao("Especializacao"), UF("UF"), Pais("País"),
+	CRM("CRM"), Especializacao("Especializacao"), UF("UF"), Pais("País"), IDUser("idUser"),
 	
 	//Informações residenciais
 	TelefoneResidencial("TelefoneResidencial"), NumeroResidencial("NumeroResidencial"), RuaResidencial("RuaResidencial"), 
@@ -22,7 +22,7 @@ public enum MedicoInfo implements Info {
 	private final String campo;
 
 	//Construtor pra receber o campo que esse enum representa no banco
-	MedicoInfo(String campo) {
+	ProfissionalInfo(String campo) {
 		
 		this.campo = campo;
 	}
