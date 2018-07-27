@@ -1,9 +1,9 @@
-<%@page import="control.info.UserInfo"%>
-<%@page import="control.info.MedicoInfo"%>
-<%@page import="control.bean.MedicoBean" %>
-<% 
-
-	MedicoBean pb = new MedicoBean();
+<%@page import="model.dao.ProfissionalDao"%>
+<%@page import="model.info.UserInfo"%>
+<%@page import="model.info.ProfissionalInfo"%>
+<%@page import="model.bean.ProfissionalBean" %>
+<%
+  ProfissionalBean pb = new ProfissionalBean();
 
 	//Setando informações de um usuário comum
 	pb.setInfo(UserInfo.Nome, request.getParameter("nome"));
@@ -19,11 +19,11 @@
 									  "cepComercial", "cidadeComercial", "bairroComercial", "ruaComercial", "numeroComercial", "complementoComercial", "telefoneComercial",
 									  "pais", "uf", "crm", "especializacao"};
 	
-	MedicoInfo[] enums = new MedicoInfo[] {MedicoInfo.CepResidencial, MedicoInfo.CidadeResidencial, MedicoInfo.BairroResidencial, 
-										   MedicoInfo.RuaResidencial, MedicoInfo.NumeroResidencial, MedicoInfo.ComplementoComercial, MedicoInfo.TelefoneResidencial,
-										   MedicoInfo.CepComercial, MedicoInfo.CidadeComercial, MedicoInfo.BairroComercial,
-										   MedicoInfo.RuaComercial, MedicoInfo.NumeroComercial, MedicoInfo.ComplementoComercial, MedicoInfo.TelefoneComercial,
-										   MedicoInfo.Pais, MedicoInfo.UF, MedicoInfo.CRM, MedicoInfo.Especializacao};
+	ProfissionalInfo[] enums = new ProfissionalInfo[] {ProfissionalInfo.CepResidencial, ProfissionalInfo.CidadeResidencial, ProfissionalInfo.BairroResidencial, 
+										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneResidencial,
+										   ProfissionalInfo.CepComercial, ProfissionalInfo.CidadeComercial, ProfissionalInfo.BairroComercial,
+										   ProfissionalInfo.RuaComercial, ProfissionalInfo.NumeroComercial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneComercial,
+										   ProfissionalInfo.Pais, ProfissionalInfo.UF, ProfissionalInfo.CRM, ProfissionalInfo.Especializacao};
 	
 	for (int i = 0; i < enums.length; i++) {
 		
@@ -31,5 +31,5 @@
 	}
 	
 	//O MedicoDao ainda naão existe, e talvez demore um pouco, mas em tese é isso aqui
-	new MedicoDao().inserir(pb);
+	new ProfissionalDao().cadastrar(pb);
 %>

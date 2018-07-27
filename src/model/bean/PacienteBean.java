@@ -29,9 +29,9 @@ public class PacienteBean extends UserBean {
   
   
   @Override
-  public HashMap<Enum<? extends Info>, Object> getInfos() {
+  public HashMap<Info, Object> getInfos() {
     
-    HashMap<Enum<? extends Info>, Object> info = new HashMap<>();
+    HashMap<Info, Object> info = new HashMap<>();
     
     info.putAll(infosPac);
     info.putAll(getInfosUser());

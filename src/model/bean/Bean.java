@@ -6,5 +6,5 @@ import model.info.Info;
 public interface Bean {
 
   
-  public HashMap<Enum<? extends Info>, Object> getInfos();
+  public HashMap<Info, Object> getInfos();
 }

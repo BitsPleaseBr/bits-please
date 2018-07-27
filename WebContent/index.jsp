@@ -29,7 +29,7 @@
       
     <form class="form-inline">
 	  <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modal_login">
-	    Acesse
+	    Acessec
 	  </button>
     </form>
    </nav>  

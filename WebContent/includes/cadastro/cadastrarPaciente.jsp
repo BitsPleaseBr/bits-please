@@ -1,7 +1,6 @@
-<%@page import="control.dao.Dao"%>
-<%@page import="control.dao.PacienteDao"%>
-<%@page import="control.info.UserInfo"%>
-<%@page import="control.bean.PacienteBean"%>
+<%@page import="model.dao.PacienteDao"%>
+<%@page import="model.info.UserInfo"%>
+<%@page import="model.bean.PacienteBean"%>
 <%
 
 	PacienteBean pb = new PacienteBean();
@@ -11,11 +10,10 @@
 	pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
 	pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
 	pb.setInfo(UserInfo.DataNasc, request.getParameter("data"));
-	pb.setInfo(UserInfo.Telefone, request.getParameter("telefone"));
 	pb.setInfo(UserInfo.Email, request.getParameter("email"));
 	pb.setInfo(UserInfo.Senha, request.getParameter("senha"));
 	
 	//Inserindo no banco de dados
 	//O método ainda não existe mas em breve vai talvez
-	new Dao().inserir(pb, "");
+	new PacienteDao().cadastrar(pb);
 %>
