@@ -15,12 +15,12 @@
 	pb.setInfo(UserInfo.Senha, request.getParameter("senha"));
 	
 	//Setando informações de um médico
-	String[] parIndex = new String[] {"cepResidencial", "cidadeResidencial", "bairroResidencial", "ruaResidencial", "numeroResidencial", "complementoResidencial", "telefoneResidencial",
-									  "cepComercial", "cidadeComercial", "bairroComercial", "ruaComercial", "numeroComercial", "complementoComercial", "telefoneComercial",
+	String[] parIndex = new String[] {"cepResi", "cidadeResi", "bairroResi", "ruaResi", "numeroResi", "complementoResi", "telefoneResi",
+									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefoneCome",
 									  "pais", "uf", "crm", "especializacao"};
 	
 	ProfissionalInfo[] enums = new ProfissionalInfo[] {ProfissionalInfo.CepResidencial, ProfissionalInfo.CidadeResidencial, ProfissionalInfo.BairroResidencial, 
-										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneResidencial,
+										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoResidencial, ProfissionalInfo.TelefoneResidencial,
 										   ProfissionalInfo.CepComercial, ProfissionalInfo.CidadeComercial, ProfissionalInfo.BairroComercial,
 										   ProfissionalInfo.RuaComercial, ProfissionalInfo.NumeroComercial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneComercial,
 										   ProfissionalInfo.Pais, ProfissionalInfo.UF, ProfissionalInfo.CRM, ProfissionalInfo.Especializacao};
