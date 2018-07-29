@@ -4,7 +4,7 @@
   </head>
   <body>
   
-<!--Barra de navegação-->
+<!--Barra de navegaÃ§Ã£o-->
       
   <nav class="navbar sticky-top navbar-expand navbar-light" style="background-color: #75aef9;">
   	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,11 +25,11 @@
      
     </ul>
 
-      <!--Botão Login/Cadastro-->
+      <!--BotÃ£o Login/Cadastro-->
       
     <form class="form-inline">
 	  <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modal_login">
-	    Acesse
+	    Acesso
 	  </button>
     </form>
    </nav>  
@@ -49,7 +49,7 @@
             <form>
               <div class="form-group">
               	<input type="email" class="form-control email" placeholder="E-mail" required>
-              	<small class="form-text text-muted">Não compartilharemos seu e-mail com ninguém.</small>
+              	<small class="form-text text-muted">NÃ£o compartilharemos seu e-mail com ninguÃ©m.</small>
               </div>
               <div class="form-group">
               	<input type="password" class="form-control" placeholder="Senha" required> 
@@ -66,13 +66,13 @@
       </div>
     </div>
       
-<!--Modal(PopUp) de Redefinição de Senha-->
+<!--Modal(PopUp) de RedefiniÃ§Ã£o de Senha-->
     
     <div class="modal fade" id="modal_esqueci">
   	  <div class="modal-dialog">
     	<div class="modal-content">
       	  <div class="modal-header">
-        	<h5 class="modal-title">Redefinição de Senha</h5>
+        	<h5 class="modal-title">RedefiniÃ§Ã£o de Senha</h5>
         	<button type="button" class="close" data-dismiss="modal">
           	  <span>&times;</span>
       	    </button>
@@ -84,7 +84,7 @@
               </div>
               <div class="form-group">
               	<input type="email" class="form-control email" placeholder="E-mail" name="email" required>
-              	<small class="form-text text-muted">Você receberá uma mensagem para redefinir a senha.</small>
+              	<small class="form-text text-muted">VocÃª receberÃ¡ uma mensagem para redefinir a senha.</small>
               </div>
             </form>
             <button type="button" class="btn btn-primary" id="redefinir">Enviar</button>
@@ -105,8 +105,8 @@
       	    </button>
       	  </div>
       	  <div class="modal-body">
-      	  <%@ include file="includes/modalConfirmar.jsp" %>
-            <p><small class="form-text text-muted">Vamos lá! Preencha o cadastro para começar a utilizar a HealthCore!</small></p>
+      	  <%@ include file="includes/cadastro/modalConfirmar.jsp" %>
+            <p><small class="form-text text-muted">Vamos lÃ¡! Preencha o cadastro para comeÃ§ar a utilizar a HealthCore!</small></p>
             <form style="text-align: center" id="escolha">
               <p class="lead">Primeiro, se identifique:</p>
    			  <button type="button" class="btn btn-info" name="groups" id="paciente">Paciente</button>
@@ -114,8 +114,8 @@
             </form>
             <p></p>
             <p></p>
-            <%@ include file="includes/modalProfissional.jsp" %>
-            <%@ include file="includes/modalPaciente.jsp" %>
+            <%@ include file="includes/cadastro/modalProfissional.jsp" %>
+            <%@ include file="includes/cadastro/modalPaciente.jsp" %>
       	  </div>
         </div>
       </div>

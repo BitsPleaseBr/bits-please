@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	
+	//Variáveis
+	var formulario = -1;
+	
     //Máscaras
     
 	$(".cpf").mask('000.000.000-00');
@@ -149,9 +152,11 @@ $(document).ready(function(){
       if(e.currentTarget.id =="paciente") {
         $("#modalPaciente").show();
         $("#modalProfissional").hide();
+        formulario = 0;
       }else {
         $("#modalProfissional").show();
         $("#modalPaciente").hide();
+        formulario = 1;
       }
     });
 
@@ -181,6 +186,13 @@ $(document).ready(function(){
 	    $("#modal_cadastrar").on('hidden.bs.modal', function(){
 	      alert("Por favor verifique seu e-mail e confirme seu cadastro! :)");
 	    })
+	    if (formulario == 0) {
+	    	
+	    	$("#modalPaciente").submit();
+	    } else {
+	    	
+	    	$("#modalProfissional").submit();
+	    }
 	  }
 	})
     

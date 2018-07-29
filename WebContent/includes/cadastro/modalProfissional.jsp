@@ -3,7 +3,7 @@
     
 <!--Formulário de cadastro do Profissional-->
 
-<form id="modalProfissional" method="post">
+<form id="modalProfissional" method="post" action="includes/cadastro/cadastrarProfissional.jsp">
     <div class="form-group">
         <input type="email" class="form-control" placeholder="E-mail">
         <small id="emailHelp" class="form-text text-muted">Não compartilharemos seu e-mail com ninguém.</small>
