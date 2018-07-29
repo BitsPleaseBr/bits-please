@@ -1,6 +1,6 @@
 package control;
 
-import control.bean.PacienteBean;
+import model.bean.PacienteBean;
 
 public class BeanTests {
 
