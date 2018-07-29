@@ -1,16 +1,5 @@
 package control;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatterBuilder;
-
-import control.bean.PacienteBean;
-import control.crypto.PswdStorage;
-import control.dao.PacienteDao;
-import interfaces.componentes.MainPanel;
-
 public class DaoTests {
 
   public static void main(String[] args) {
