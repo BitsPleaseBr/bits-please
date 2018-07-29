@@ -5,6 +5,6 @@ import model.info.Info;
 
 public interface Bean {
 
-  
+
   public HashMap<Info, Object> getInfos();
 }

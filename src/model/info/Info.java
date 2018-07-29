@@ -2,5 +2,5 @@ package model.info;
 
 public interface Info {
 
-	public String getCampo();
+  public String getCampo();
 }
