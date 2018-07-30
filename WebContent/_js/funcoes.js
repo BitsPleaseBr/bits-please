@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	
+	//Variáveis
+	var formulario = -1;
+	
     //Máscaras
     
 	$(".cpf").mask('000.000.000-00');
@@ -350,12 +353,14 @@ $(document).ready(function(){
         $("#dialog").removeClass("modal-lg");
         $("#email").removeClass("col-md-6");
         $("#senha").removeClass("col-md-6");
+        formulario = 0;
       }else {
         $("#dialog").addClass("modal-lg");
         $("#email").addClass("col-md-6");
         $("#senha").addClass("col-md-6");
         $("#modalProfissional").show();
         $("#modalPaciente").hide();
+        formulario = 1;
       }
     });
 
@@ -403,13 +408,13 @@ $(document).ready(function(){
 	      $("#modal_cadastrar").modal('hide');
 	      $("#modal_cadastrar").on('hidden.bs.modal', function(){
 	        alert("Por favor verifique seu e-mail e confirme seu cadastro! :)");
-	      });
-	      if($("#emailPac").val()){
-		    $("#modalPaciente").submit();
-	      }else if($("#emailPro").val()){
-		    $("#modalProfissional").submit();
-	      };
-		}
+	      })
+	      if (formulario == 0) {
+	    	$("#modalPaciente").submit();
+	      } else {
+	    	$("#modalProfissional").submit();
+	      }
+	    }
 	  }
 	})
     

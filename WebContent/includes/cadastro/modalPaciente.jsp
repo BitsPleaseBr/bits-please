@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" %>
     
 <!--Formulário de cadastro do Paciente-->
-    
+
 <form id="modalPaciente" method="post" action="_acoes/cadastrarPaciente.jsp">
     <p class="lead" style="font-size: 17px">Beleza, agora você coloca seus dados pessoais:</p>
     <div class="form-row" id="textos">
