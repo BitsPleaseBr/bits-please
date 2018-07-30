@@ -4,6 +4,19 @@ body{
 	background-color: #dfebfb;
 }
 
+#modalProfissional div[class="form-row"]{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#modalProfissional p{
+	margin-left: 10px;
+}
+
+input[placeholder="UF"]{
+	text-transform:uppercase;
+}
+
 #logo{
 	display: block;
     margin-left: auto;
@@ -22,6 +35,7 @@ body{
 }
 
 #modalPaciente label,
+#modalProfissional label,
 #modalConfirmacao label,
 #esqueci label{
 	font-size: 14px;

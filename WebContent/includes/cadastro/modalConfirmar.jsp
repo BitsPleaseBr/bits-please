@@ -3,18 +3,18 @@
     
 <!--Formulário de cadastro de Confirmação-->
 
-<form id="modalConfirmacao" method="post">
+<form id="modalConfirmacao">
 	<p class="lead">Agora da uma confirmada nos dados de login:</p>
     <div class="form-group row">
-        <label class="col-sm-1 col-form-label"><img id="icon" src="img/user.png" alt="user_icon"></img></label>
+        <label class="col-sm-1 col-form-label"><img id="icon" src="_img/user.png" alt="user_icon"></img></label>
         <div class="col-sm-11">
             <input type="email" class="form-control" placeholder="E-mail" name="email" autocomplete="off" required>
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-sm-1 col-form-label"><img id="icon" src="img/key.png" alt="key_icon"></img></label>
+        <label class="col-sm-1 col-form-label"><img id="icon" src="_img/key.png" alt="key_icon"></img></label>
         <div class="col-sm-11">
-            <input type="password" class="form-control" placeholder="Senha" name="pwsd" required>
+            <input type="password" class="form-control" placeholder="Senha" name="senha" required>
         </div>
     </div>
     <div style="text-align: center">

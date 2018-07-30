@@ -96,7 +96,7 @@
 <!--Modal(PopUp) de Cadastro-->
 
     <div class="modal fade" id="modal_cadastrar">
-  	  <div class="modal-dialog">
+  	  <div class="modal-dialog" id="dialog">
     	<div class="modal-content">
       	  <div class="modal-header">
         	<h5 class="modal-title">Cadastrar</h5>
@@ -105,7 +105,7 @@
       	    </button>
       	  </div>
       	  <div class="modal-body">
-      	  <%@ include file="includes/modalConfirmar.jsp" %>
+      	  <%@ include file="includes/cadastro/modalConfirmar.jsp" %>
             <p><small class="form-text text-muted">Vamos lá! Preencha o cadastro para começar a utilizar a HealthCore!</small></p>
             <form style="text-align: center" id="escolha">
               <p class="lead">Primeiro, se identifique:</p>
@@ -114,8 +114,12 @@
             </form>
             <p></p>
             <p></p>
-            <%@ include file="includes/modalProfissional.jsp" %>
-            <%@ include file="includes/modalPaciente.jsp" %>
+            <%@ include file="includes/cadastro/modalProfissional.jsp" %>
+            <%@ include file="includes/cadastro/modalPaciente.jsp" %>
+            <div style="text-align: center" id="botoes">
+				<button type="button" class="btn btn-success" id="btn_proximo">Próximo</button>
+				<button type="reset" class="btn btn-light" id="btn_limpar">Limpar</button>
+    		</div>
       	  </div>
         </div>
       </div>
