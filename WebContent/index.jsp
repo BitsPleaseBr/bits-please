@@ -29,7 +29,7 @@
       
     <form class="form-inline">
 	  <button class="btn btn-danger" type="button" data-toggle="modal" data-target="#modal_login">
-	    Acesse
+	    Acesso
 	  </button>
     </form>
    </nav>  
@@ -46,16 +46,16 @@
       	    </button>
       	  </div>
       	  <div class="modal-body">
-            <form>
+            <form id="modalLogin" method="post" action="_acoes/login.jsp">
               <div class="form-group">
-              	<input type="email" class="form-control email" placeholder="E-mail" required>
+              	<input type="email" class="form-control" name="email" placeholder="E-mail" required>
               	<small class="form-text text-muted">Não compartilharemos seu e-mail com ninguém.</small>
               </div>
               <div class="form-group">
-              	<input type="password" class="form-control" placeholder="Senha" required> 
+              	<input type="password" class="form-control" name="senha" placeholder="Senha" required> 
               </div>
             </form>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-primary" id="btn_login">Login</button>
 			<button type="button" class="btn btn-primary" id="btn_cadastrar">
 			Cadastrar-se
 			</button>
@@ -117,8 +117,8 @@
             <%@ include file="includes/cadastro/modalProfissional.jsp" %>
             <%@ include file="includes/cadastro/modalPaciente.jsp" %>
             <div style="text-align: center" id="botoes">
-				<button type="button" class="btn btn-success" id="btn_proximo">Próximo</button>
-				<button type="reset" class="btn btn-light" id="btn_limpar">Limpar</button>
+			  <button type="button" class="btn btn-success" id="btn_proximo">Próximo</button>
+			  <button type="reset" class="btn btn-light" id="btn_limpar">Limpar</button>
     		</div>
       	  </div>
         </div>

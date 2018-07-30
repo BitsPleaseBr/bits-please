@@ -12,6 +12,27 @@ $(document).ready(function(){
 	
     //Validações
     
+	var formLogin = $("#modalLogin");
+	formLogin.validate({
+		rules: {
+			email: {
+				email: true
+			},
+			senha: {
+				minlength: 6
+			}
+		},
+		messages: {
+			email: {
+				required: "Informe um email para te identificar",
+				email: "Lembrando que e-mails se parecem com: david@dominio.com"
+			},
+			senha: {
+				required: "Por questões de segurança você tem que informar a sua senha, relaxa, ninguém tem acesso a ela"
+			}
+		}
+	})
+	
 	var formForget = $("#esqueci");
     formForget.validate({
     	rules: {
@@ -111,53 +132,65 @@ $(document).ready(function(){
 		}
 	  }
 	});
-	
-	var PacVisible = formPaciente.show();
-	var ProVisible = formProfissional.show();
 
 	 var formConfirm = $("#modalConfirmacao");
 	 formConfirm.validate({
 	   rules: {
 	     email: {
-		   email: true,
-	       if(PacVisible){
-	    	   equalTo: "#emailPac"
-	       },
-	       if(ProVisible){
-	    	   equalTo: "#emailPro"
-	       }
+		   email: true
 		 },
 		 senha: {
-		   minlength: 6,
-	       if(PacVisible){
-	    	   equalTo: "#senhaPac"
-	       },
-	       if(ProVisible){
-	    	   equalTo: "#senhaPro"
-	       }
+		   minlength: 6
 		 }
 	   },
 	   messages: {
 	     email: {
 	       required: "Temos que saber se você digitou certo",
-	       email: "Lembra que é parecido com: david@dominio.com",
-	       equalTo: "Seu e-mail tem que ser igual ao anterior"
+	       email: "Lembra que é parecido com: david@dominio.com"
 		 },
-		 pwsd: {
+		 senha: {
 		   required: "Precisamos que você confirme a senha",
-		   minlength: jQuery.validator.format("Lembra que são pelo menos {0} caracteres!"),
-	       equalTo: "Tem que ser igual a de antes"
+		   minlength: jQuery.validator.format("Lembra que são pelo menos {0} caracteres!")
 		 }
 	   }
 	 });
 	 
-	
+	 function validarForm(){
+		 EmailPac = document.getElementById('emailPac').value;
+	     SenhaPac = document.getElementById('senhaPac').value;
+	     
+		 EmailPro = document.getElementById('emailPro').value;
+	     SenhaPro = document.getElementById('senhaPro').value;
+	     
+	     EmailConf = document.getElementById('emailConf').value;
+	     SenhaConf = document.getElementById('senhaConf').value;
+	     
+	     if (((EmailPac == EmailConf) || (EmailPro == EmailConf)) && ((SenhaPac == SenhaConf) || (SenhaPro == SenhaConf))){ 
+	    	 return true;
+	     }else{
+	    	 alert("Dados Divergentes!!");
+	    	 return false;
+	     }
+	 }
+	 
 	$('div[id="textos"] input').on("input", function(){
 	  var regexp = /[^a-záàâãéèêíïóôõöúçñ ]+$/gi;
 	  if(this.value.match(regexp)){
 	    $(this).val(this.value.replace(regexp,''));
 	  }
 	});
+	
+	//Validar campos no Login
+	
+	$("#btn_login").click(function(){
+		if(formLogin.valid()){
+		  $("#modalLogin").submit();
+    	  $("#modal_login").modal('hide');
+          $("#modal_login").on('hidden.bs.modal', function(){
+            alert("Entrado xD");
+          })
+		}
+	})
 	
     //Validar campos na redefinição
     
@@ -292,7 +325,7 @@ $(document).ready(function(){
     
     //Entrar no modal(popup) de cadastro
 
-    $("#btn_cadastrar").focus(function(){
+    $("#btn_cadastrar").click(function(){
       $("#modal_login").modal("hide");
       $("#modal_cadastrar").modal("show");
       $("#modalPaciente").hide();
@@ -339,7 +372,7 @@ $(document).ready(function(){
 	      $("#modalConfirmacao").show();
 	    }
 	  }else if($("#modalProfissional").is(':visible')){
-		  if(formProfissional.valid()){
+		if(formProfissional.valid()){
 	      $("#modalProfissional").hide();
 	      $("small").hide();
 	      $("#escolha").hide();
@@ -353,6 +386,9 @@ $(document).ready(function(){
     //Limpar campos no formulário
 	  
 	$("#btn_limpar").click(function(){
+	  $("#modalPaciente")[0].reset();
+	  $("#modalProfissional")[0].reset();
+	  
 	  var form1 = $("#modalPaciente").validate();
 	  form1.resetForm();
 	  var form2 = $("#modalProfissional").validate();
@@ -363,12 +399,17 @@ $(document).ready(function(){
     
     $("#btn_finalizar").click(function(){
 	  if(formConfirm.valid()){
-	    $("#modal_cadastrar").modal('hide');
-	    $("#modal_cadastrar").on('hidden.bs.modal', function(){
-	      alert("Por favor verifique seu e-mail e confirme seu cadastro! :)");
-	    });
-		$("#modalPaciente").submit();
-		$("#modalProfissional").submit();
+		if(validarForm()){
+	      $("#modal_cadastrar").modal('hide');
+	      $("#modal_cadastrar").on('hidden.bs.modal', function(){
+	        alert("Por favor verifique seu e-mail e confirme seu cadastro! :)");
+	      });
+	      if($("#emailPac").val()){
+		    $("#modalPaciente").submit();
+	      }else if($("#emailPro").val()){
+		    $("#modalProfissional").submit();
+	      };
+		}
 	  }
 	})
     
