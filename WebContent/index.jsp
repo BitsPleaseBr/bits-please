@@ -46,16 +46,16 @@
       	    </button>
       	  </div>
       	  <div class="modal-body">
-            <form>
+            <form id="modalLogin" method="post" action="_acoes/login.jsp">
               <div class="form-group">
-              	<input type="email" class="form-control email" placeholder="E-mail" required>
-              	<small class="form-text text-muted">NÃ£o compartilharemos seu e-mail com ninguÃ©m.</small>
+              	<input type="email" class="form-control" name="email" placeholder="E-mail" required>
+              	<small class="form-text text-muted">Não compartilharemos seu e-mail com ninguém.</small>
               </div>
               <div class="form-group">
-              	<input type="password" class="form-control" placeholder="Senha" required> 
+              	<input type="password" class="form-control" name="senha" placeholder="Senha" required> 
               </div>
             </form>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="button" class="btn btn-primary" id="btn_login">Login</button>
 			<button type="button" class="btn btn-primary" id="btn_cadastrar">
 			Cadastrar-se
 			</button>
@@ -96,7 +96,7 @@
 <!--Modal(PopUp) de Cadastro-->
 
     <div class="modal fade" id="modal_cadastrar">
-  	  <div class="modal-dialog">
+  	  <div class="modal-dialog" id="dialog">
     	<div class="modal-content">
       	  <div class="modal-header">
         	<h5 class="modal-title">Cadastrar</h5>
@@ -106,7 +106,7 @@
       	  </div>
       	  <div class="modal-body">
       	  <%@ include file="includes/cadastro/modalConfirmar.jsp" %>
-            <p><small class="form-text text-muted">Vamos lÃ¡! Preencha o cadastro para comeÃ§ar a utilizar a HealthCore!</small></p>
+            <p><small class="form-text text-muted">Vamos lá! Preencha o cadastro para começar a utilizar a HealthCore!</small></p>
             <form style="text-align: center" id="escolha">
               <p class="lead">Primeiro, se identifique:</p>
    			  <button type="button" class="btn btn-info" name="groups" id="paciente">Paciente</button>
@@ -116,6 +116,10 @@
             <p></p>
             <%@ include file="includes/cadastro/modalProfissional.jsp" %>
             <%@ include file="includes/cadastro/modalPaciente.jsp" %>
+            <div style="text-align: center" id="botoes">
+			  <button type="button" class="btn btn-success" id="btn_proximo">Próximo</button>
+			  <button type="reset" class="btn btn-light" id="btn_limpar">Limpar</button>
+    		</div>
       	  </div>
         </div>
       </div>
