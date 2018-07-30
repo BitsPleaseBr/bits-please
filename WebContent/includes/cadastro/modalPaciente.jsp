@@ -2,8 +2,8 @@
     pageEncoding="UTF-8" %>
     
 <!--Formulário de cadastro do Paciente-->
-    
-<form id="modalPaciente" method="get" action="includes/cadastro/cadastrarPaciente.jsp">
+
+<form id="modalPaciente" method="post" action="_acoes/cadastrarPaciente.jsp">
     <p class="lead" style="font-size: 17px">Beleza, agora você coloca seus dados pessoais:</p>
     <div class="form-row" id="textos">
         <div class="form-group col-md-6">
@@ -22,14 +22,10 @@
     	</div>
     </div>
     <p class="lead" style="font-size: 17px">Aqui vão seus dados para realizar o login:</p>
-    <div class="form-group">
-        <input type="email" class="form-control" name="email" placeholder="E-mail" id="email" required>
+    <div class="form-group" id="email">
+        <input type="email" class="form-control" name="email" placeholder="E-mail" id="emailPac" required>
     </div>
-    <div class="form-group">
-        <input type="password" class="form-control" name="senha" placeholder="Senha" id="pswd" required>
-    </div>
-    <div style="text-align: center">
-		<button type="button" class="btn btn-success" id="btn_proximo">Próximo</button>
-		<button type="reset" class="btn btn-light" id="btn_limpar">Limpar</button>
+    <div class="form-group" id="senha">
+        <input type="password" class="form-control" name="senha" placeholder="Senha" id="senhaPac" required>
     </div>
 </form>
