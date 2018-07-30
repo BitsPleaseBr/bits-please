@@ -35,7 +35,7 @@ public abstract class UserDao extends Dao {
     return -1;
   }
 
-  public static int login(String email, String senha) {
+  public int login(String email, String senha) {
 	  
 	  String select = "select from TB_Users idUser where emailUser = ? and senhaUser = ?";
 	  
