@@ -66,13 +66,13 @@
       </div>
     </div>
       
-<!--Modal(PopUp) de RedefiniÃ§Ã£o de Senha-->
+<!--Modal(PopUp) de Redefinição de Senha-->
     
     <div class="modal fade" id="modal_esqueci">
   	  <div class="modal-dialog">
     	<div class="modal-content">
       	  <div class="modal-header">
-        	<h5 class="modal-title">RedefiniÃ§Ã£o de Senha</h5>
+        	<h5 class="modal-title">Redefinição de Senha</h5>
         	<button type="button" class="close" data-dismiss="modal">
           	  <span>&times;</span>
       	    </button>
@@ -84,7 +84,7 @@
               </div>
               <div class="form-group">
               	<input type="email" class="form-control email" placeholder="E-mail" name="email" required>
-              	<small class="form-text text-muted">VocÃª receberÃ¡ uma mensagem para redefinir a senha.</small>
+              	<small class="form-text text-muted">Você receberá uma mensagem para redefinir a senha.</small>
               </div>
             </form>
             <button type="button" class="btn btn-primary" id="redefinir">Enviar</button>
