@@ -16,3 +16,4 @@
 	<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 	
 	<link href="_css/estilos.css" rel="stylesheet">
+	<link rel="shortcut icon" href="_img/icon.ico" type="image/x-icon" />
