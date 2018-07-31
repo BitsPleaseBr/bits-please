@@ -4,9 +4,9 @@ import model.dao.UserDao;
 
 public class MainController {
 
-	
-	public int login(String email, String senha) {
-		
-		return new UserDao() {}.login(email, senha);
-	}
+
+  public int login(String email, String senha) {
+
+    return new UserDao() {}.login(email, senha);
+  }
 }

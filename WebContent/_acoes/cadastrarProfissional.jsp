@@ -2,7 +2,7 @@
 <%@page import="model.dao.ProfissionalDao"%>
 <%@page import="model.info.UserInfo"%>
 <%@page import="model.info.ProfissionalInfo"%>
-<%@page import="model.bean.ProfissionalBean" %>
+<%@page import="model.bean.ProfissionalBean"%>
 <%
   ProfissionalBean pb = new ProfissionalBean();
 
@@ -35,6 +35,8 @@
 		
 		if (parIndex[i].equals("especializacao"))
 			continue;
+		
+		System.out.println(parIndex[i]);
 		
 		pb.setInfo(enums[i], request.getParameter(parIndex[i]));
 	}

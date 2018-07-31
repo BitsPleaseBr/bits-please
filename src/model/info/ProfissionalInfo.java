@@ -11,13 +11,14 @@ public enum ProfissionalInfo implements Info {
   CRM("crmPro"), Especializacao("Especializacao"), UF("ufPro"), Pais("paisPro"), IDUser("idUser"),
 
   // Informações residenciais
-  TelefoneResidencial("TelefoneResPro"), NumeroResidencial("NumeroResPro"), RuaResidencial("RuaResPro"), 
-  ComplementoResidencial("ComplementoResPro"), BairroResidencial("BairroResPro"), 
-  CidadeResidencial("CidadeResPro"), CepResidencial("CepResPro"),
+  TelefoneResidencial("TelefoneResPro"), NumeroResidencial("NumeroResPro"), RuaResidencial(
+      "RuaResPro"), ComplementoResidencial("ComplementoResPro"), BairroResidencial(
+          "BairroResPro"), CidadeResidencial("CidadeResPro"), CepResidencial("CepResPro"),
 
   // Informações Comerciais
-  NumeroComercial("NumeroComPro"), RuaComercial("RuaComPro"), ComplementoComercial( "ComplementoComPro"), 
-  BairroComercial("BairroComPro"), CidadeComercial("CidadeComPro"), TelefoneComercial("TelefoneComPro"), CepComercial("CepComPro");
+  NumeroComercial("NumeroComPro"), RuaComercial("RuaComPro"), ComplementoComercial(
+      "ComplementoComPro"), BairroComercial("BairroComPro"), CidadeComercial(
+          "CidadeComPro"), TelefoneComercial("TelefoneComPro"), CepComercial("CepComPro");
 
 
   // Campo que esse enum representa no banco
