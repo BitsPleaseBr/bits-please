@@ -1,8 +1,11 @@
 package model.dao;
 
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import control.crypto.PswdStorage;
 import model.bean.UserBean;
 import model.conexao.ConnectionFactory;
 
@@ -37,24 +40,30 @@ public abstract class UserDao extends Dao {
 
   public int login(String email, String senha) {
 	  
-	  String select = "select from TB_Users idUser where emailUser = ? and senhaUser = ?";
+	  String select = "select idUser, senhaUser from TB_User where emailUser = ?";
 	  
 	  try {
 		  
 		  PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(select);
 		  
 		  ps.setString(1, email);
-		  ps.setString(2, senha);
 		  
 		  ResultSet rs = ps.executeQuery();
 		  
-		  while(rs.next())
-			  return rs.getInt(1);
+		  while(rs.next()) {
+			  
+			  Blob senhaServer = rs.getBlob(2);
+			  int length = (int) senhaServer.length();
+			  
+			  if (PswdStorage.compararHashClient(senha, senhaServer.getBytes(1, length)))
+				  return rs.getInt(1);
+		  }
+			  
 		  
 	  } catch (SQLException e) {
-		  
-		  System.out.println("Não foi possível logar o usuário usando o email " + email + " e a senha " + senha);
+		 
 		  e.printStackTrace();
+		  return -2;
 	  }
 	  
 	  return -1;

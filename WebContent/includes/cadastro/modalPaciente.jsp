@@ -23,9 +23,9 @@
     </div>
     <p class="lead" style="font-size: 17px">Aqui vão seus dados para realizar o login:</p>
     <div class="form-group" id="email">
-        <input type="email" class="form-control" name="email" placeholder="E-mail" id="emailPac" required>
+        <input type="email" class="form-control" name="emailPac" placeholder="E-mail" id="emailPac" required>
     </div>
     <div class="form-group" id="senha">
-        <input type="password" class="form-control" name="senha" placeholder="Senha" id="senhaPac" required>
+        <input type="password" class="form-control" name="senhaPac" placeholder="Senha" id="senhaPac" required>
     </div>
 </form>
