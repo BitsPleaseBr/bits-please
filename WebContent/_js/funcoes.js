@@ -56,7 +56,9 @@ $(document).ready(function(){
 	 formProfissional.validate({
 		 rules:{
 			 data: {
-				 date: true
+				 date: false,
+				 dateITA: true
+	 			
 			 },
 			 celular:{
 					minlength: 15 
@@ -108,7 +110,8 @@ $(document).ready(function(){
 	formPaciente.validate({
 	  rules: {
 		data: {
- 		  date: true
+		  date: false,
+		  dateITA: true
  		},
 		email: {
 		  email: true
@@ -123,7 +126,7 @@ $(document).ready(function(){
 		cpf: "Vazio aqui não pode hein",
 		data: {
 		  required: "Faltou esse aqui",
-		  date: "Formato mm/dd/aaaa por favor"
+		  dateITA: "Formato dd/mm/aaaa por favor"
 		},
 		email: {
 	      required: "Precisamos do seu e-mail para entrar em contato contigo",
