@@ -28,7 +28,7 @@ public class Arquivo {
     public String read(String local) throws FileNotFoundException, IOException {
         String text = "";
         try {
-            File file = new File("MeninaDosTemperos\\" + local);
+            File file = new File(local);
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
             while (br.ready()) {
