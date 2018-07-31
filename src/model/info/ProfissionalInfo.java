@@ -11,7 +11,7 @@ public enum ProfissionalInfo implements Info {
   CRM("crmPro"), Especializacao("Especializacao"), UF("ufPro"), Pais("paisPro"), IDUser("idUser"),
 
   // Informações residenciais
-  TelefoneResidencial("TelefoneResPro"), NumeroResidencial("NumeroResPro"), RuaResidencial(
+  Celular("TelefoneResPro"), NumeroResidencial("NumeroResPro"), RuaResidencial(
       "RuaResPro"), ComplementoResidencial("ComplementoResPro"), BairroResidencial(
           "BairroResPro"), CidadeResidencial("CidadeResPro"), CepResidencial("CepResPro"),
 

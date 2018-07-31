@@ -16,27 +16,24 @@
 	pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
 	pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
 	pb.setInfo(UserInfo.DataNasc, request.getParameter("data"));
-	pb.setInfo(UserInfo.Telefone, request.getParameter("telefone"));
 	pb.setInfo(UserInfo.Email, email);
 	pb.setInfo(UserInfo.Senha, PswdStorage.clientPswdHash(senha, email));
 	
 	//Setando informações de um médico
-	String[] parIndex = new String[] {"cepResi", "cidadeResi", "bairroResi", "ruaResi", "numeroResi", "complementoResi", "telefoneResi",
-									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefoneCome",
+	String[] parIndex = new String[] {"cepResi", "cidadeResi", "bairroResi", "ruaResi", "numeroResi", "complementoResi", "celular",
+									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefone",
 									  "pais", "uf", "crm", "especializacao"};
 	
 	ProfissionalInfo[] enums = new ProfissionalInfo[] {ProfissionalInfo.CepResidencial, ProfissionalInfo.CidadeResidencial, ProfissionalInfo.BairroResidencial, 
-										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoResidencial, ProfissionalInfo.TelefoneResidencial,
+										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoResidencial, ProfissionalInfo.Celular,
 										   ProfissionalInfo.CepComercial, ProfissionalInfo.CidadeComercial, ProfissionalInfo.BairroComercial,
 										   ProfissionalInfo.RuaComercial, ProfissionalInfo.NumeroComercial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneComercial,
 										   ProfissionalInfo.Pais, ProfissionalInfo.UF, ProfissionalInfo.CRM, ProfissionalInfo.Especializacao};
 	
-	for (int i = 0; i < enums.length; i++) {
+	for (int i = 0; i < parIndex.length; i++) {
 		
 		if (parIndex[i].equals("especializacao"))
 			continue;
-		
-		System.out.println(parIndex[i]);
 		
 		pb.setInfo(enums[i], request.getParameter(parIndex[i]));
 	}
