@@ -11,7 +11,15 @@ public class ProfissionalBean extends UserBean {
 
 
   public ProfissionalBean setInfo(ProfissionalInfo key, Object value) {
-
+	  
+	switch (key) {
+	
+	  case Celular: value = ((String) value).replaceAll("\\D", ""); break;
+	  case TelefoneComercial: value = ((String) value).replaceAll("\\D", ""); break;
+	  
+	  default: break;
+	}
+	  
     infosPro.put(key, value);
 
     return this;

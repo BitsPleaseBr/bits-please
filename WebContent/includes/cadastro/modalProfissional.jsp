@@ -113,10 +113,10 @@
     <p class="lead" style="font-size: 17px">Insira aqui os dados para login:</p>
   <div class="form-row"> 
     <div class="form-group" id="email">
-        <input type="email" class="form-control" name="email" placeholder="E-mail" id="emailPro" required>
+        <input type="email" class="form-control" name="emailPro" placeholder="E-mail" id="emailPro" required>
     </div>
     <div class="form-group" id="senha">
-        <input type="password" class="form-control" name="senha" placeholder="Senha" id="senhaPro" required>
+        <input type="password" class="form-control" name="senhaPro" placeholder="Senha" id="senhaPro" required>
     </div>
   </div>
 </form>

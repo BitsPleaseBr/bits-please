@@ -1,35 +1,44 @@
+<%@page import="control.crypto.PswdStorage"%>
 <%@page import="model.dao.ProfissionalDao"%>
 <%@page import="model.info.UserInfo"%>
 <%@page import="model.info.ProfissionalInfo"%>
-<%@page import="model.bean.ProfissionalBean" %>
+<%@page import="model.bean.ProfissionalBean"%>
 <%
   ProfissionalBean pb = new ProfissionalBean();
 
-	//Setando informações de um usuário comum
+	//Obtendo email e senha
+	String email = request.getParameter("emailPro");
+	String senha = request.getParameter("senhaPro");
+
+	//Setando informaÃ§Ãµes de um usuÃ¡rio comum
 	pb.setInfo(UserInfo.Nome, request.getParameter("nome"));
 	pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
 	pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
 	pb.setInfo(UserInfo.DataNasc, request.getParameter("data"));
-	pb.setInfo(UserInfo.Telefone, request.getParameter("telefone"));
-	pb.setInfo(UserInfo.Email, request.getParameter("emailPro"));
-	pb.setInfo(UserInfo.Senha, request.getParameter("senhaPro"));
+	pb.setInfo(UserInfo.Email, email);
+	pb.setInfo(UserInfo.Senha, PswdStorage.clientPswdHash(senha, email));
 	
-	//Setando informações de um médico
-	String[] parIndex = new String[] {"cepResi", "cidadeResi", "bairroResi", "ruaResi", "numeroResi", "complementoResi", "telefoneResi",
-									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefoneCome",
+	//Setando informaÃ§Ãµes de um mÃ©dico
+	String[] parIndex = new String[] {"cepResi", "cidadeResi", "bairroResi", "ruaResi", "numeroResi", "complementoResi", "celular",
+									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefone",
 									  "pais", "uf", "crm", "especializacao"};
 	
 	ProfissionalInfo[] enums = new ProfissionalInfo[] {ProfissionalInfo.CepResidencial, ProfissionalInfo.CidadeResidencial, ProfissionalInfo.BairroResidencial, 
-										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoResidencial, ProfissionalInfo.TelefoneResidencial,
+										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoResidencial, ProfissionalInfo.Celular,
 										   ProfissionalInfo.CepComercial, ProfissionalInfo.CidadeComercial, ProfissionalInfo.BairroComercial,
 										   ProfissionalInfo.RuaComercial, ProfissionalInfo.NumeroComercial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneComercial,
 										   ProfissionalInfo.Pais, ProfissionalInfo.UF, ProfissionalInfo.CRM, ProfissionalInfo.Especializacao};
-	
-	for (int i = 0; i < enums.length; i++) {
+
+	for (int i = 0; i < parIndex.length; i++) {
+		
+		if (parIndex[i].equals("especializacao"))
+			continue;
 		
 		pb.setInfo(enums[i], request.getParameter(parIndex[i]));
 	}
 	
-	//O MedicoDao ainda naão existe, e talvez demore um pouco, mas em tese é isso aqui
+  //Cadastra o mÃ©dico
 	new ProfissionalDao().cadastrar(pb);
+	
+	response.sendRedirect("../index.jsp");
 %>

@@ -10,7 +10,7 @@ $(document).ready(function(){
 	$('.cep').mask('00000-000');
 	$('.cel').mask('(00) 00000-0000');
 	$('.tel').mask('(00) 0000-0000');
-	$('.crm').mask('000000000-0');
+	$('.crm').mask('0000000');
 	$('.num').mask('00000');
 	
     //Validações
@@ -474,5 +474,11 @@ $(document).ready(function(){
       }
     
       $("#modal_cadastrar").off('hidden.bs.modal');
+    });
+    
+    //Adiciona action ao botão de login para efetuar o login
+    $("#botao_login").click(function() {
+    	
+    	$("#modalLogin").submit();
     });
 });
