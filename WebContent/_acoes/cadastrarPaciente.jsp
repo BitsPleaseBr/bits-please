@@ -5,7 +5,7 @@
 <%
   PacienteBean pb = new PacienteBean();
 
-  //Setando informações de um usuário comum
+  //Obtendo email e senha
   String email = request.getParameter("emailPac");
   String senha = request.getParameter("senhaPac");
 

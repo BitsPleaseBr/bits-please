@@ -6,12 +6,11 @@
 <%
   ProfissionalBean pb = new ProfissionalBean();
 
-	out.print(request.getParameter("cpf"));
-
-	//Setando informações de um usuário comum
+	//Obtendo email e senha
 	String email = request.getParameter("emailPro");
 	String senha = request.getParameter("senhaPro");
-	
+
+	//Setando informaÃ§Ãµes de um usuÃ¡rio comum
 	pb.setInfo(UserInfo.Nome, request.getParameter("nome"));
 	pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
 	pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
@@ -19,7 +18,7 @@
 	pb.setInfo(UserInfo.Email, email);
 	pb.setInfo(UserInfo.Senha, PswdStorage.clientPswdHash(senha, email));
 	
-	//Setando informações de um médico
+	//Setando informaÃ§Ãµes de um mÃ©dico
 	String[] parIndex = new String[] {"cepResi", "cidadeResi", "bairroResi", "ruaResi", "numeroResi", "complementoResi", "celular",
 									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefone",
 									  "pais", "uf", "crm", "especializacao"};
@@ -29,7 +28,7 @@
 										   ProfissionalInfo.CepComercial, ProfissionalInfo.CidadeComercial, ProfissionalInfo.BairroComercial,
 										   ProfissionalInfo.RuaComercial, ProfissionalInfo.NumeroComercial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneComercial,
 										   ProfissionalInfo.Pais, ProfissionalInfo.UF, ProfissionalInfo.CRM, ProfissionalInfo.Especializacao};
-	
+
 	for (int i = 0; i < parIndex.length; i++) {
 		
 		if (parIndex[i].equals("especializacao"))
@@ -38,7 +37,7 @@
 		pb.setInfo(enums[i], request.getParameter(parIndex[i]));
 	}
 	
-	//O MedicoDao ainda naão existe, e talvez demore um pouco, mas em tese é isso aqui
+  //Cadastra o mÃ©dico
 	new ProfissionalDao().cadastrar(pb);
 	
 	response.sendRedirect("../index.jsp");

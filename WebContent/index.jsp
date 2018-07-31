@@ -40,36 +40,61 @@
 	<!--Modal(PopUp) de Login-->
 
 	<div class="modal fade" id="modal_login" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Login</h5>
-					<button type="button" class="close" data-dismiss="modal">
-						<span>&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="modalLogin" method="post" action="_acoes/login.jsp">
-						<div class="form-group">
-							<input type="email" class="form-control" name="email"
-								placeholder="E-mail" required> <small
-								class="form-text text-muted">Não compartilharemos seu
-								e-mail com ninguém.</small>
-						</div>
-						<div class="form-group">
-							<input type="password" class="form-control" name="senha"
-								placeholder="Senha" required>
-						</div>
-					</form>
-					<button type="button" class="btn btn-primary" id="btn_login">Login</button>
-					<button type="button" class="btn btn-primary" id="btn_cadastrar">
-						Cadastrar-se</button>
-					<br> <a data-target="#modal_esqueci" data-toggle="modal"
-						href="#modal_esqueci">Esqueci minha senha</a>
-				</div>
-			</div>
-		</div>
-	</div>
+  	  <div class="modal-dialog">
+    	<div class="modal-content">
+      	  <div class="modal-header">
+        	<h5 class="modal-title">Login</h5>
+        	<button type="button" class="close" data-dismiss="modal">
+          	  <span>&times;</span>
+      	    </button>
+      	  </div>
+      	  <div class="modal-body">
+            <form id="modalLogin" method="post" action="_acoes/login.jsp">
+              <div class="form-group">
+              	<input type="email" class="form-control" name="email" placeholder="E-mail" required>
+              	<small class="form-text text-muted">Não compartilharemos seu e-mail com ninguém.</small>
+              </div>
+              <div class="form-group">
+              	<input type="password" class="form-control" name="senha" placeholder="Senha" required> 
+              </div>
+            </form>
+            <button type="button" class="btn btn-primary" id="btn_login">Login</button>
+			<button type="button" class="btn btn-primary" id="btn_cadastrar">
+			Cadastrar-se
+			</button>
+			<br>
+			<a data-target="#modal_esqueci" data-toggle="modal" href="#modal_esqueci">Esqueci minha senha</a>
+		  </div>
+        </div>
+      </div>
+    </div>
+      
+<!--Modal(PopUp) de Redefinição de Senha-->
+    
+    <div class="modal fade" id="modal_esqueci">
+  	  <div class="modal-dialog">
+    	<div class="modal-content">
+      	  <div class="modal-header">
+        	<h5 class="modal-title">Redefinição de Senha</h5>
+        	<button type="button" class="close" data-dismiss="modal">
+          	  <span>&times;</span>
+      	    </button>
+      	  </div>
+      	  <div class="modal-body">
+            <form id="esqueci">
+              <div class="form-group">
+              	<input type="text" class="form-control cpf" placeholder="CPF" name="cpf" required>
+              </div>
+              <div class="form-group">
+              	<input type="email" class="form-control email" placeholder="E-mail" name="email" required>
+              	<small class="form-text text-muted">Você receberá uma mensagem para redefinir a senha.</small>
+              </div>
+            </form>
+            <button type="button" class="btn btn-primary" id="redefinir">Enviar</button>
+		  </div>
+        </div>
+      </div>
+    </div>
 
 	<!--Modal(PopUp) de Redefinição de Senha-->
 
@@ -91,7 +116,7 @@
 						<div class="form-group">
 							<input type="email" class="form-control email"
 								placeholder="E-mail" name="email" required> <small
-								class="form-text text-muted">VocÃª receberÃ¡ uma
+								class="form-text text-muted">Você receberá uma
 								mensagem para redefinir a senha.</small>
 						</div>
 					</form>
