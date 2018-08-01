@@ -7,8 +7,8 @@ public enum UserInfo implements Info {
    * campos da tabela no banco de dados
    */
 
-  Nome("nomeUser"), Sobrenome("sobrenomeUser"), Email("emailUser"), Senha("senhaUser"), CPF(
-      "cpfUser"), DataNasc("nascimentoUser"), Telefone("telefoneUser");
+  ID("idUser"), Nome("nomeUser"), Sobrenome("sobrenomeUser"), Email("emailUser"), Senha("senhaUser"), CPF(
+      "cpfUser"), DataNasc("nascimentoUser"), Telefone("telefoneUser"), Tipo("tipoUser"), Situacao("situacaoUser");
 
 
   // Campo que esse enum representa no banco
@@ -16,7 +16,7 @@ public enum UserInfo implements Info {
 
   // Construtor pra receber o campo que esse enum representa no banco
   UserInfo(String campo) {
-
+    
     this.campo = campo;
   }
 

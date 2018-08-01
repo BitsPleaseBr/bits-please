@@ -3,6 +3,7 @@ package model.bean;
 import java.util.HashMap;
 import model.info.Info;
 import model.info.PacienteInfo;
+import model.info.UserInfo;
 
 public class PacienteBean extends UserBean {
 
@@ -10,6 +11,12 @@ public class PacienteBean extends UserBean {
   private HashMap<PacienteInfo, Object> infosPac = new HashMap<>();
 
 
+  public PacienteBean() {
+    
+    getInfosUser().put(UserInfo.Tipo, 1);
+  }
+  
+  
   public PacienteBean setInfo(PacienteInfo key, Object value) {
 
     infosPac.put(key, value);

@@ -3,12 +3,19 @@ package model.bean;
 import java.util.HashMap;
 import model.info.Info;
 import model.info.ProfissionalInfo;
+import model.info.UserInfo;
 
 public class ProfissionalBean extends UserBean {
 
 
   private HashMap<ProfissionalInfo, Object> infosPro = new HashMap<>();
 
+  
+  public ProfissionalBean() {
+    
+    getInfosUser().put(UserInfo.Tipo, 2);
+  }
+  
 
   public ProfissionalBean setInfo(ProfissionalInfo key, Object value) {
 	  

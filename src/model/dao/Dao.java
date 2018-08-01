@@ -12,8 +12,7 @@ public abstract class Dao {
 
 
   protected String tabela;
-  protected String primaryKeyField;
-  
+
 
   protected PreparedStatement mapToInsertStatement(HashMap<? extends Info, Object> mapa) {
 
@@ -22,24 +21,45 @@ public abstract class Dao {
 
   protected PreparedStatement mapToInsertStatement(String tabela, HashMap<? extends Info, Object> mapa) {
 
-    PreparedStatement ps = createStatement(estruturarInsert(mapa, tabela));
+    PreparedStatement ps = createStatement(estruturarInsert(tabela, mapa));
 
-    prepararStatement(ps, mapa);
+    prepareStatement(ps, mapa);
 
     return ps;
   }
 
   
-  protected PreparedStatement infoArrayToSelectStatement(Info...infos) {
+  protected PreparedStatement infoToSelectStatement(Info condition, Object conditionValue, Info... infos) {
     
-    return infoArrayToSelectStatement(tabela, infos);
+    return infoToSelectStatement(tabela, condition, conditionValue, infos);
   }
   
-  protected PreparedStatement infoArrayToSelectStatement(String tabela, Info... infos) {
+  protected PreparedStatement infoToSelectStatement(String tabela, Info condition, Object conditionValue, Info... infos) {
     
-    PreparedStatement ps = createStatement(estruturarSelect(tabela, infos));
+    PreparedStatement ps = createStatement(estruturarSelect(tabela, condition, infos));
     
+    try {
+      
+      ps.setObject(1, conditionValue);
+    } catch (SQLException e) {
+      
+      e.printStackTrace();
+    }
     
+    return ps;
+  }
+  
+  
+  protected PreparedStatement mapToUpdateStatement(HashMap<? extends Info, Object> mapa, Info condition) {
+    
+    return mapToUpdateStatement(tabela, mapa, condition);
+  }
+  
+  protected PreparedStatement mapToUpdateStatement(String tabela, HashMap<? extends Info, Object> mapa, Info condition) {
+    
+    PreparedStatement ps = createStatement(estruturarUpdate(tabela, mapa, condition));
+    
+    prepareUpdateStatement(ps, mapa, condition);
     
     return ps;
   }
@@ -60,7 +80,7 @@ public abstract class Dao {
     return null;
   }
   
-  protected void prepararStatement(PreparedStatement ps, HashMap<? extends Info, Object> mapa) {
+  protected void prepareStatement(PreparedStatement ps, HashMap<? extends Info, Object> mapa) {
 
     try {
 
@@ -75,29 +95,56 @@ public abstract class Dao {
     } catch (SQLException e) {
 
       System.out.println("Erro ao definir valores");
+      e.printStackTrace();
     }
   }
-
   
-  protected String estruturarInsert(HashMap<? extends Info, Object> mapa, String tabela) {
+  protected void prepareUpdateStatement(PreparedStatement ps, HashMap<? extends Info, Object> mapa, Info condition) {
+    
+    int i = 1;
+    
+    try {
+      
+      for (Entry<? extends Info, Object> entrada : mapa.entrySet()) {
+        
+        if (entrada.getKey().equals(condition))
+          continue;
+        
+        ps.setObject(i, entrada.getValue());
+        
+        i++;
+      }
+      
+      ps.setObject(i, mapa.get(condition));
+      
+    } catch (SQLException e) {
+      
+      System.out.println("Erro ao definir valores");
+      e.printStackTrace();
+    }
+  }
+  
 
-    String insert = "insert into " + tabela + "(" + getCampos(mapa) + ") values ("
+  protected String estruturarInsert(String tabela, HashMap<? extends Info, Object> mapa) {
+
+    String insert = "insert into " + tabela + "(" + getInsertCampos(mapa) + ") values ("
         + getValues(mapa.entrySet().size()) + ")";
 
     return insert;
   }
 
-  protected String estruturarSelect(String tabela, Info...infos) {
+  protected String estruturarSelect(String tabela, Info condition, Info... infos) {
     
-    String select = "select " + getCampos(infos) + " from " + tabela + " where " + primaryKeyField + "=";
-    
-    
-    
-    return select;
+    return "select " + getSelectCampos(condition, infos) + " from " + tabela + " where " + condition.getCampo() + " = ?";
   }
+
+  protected String estruturarUpdate(String tabela, HashMap<? extends Info, Object> mapa, Info condition) {
+    
+    return "update " + tabela + " set " + getCamposAndValues(mapa, condition) + " where " + condition.getCampo() + " = ?";
+  }
+ 
   
-  
-  protected String getCampos(HashMap<? extends Info, Object> mapa) {
+  protected String getInsertCampos(HashMap<? extends Info, Object> mapa) {
 
     String campos = "";
 
@@ -114,7 +161,7 @@ public abstract class Dao {
     return campos;
   }
 
-  protected String getCampos(Info...infos) {
+  protected String getSelectCampos(Info condition, Info... infos) {
     
     String campos = "";
 
@@ -122,6 +169,9 @@ public abstract class Dao {
 
     for (Info info : infos) {
 
+      if (info.equals(condition))
+        continue;
+      
       campos += info.getCampo();
       campos += i < infos.length - 1 ? ", " : "";
 
@@ -142,5 +192,27 @@ public abstract class Dao {
     }
 
     return values;
+  }
+
+  protected String getCamposAndValues(HashMap<? extends Info, Object> mapa, Info condition) {
+    
+    String camposAndValues = "";
+    
+    int i = 0;
+    
+    for (Entry<? extends Info, Object> entrada : mapa.entrySet()) {
+      
+      if (entrada.getKey().equals(condition))
+        continue;
+      
+      camposAndValues += ((Info) entrada.getKey()).getCampo() + " = ";
+      camposAndValues += entrada.getValue();
+      
+      camposAndValues += i < mapa.entrySet().size() - 1 ? ", " : "";
+      
+      i++;
+    }
+    
+    return camposAndValues;
   }
 }

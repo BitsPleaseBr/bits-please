@@ -13,11 +13,19 @@ public class UserBean implements Bean {
 
   private HashMap<UserInfo, Object> infosUser = new HashMap<>();
 
+  
+  public UserBean() {
+    
+    infosUser.put(UserInfo.Situacao, 1);
+  }
+  
 
   public UserBean setInfo(UserInfo key, Object value) {
 
     switch (key) {
 
+      case Tipo: return this;
+      
       case CPF:
         value = ((String) value).replaceAll("\\D", "");
         break;
