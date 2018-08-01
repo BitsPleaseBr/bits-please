@@ -58,7 +58,6 @@ public abstract class UserDao extends Dao {
           return rs.getInt(1);
       }
 
-
     } catch (SQLException e) {
 
       e.printStackTrace();
