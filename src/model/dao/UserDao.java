@@ -13,7 +13,7 @@ public abstract class UserDao extends Dao {
 
   protected int cadastrar(UserBean user) {
 
-    PreparedStatement ps = mapToStatement(user.getInfosUser(), "TB_User");
+    PreparedStatement ps = mapToInsertStatement("TB_User", user.getInfosUser());
 
     try {
       ps.executeUpdate();

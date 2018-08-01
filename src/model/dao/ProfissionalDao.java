@@ -21,7 +21,7 @@ public class ProfissionalDao extends UserDao {
 
     try {
 
-      mapToStatement(bean.getInfosPro()).execute();
+      mapToInsertStatement(bean.getInfosPro()).execute();
     } catch (SQLException e) {
 
       System.out.println("Erro ao cadastrar profissional \n" + bean.toString());

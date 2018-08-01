@@ -21,7 +21,7 @@ public class PacienteDao extends UserDao {
 
     try {
 
-      mapToStatement(bean.getInfosPac()).execute();
+      mapToInsertStatement(bean.getInfosPac()).execute();
     } catch (SQLException e) {
 
       System.out.println("Erro ao cadastrar paciente \n" + bean.toString());
