@@ -1,10 +1,10 @@
 <%@page import="control.crypto.PswdStorage"%>
 <%@page import="model.dao.ProfissionalDao"%>
 <%@page import="model.bean.info.UserInfo"%>
-<%@page import="model.bean.info.ProfissionalInfo"%>
-<%@page import="model.bean.ProfissionalBean"%>
+<%@page import="model.bean.info.MedicoInfo"%>
+<%@page import="model.bean.MedicoBean"%>
 <%
-  ProfissionalBean pb = new ProfissionalBean();
+  MedicoBean pb = new MedicoBean();
 
 	//Obtendo email e senha
 	String email = request.getParameter("emailPro");
@@ -23,11 +23,11 @@
 									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefone",
 									  "pais", "uf", "crm", "especializacao"};
 	
-	ProfissionalInfo[] enums = new ProfissionalInfo[] {ProfissionalInfo.CepResidencial, ProfissionalInfo.CidadeResidencial, ProfissionalInfo.BairroResidencial, 
-										   ProfissionalInfo.RuaResidencial, ProfissionalInfo.NumeroResidencial, ProfissionalInfo.ComplementoResidencial, ProfissionalInfo.Celular,
-										   ProfissionalInfo.CepComercial, ProfissionalInfo.CidadeComercial, ProfissionalInfo.BairroComercial,
-										   ProfissionalInfo.RuaComercial, ProfissionalInfo.NumeroComercial, ProfissionalInfo.ComplementoComercial, ProfissionalInfo.TelefoneComercial,
-										   ProfissionalInfo.Pais, ProfissionalInfo.UF, ProfissionalInfo.CRM, ProfissionalInfo.Especializacao};
+	MedicoInfo[] enums = new MedicoInfo[] {MedicoInfo.CepResidencial, MedicoInfo.CidadeResidencial, MedicoInfo.BairroResidencial, 
+										   MedicoInfo.RuaResidencial, MedicoInfo.NumeroResidencial, MedicoInfo.ComplementoResidencial, MedicoInfo.Celular,
+										   MedicoInfo.CepComercial, MedicoInfo.CidadeComercial, MedicoInfo.BairroComercial,
+										   MedicoInfo.RuaComercial, MedicoInfo.NumeroComercial, MedicoInfo.ComplementoComercial, MedicoInfo.TelefoneComercial,
+										   MedicoInfo.Pais, MedicoInfo.UF, MedicoInfo.CRM, MedicoInfo.Especializacao};
 
 	for (int i = 0; i < parIndex.length; i++) {
 		
