@@ -5,9 +5,9 @@ import control.validators.Parsers;
 
 public enum UserInfo implements Info {
 
-  Nome("nomeUser"), Sobrenome("sobrenomeUser"), Email("emailUser"), Senha("senhaUser"), CPF(
-      "cpfUser", a -> Parsers.cpfParse(a)), DataNasc("nascimentoUser",
-          a -> Parsers.dateParse(a)), Telefone("telefoneUser");
+  Nome("nome"), Sobrenome("sobrenome"), Email("email"), Senha("senha"), CPF(
+      "cpf", a -> Parsers.cpfParse(a)), DataNasc("nascimento",
+          a -> Parsers.dateParse(a)), Telefone("telefone"), Situacao("situacao"), Tipo("tipo");
 
 
   // Campo que esse enum representa no banco
@@ -19,8 +19,7 @@ public enum UserInfo implements Info {
   // Caso não seja fornecido uma função de parsing, então a função padrão é usada
   UserInfo(String campo) {
 
-    this.campo = campo;
-    this.parser = valor -> valor;
+    this(campo, valor -> valor);
   }
 
   UserInfo(String campo, Function<Object, Object> parser) {
