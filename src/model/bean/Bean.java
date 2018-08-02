@@ -1,7 +1,7 @@
 package model.bean;
 
 import java.util.HashMap;
-import model.info.Info;
+import model.bean.info.Info;
 
 public interface Bean {
 

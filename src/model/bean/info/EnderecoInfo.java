@@ -1,4 +1,4 @@
-package model.info;
+package model.bean.info;
 
 public enum EnderecoInfo implements Info {
 

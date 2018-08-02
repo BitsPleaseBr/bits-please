@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import model.bean.info.Info;
 import model.conexao.ConnectionFactory;
-import model.info.Info;
 
 public abstract class Dao {
 

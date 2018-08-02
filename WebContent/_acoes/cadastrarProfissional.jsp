@@ -1,7 +1,7 @@
 <%@page import="control.crypto.PswdStorage"%>
 <%@page import="model.dao.ProfissionalDao"%>
-<%@page import="model.info.UserInfo"%>
-<%@page import="model.info.ProfissionalInfo"%>
+<%@page import="model.bean.info.UserInfo"%>
+<%@page import="model.bean.info.ProfissionalInfo"%>
 <%@page import="model.bean.ProfissionalBean"%>
 <%
   ProfissionalBean pb = new ProfissionalBean();

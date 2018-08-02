@@ -1,6 +1,6 @@
 <%@page import="control.crypto.PswdStorage"%>
 <%@page import="model.dao.PacienteDao"%>
-<%@page import="model.info.UserInfo"%>
+<%@page import="model.bean.info.UserInfo"%>
 <%@page import="model.bean.PacienteBean"%>
 <%
   PacienteBean pb = new PacienteBean();

@@ -1,9 +1,9 @@
 package model.bean;
 
 import java.util.HashMap;
-import model.info.Info;
-import model.info.PacienteInfo;
-import model.info.UserInfo;
+import model.bean.info.Info;
+import model.bean.info.PacienteInfo;
+import model.bean.info.UserInfo;
 
 public class PacienteBean extends UserBean {
 
