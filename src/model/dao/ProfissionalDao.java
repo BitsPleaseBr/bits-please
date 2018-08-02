@@ -1,8 +1,8 @@
 package model.dao;
 
 import java.sql.SQLException;
-import model.bean.ProfissionalBean;
-import model.info.ProfissionalInfo;
+import model.bean.MedicoBean;
+import model.info.MedicoInfo;
 
 public class ProfissionalDao extends UserDao {
 
@@ -13,15 +13,15 @@ public class ProfissionalDao extends UserDao {
   }
 
 
-  public ProfissionalDao cadastrar(ProfissionalBean bean) {
+  public ProfissionalDao cadastrar(MedicoBean bean) {
 
     int id = super.cadastrar(bean);
 
-    bean.setInfo(ProfissionalInfo.IDUser, id);
+    bean.setInfo(MedicoInfo.IDUser, id);
 
     try {
 
-      mapToStatement(bean.getInfosPro()).execute();
+      mapToInsertStatement(bean.getInfosPro()).execute();
     } catch (SQLException e) {
 
       System.out.println("Erro ao cadastrar profissional \n" + bean.toString());

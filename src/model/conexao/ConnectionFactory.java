@@ -4,7 +4,8 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import control.extras.Arquivo;
+import java.util.Properties;
+import control.extras.PropertiesManager;
 
 /**
  * @author Diogo Classe para criar uma conexão com o banco de dados. Não pode ser instanciada.
@@ -22,15 +23,15 @@ public class ConnectionFactory {
 
   static {
     
-    String[] dados = new Arquivo().read("credenciais/conexoes.txt").split("##");
-
-    prefixoConnection = dados[0];
-    urlBD = dados[1];
-    porta = dados[2];
-    nomeBD = dados[3];
+    Properties pr = new PropertiesManager().getConnectionProperties();
+    
+    prefixoConnection = pr.getProperty("prefixoConnection");
+    urlBD = pr.getProperty("urlBD");
+    porta = pr.getProperty("porta");
+    nomeBD = pr.getProperty("nomeBD");
     connectionURL = prefixoConnection + urlBD + porta + nomeBD;
-    user = dados[4];
-    password = dados[5];
+    user = pr.getProperty("user");
+    password = pr.getProperty("password");
   }
   
   /**
