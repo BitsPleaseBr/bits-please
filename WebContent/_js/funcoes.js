@@ -66,10 +66,10 @@ $(document).ready(function(){
 			 telefone:{
 				minlength: 14 
 			 },
-			 email: {
+			 emailPro: {
 				 email: true
 			 },
-			 senha: {
+			 senhaPro: {
 				 minlength: 6
 			 }
 		 },
@@ -95,11 +95,11 @@ $(document).ready(function(){
 			 ufCome: "Obrigatório",
 			 ruaCome: "Obrigatório",
 			 numeroCome: "Obrigatório",
-			 email: {
+			 emailPro: {
 				 required: "Precisamos do seu e-mail para entrar em contato contigo",
 				 email: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
 			 },
-			 senha: {
+			 senhaPro: {
 				 required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo.",
 				 minlength: jQuery.validator.format("É necessário pelo menos {0} caracteres!")
 			 }
@@ -113,10 +113,10 @@ $(document).ready(function(){
 		  date: false,
 		  dateITA: true
  		},
-		email: {
+		emailPac: {
 		  email: true
 		},
- 		senha: {
+ 		senhaPac: {
  		  minlength: 6
  		}
 	  },
@@ -128,11 +128,11 @@ $(document).ready(function(){
 		  required: "Faltou esse aqui",
 		  dateITA: "Formato dd/mm/aaaa por favor"
 		},
-		email: {
-	      required: "Precisamos do seu e-mail para entrar em contato contigo",
-	      email: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
+		emailPac: {
+	      	  required: "Precisamos do seu e-mail para entrar em contato contigo",
+	      	  emailPac: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
 		},
-		senha: {
+		senhaPac: {
 		  required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo.",
 		  minlength: jQuery.validator.format("É necessário pelo menos {0} caracteres!")
 		}
@@ -208,6 +208,37 @@ $(document).ready(function(){
           })
     	}
     })
+    
+    
+    //Validar Cpf
+    
+    jQuery.validator.addMethod("cpf", function(value, element) {
+    	value = jQuery.trim(value);
+
+    	value = value.replace('.','');
+    	value = value.replace('.','');
+    	cpf = value.replace('-','');
+    	while(cpf.length < 11) cpf = "0"+ cpf;
+    	var expReg = /^[\d]{11}$/;
+    	var a = [];
+    	var b = new Number;
+    	var c = 11;
+    	for (i=0; i<11; i++){
+    		a[i] = cpf.charAt(i);
+    		if (i < 9) b += (a[i] * --c);
+    	}
+    	if ((x = b % 11) < 2) { a[9] = 0 } else { a[9] = 11-x }
+    	b = 0;
+    	c = 11;
+    	for (y=0; y<10; y++) b += (a[y] * c--);
+    	if ((x = b % 11) < 2) { a[10] = 0; } else { a[10] = 11-x; }
+
+    	var retorno = true;
+    	if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) retorno = false;
+
+    	return this.optional(element) || retorno;
+
+    }, "Informe um CPF válido");
     
     //Buscar CEP Residencial
     
