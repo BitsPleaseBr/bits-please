@@ -1,10 +1,11 @@
 package model.bean.info;
 
 import java.util.function.Function;
+import control.validators.Parsers;
 
 public enum TelefoneInfo implements Info {
 
-  Numero("numero"), IdUser("user_id"), Tipo("tipo");
+  Numero("numero", a->Parsers.removeNonNum(a)), IDUser("user_id"), Tipo("tipo");
 
   // Campo que esse enum representa no banco
   private final String campo;

@@ -6,12 +6,15 @@ import model.bean.info.TelefoneInfo;
 
 public class TelefoneBean implements Bean {
 
+  
+  public final int TELEFONE = 1, CELULAR = 2;
+  
   private HashMap<TelefoneInfo, Object> infosTel = new HashMap<>();
   
   
   public TelefoneBean setInfo(TelefoneInfo key, Object value) {
     
-    infosTel.put(key, value);
+    infosTel.put(key, key.parse(value));
     
     return this;
   }

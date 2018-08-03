@@ -25,17 +25,17 @@ public class Parsers {
     return str.length()==11? str:null;
   }
   
-  public static DateFormat dateParse(Object data) {
+  public static Date dateParse(Object data) {
     DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     try {
 
-      data = new Date(format.parse((String) data).getTime());
+      return new Date(format.parse((String) data).getTime());
     } catch (ParseException e) {
 
       e.printStackTrace();
     }
     
-    return format;
+    return null;
   }
 }

@@ -6,12 +6,15 @@ import model.bean.info.Info;
 
 public class EnderecoBean implements Bean {
 
+  
+  public final int RESIDENCIAL = 1, COMERCIAL = 2;
+  
   private HashMap<EnderecoInfo, Object> infosEnd = new HashMap<>();
   
   
   public EnderecoBean setInfo(EnderecoInfo key, Object value) {
     
-    infosEnd.put(key, value);
+    infosEnd.put(key, key.parse(value));
     
     return this;
   }

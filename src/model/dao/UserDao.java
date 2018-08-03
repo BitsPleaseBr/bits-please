@@ -3,23 +3,26 @@ package model.dao;
 import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import control.crypto.PswdStorage;
 import model.bean.UserBean;
-import model.conexao.ConnectionFactory;
+import model.bean.info.Info;
+import model.bean.info.Tabela;
+import model.bean.info.UserInfo;
 
 public abstract class UserDao extends Dao {
 
 
-  protected int cadastrar(UserBean user) {
+  protected int cadastrar(UserBean bean) {
 
-    PreparedStatement ps = mapToInsertStatement("TB_User", user.getInfosUser());
+    PreparedStatement ps = mapToInsertStatement(Tabela.User, bean.getInfosUser());
 
     try {
       ps.executeUpdate();
     } catch (SQLException e) {
 
-      System.out.println("Erro ao cadastrar usuário \n" + user.toString());
+      System.out.println("Erro ao cadastrar usuário \n" + bean.toString());
       e.printStackTrace();
     }
 
@@ -30,24 +33,73 @@ public abstract class UserDao extends Dao {
         return rs.getInt(1);
     } catch (SQLException e) {
 
-      System.out.println("Erro ao obter id do usuário cadastrado \n" + user.toString());
+      System.out.println("Erro ao obter id do usuário cadastrado \n" + bean.toString());
       e.printStackTrace();
     }
 
     return -1;
   }
 
-  public int login(String email, String senha) {
-
-    String select = "select idUser, senhaUser from TB_User where emailUser = ?";
+  protected UserDao alterar(UserBean bean) {
 
     try {
 
-      PreparedStatement ps = ConnectionFactory.getConnection().prepareStatement(select);
+      mapToUpdateStatement(Tabela.User, bean.getInfosUser(), UserInfo.ID).execute();
+    } catch (SQLException e) {
 
-      ps.setString(1, email);
+      System.out.println("Não foi possível alterar o usuário com id " + bean.getInfo(UserInfo.ID));
+      e.printStackTrace();
+    }
 
-      ResultSet rs = ps.executeQuery();
+    return this;
+  }
+
+  protected UserBean selecionar(Info condition, Object conditionValue) {
+    
+    try {
+
+      ResultSet rs =
+          infoToSelectStatement(Tabela.User, UserInfo.ID, conditionValue, UserInfo.values()).executeQuery();
+
+      while (rs.next()) {
+
+        UserBean bean = new UserBean();
+        
+        ResultSetMetaData rsmd = rs.getMetaData();
+
+        for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+
+          String colName = rsmd.getColumnName(i);
+          
+          for (UserInfo info : UserInfo.values()) {
+            
+            if (info.getCampo().equals(colName))
+              bean.setInfo(info, rs.getObject(i)); break;
+          }
+        }
+        
+        return bean;
+      }
+
+    } catch (SQLException e) {
+
+      System.out.println("Não foi possível selecionar o usuário usando a condição " + condition
+          + " com  o valor " + conditionValue);
+      e.printStackTrace();
+    }
+
+    return null;
+  }
+
+  public int login(String email, String senha) {
+
+    try {
+
+      StatementFactory sf = new StatementFactory();
+
+      ResultSet rs =
+          sf.setTabela(Tabela.User).setTipo(sf.SELECT).setInfos(UserInfo.ID, UserInfo.Senha)
+              .setCondition(UserInfo.Email).setConditionValue(email).create().executeQuery();
 
       while (rs.next()) {
 
