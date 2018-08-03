@@ -123,7 +123,7 @@ $(document).ready(function(){
 	  messages: {
 		nome: "Hey, não esquece esse",
 		sobrenome: "Esse também é importante",
-		cpf:"Vazio aqui não pode hein",
+		cpf: "Vazio aqui não pode hein",
 		data: {
 		  required: "Faltou esse aqui",
 		  dateITA: "Formato dd/mm/aaaa por favor"
