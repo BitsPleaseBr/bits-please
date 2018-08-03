@@ -5,8 +5,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import model.info.Info;
-import model.info.UserInfo;
+import model.bean.info.Info;
+import model.bean.info.UserInfo;
 
 public class UserBean implements Bean {
 

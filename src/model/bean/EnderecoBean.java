@@ -1,8 +1,8 @@
 package model.bean;
 
 import java.util.HashMap;
-import model.info.EnderecoInfo;
-import model.info.Info;
+import model.bean.info.EnderecoInfo;
+import model.bean.info.Info;
 
 public class EnderecoBean implements Bean {
 

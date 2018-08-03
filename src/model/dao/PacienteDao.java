@@ -2,7 +2,7 @@ package model.dao;
 
 import java.sql.SQLException;
 import model.bean.PacienteBean;
-import model.info.PacienteInfo;
+import model.bean.info.PacienteInfo;
 
 public class PacienteDao extends UserDao {
 
