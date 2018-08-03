@@ -7,7 +7,7 @@ public enum EnderecoInfo implements Info {
 
 
   Cep("cep", a->Parsers.cepParse(a)), Estado("estado"), Cidade("cidade"), Bairro("bairro"), Rua("rua"), Numero(
-      "numero", a->Parsers.removeNonNum(a)), Complemento("complemento"), IdUser("user_id"), Tipo("tipo");
+      "numero", a->Parsers.removeNonNum(a)), Complemento("complemento"), IDUser("user_id"), Tipo("tipo");
 
   // Campo que esse enum representa no banco
   private final String campo;

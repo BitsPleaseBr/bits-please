@@ -1,9 +1,6 @@
 package model.bean;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import model.bean.info.Info;
 import model.bean.info.UserInfo;
@@ -12,7 +9,9 @@ public class UserBean implements Bean {
 
 
   private HashMap<UserInfo, Object> infosUser = new HashMap<>();
-
+  private ArrayList<EnderecoBean> enderecos = new ArrayList<>();
+  private ArrayList<TelefoneBean> telefones = new ArrayList<>();
+  
   
   public UserBean() {
     
@@ -22,33 +21,7 @@ public class UserBean implements Bean {
 
   public UserBean setInfo(UserInfo key, Object value) {
 
-    switch (key) {
-
-      case Tipo: return this;
-      
-      case CPF:
-        value = ((String) value).replaceAll("\\D", "");
-        break;
-
-      case DataNasc: {
-
-        DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-
-        try {
-
-          value = new Date(format.parse((String) value).getTime());
-        } catch (ParseException e) {
-
-          e.printStackTrace();
-        }
-        break;
-      }
-
-      default:
-        break;
-    }
-
-    infosUser.put(key, value);
+    infosUser.put(key, key.parse(value));
 
     return this;
   }
@@ -64,6 +37,31 @@ public class UserBean implements Bean {
   }
 
 
+  public UserBean addTelefone(TelefoneBean bean) {
+    
+    telefones.add(bean);
+    
+    return this;
+  }
+  
+  public UserBean addEndereco(EnderecoBean bean) {
+    
+    enderecos.add(bean);
+    
+    return this;
+  }
+  
+  
+  public ArrayList<EnderecoBean> getEnderecos() {
+    
+    return enderecos;
+  }
+  
+  public ArrayList<TelefoneBean> getTelefones() {
+    
+    return telefones;
+  }
+  
   @Override
   public HashMap<Info, Object> getInfos() {
 

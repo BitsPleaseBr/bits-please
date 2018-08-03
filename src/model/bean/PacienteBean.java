@@ -19,7 +19,7 @@ public class PacienteBean extends UserBean {
   
   public PacienteBean setInfo(PacienteInfo key, Object value) {
 
-    infosPac.put(key, value);
+    infosPac.put(key, key.parse(value));
 
     return this;
   }

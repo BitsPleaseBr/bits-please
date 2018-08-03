@@ -12,7 +12,7 @@
   pb.setInfo(UserInfo.Nome, request.getParameter("nome"));
   pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
   pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
-  pb.setInfo(UserInfo.DataNasc, request.getParameter("data"));
+  pb.setInfo(UserInfo.DataNascimento, request.getParameter("data"));
   pb.setInfo(UserInfo.Email, email);
   pb.setInfo(UserInfo.Senha, PswdStorage.clientPswdHash(senha, email));
 

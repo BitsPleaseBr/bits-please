@@ -8,7 +8,7 @@ import model.bean.info.UserInfo;
 public class MedicoBean extends UserBean {
 
 
-  private HashMap<MedicoInfo, Object> infosPro = new HashMap<>();
+  private HashMap<MedicoInfo, Object> infosMed = new HashMap<>();
 
   
   public MedicoBean() {
@@ -19,19 +19,22 @@ public class MedicoBean extends UserBean {
 
   public MedicoBean setInfo(MedicoInfo key, Object value) {
 	  
-    infosPro.put(key, value);
+    if (key.equals(MedicoInfo.IDUser))
+      getInfosUser().put(UserInfo.ID, key.parse(value));
+    
+    infosMed.put(key, key.parse(value));
 
     return this;
   }
 
   public Object getInfo(MedicoInfo key) {
 
-    return infosPro.get(key);
+    return infosMed.get(key);
   }
 
-  public HashMap<MedicoInfo, Object> getInfosPro() {
+  public HashMap<MedicoInfo, Object> getInfosMed() {
 
-    return infosPro;
+    return infosMed;
   }
 
 
@@ -40,7 +43,7 @@ public class MedicoBean extends UserBean {
 
     HashMap<Info, Object> info = new HashMap<>();
 
-    info.putAll(infosPro);
+    info.putAll(infosMed);
     info.putAll(getInfosUser());
 
     return info;
