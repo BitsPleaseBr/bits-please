@@ -66,19 +66,17 @@ $(document).ready(function(){
 			 telefone:{
 				minlength: 14 
 			 },
-			 email: {
+			 emailPro: {
 				 email: true
 			 },
-			 senha: {
+			 senhaPro: {
 				 minlength: 6
 			 }
 		 },
 		 messages:{
 			 nome: "Obrigatório",
 			 sobrenome: "Obrigatório",
-			 cpf: {
-				 required: "Obrigatório",
-			 },
+			 cpf: "Obrigatório",
 			 data: "Obrigatório",
 			 celular: "Obrigatório",
 			 crm: "Obrigatório",
@@ -97,11 +95,11 @@ $(document).ready(function(){
 			 ufCome: "Obrigatório",
 			 ruaCome: "Obrigatório",
 			 numeroCome: "Obrigatório",
-			 email: {
+			 emailPro: {
 				 required: "Precisamos do seu e-mail para entrar em contato contigo",
 				 email: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
 			 },
-			 senha: {
+			 senhaPro: {
 				 required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo.",
 				 minlength: jQuery.validator.format("É necessário pelo menos {0} caracteres!")
 			 }
@@ -115,28 +113,26 @@ $(document).ready(function(){
 		  date: false,
 		  dateITA: true
  		},
-		email: {
+		emailPac: {
 		  email: true
 		},
- 		senha: {
+ 		senhaPac: {
  		  minlength: 6
  		}
 	  },
 	  messages: {
 		nome: "Hey, não esquece esse",
 		sobrenome: "Esse também é importante",
-		cpf: {
-			required: "Vazio aqui não pode hein"
-		},
+		cpf:"Vazio aqui não pode hein",
 		data: {
 		  required: "Faltou esse aqui",
 		  dateITA: "Formato dd/mm/aaaa por favor"
 		},
-		email: {
-	      required: "Precisamos do seu e-mail para entrar em contato contigo",
-	      email: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
+		emailPac: {
+	      	  required: "Precisamos do seu e-mail para entrar em contato contigo",
+	      	  emailPac: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
 		},
-		senha: {
+		senhaPac: {
 		  required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo.",
 		  minlength: jQuery.validator.format("É necessário pelo menos {0} caracteres!")
 		}
@@ -223,7 +219,7 @@ $(document).ready(function(){
     	value = value.replace('.','');
     	cpf = value.replace('-','');
     	while(cpf.length < 11) cpf = "0"+ cpf;
-    	var expReg = /^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$/;
+    	var expReg = /^[\d]{11}$/;
     	var a = [];
     	var b = new Number;
     	var c = 11;
