@@ -1,0 +1,36 @@
+<%@ include file="includes/topo.jsp"%>
+
+<title>Email de Confirmação</title>
+</head>
+<body>
+	
+	<div class="email-background">
+	
+
+		<div class="email-preheader"></div>
+		
+		<img src="_img/icon.png">
+							
+		<div class="email-container">
+		
+			<h1>Bem vindo ao Bits-please!</h1>
+			
+			<p><img src="_img/confirmar.png">
+			
+			<p>Seu pré-cadastro está quase completo, mas antes precisamos 
+			confirmar seu endereço de Email, então clique no botão abaixo para confirmar. 
+			Caso você não tenha feito o cadastro em nosso site, porfavor desconsidere essa mensagem.  
+		
+			<script>
+				function capturarUrl() {
+					urlAtual = window.location.href.toString();
+				    alert(urlAtual);
+				}
+			</script>
+
+			
+			<p><button onclick="capturarUrl()">Clique aqui para confirmar!</button>
+		</div>
+	</div>
+</body>
+</html>
