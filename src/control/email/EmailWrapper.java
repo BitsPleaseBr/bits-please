@@ -22,18 +22,20 @@ public class EmailWrapper {
     htmlEmail = String.format(htmlEmail, hash);
     return htmlEmail;
   }
-  
+
   public static void enviarEmailConfirmacao(PacienteBean paciente) {
     String id = String.valueOf(paciente.getInfo(PacienteInfo.IDUser));
-    // Concatena todos os dados do usuário em uma só string. Essa string será hasheada para criar a ID de confirmação.
-    String hash = paciente.getInfos().values().stream().map(a -> String.valueOf(a)).collect(Collectors.joining());
+    // Concatena todos os dados do usuário em uma só string. Essa string será hasheada para criar a
+    // ID de confirmação.
+    String hash = paciente.getInfos().values().stream().map(a -> String.valueOf(a))
+        .collect(Collectors.joining());
     hash = BCrypt.hashpw(hash, BCrypt.gensalt());
     hash = id + "$" + hash;
     String corpo = htmlEmailConfirmacao(hash);
     String endereco = String.valueOf(paciente.getInfo(UserInfo.Email));
     sendHTMLEmail(endereco, corpo);
   }
-  
+
   public static void sendHTMLEmail(String endereco, String corpo) {
     // Create the email message
     HtmlEmail email = new HtmlEmail();

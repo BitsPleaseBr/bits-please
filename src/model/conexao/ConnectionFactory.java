@@ -11,7 +11,7 @@ import control.extras.PropertiesManager;
  * @author Diogo Classe para criar uma conexão com o banco de dados. Não pode ser instanciada.
  */
 public class ConnectionFactory {
-  
+
   // Constantes para acessar o banco de dados
   private static String prefixoConnection = "";
   private static String urlBD = "";
@@ -22,9 +22,9 @@ public class ConnectionFactory {
   private static String password = "";
 
   static {
-    
+
     Properties pr = new PropertiesManager().getConnectionProperties();
-    
+
     prefixoConnection = pr.getProperty("prefixoConnection");
     urlBD = pr.getProperty("urlBD");
     porta = pr.getProperty("porta");
@@ -33,7 +33,7 @@ public class ConnectionFactory {
     user = pr.getProperty("user");
     password = pr.getProperty("password");
   }
-  
+
   /**
    * Método para retornar a conexão com o banco de dados
    * 
@@ -54,21 +54,21 @@ public class ConnectionFactory {
     }
     return conexao;
   }
-  
+
   public static String getLocation() {
-    
+
     String nomeClasse = "ConnectionFactory.class";
     String path = new File(nomeClasse).getPath();
-    
+
     int lengthNome = nomeClasse.length();
-    
+
     System.out.println(path);
     System.out.println(path.substring(0, path.length() - lengthNome));
-    
+
     return path.substring(0, path.length() - lengthNome);
   }
 
   private ConnectionFactory() {
-    
+
   }
 }

@@ -5,8 +5,8 @@ import control.validators.Parsers;
 
 public enum UserInfo implements Info {
 
-  Nome("nome"), Sobrenome("sobrenome"), Email("email"), Senha("senha"), CPF(
-      "cpf", a -> Parsers.cpfParse(a)), DataNasc("nascimento",
+  Nome("nome"), Sobrenome("sobrenome"), Email("email"), Senha("senha"), CPF("cpf",
+      a -> Parsers.cpfParse(a)), DataNasc("nascimento",
           a -> Parsers.dateParse(a)), Telefone("telefone"), Situacao("situacao"), Tipo("tipo");
 
 

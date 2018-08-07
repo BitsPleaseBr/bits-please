@@ -32,7 +32,7 @@ public class PswdStorage {
   }
 
   public static boolean compararHashClient(String senha, byte[] hash) {
-    String hashString = new String(hash, StandardCharsets.UTF_8);    
+    String hashString = new String(hash, StandardCharsets.UTF_8);
     return BCrypt.checkpw(senha, hashString);
   }
 

@@ -12,11 +12,11 @@ public class PacienteBean extends UserBean {
 
 
   public PacienteBean() {
-    
+
     getInfosUser().put(UserInfo.Tipo, 1);
   }
-  
-  
+
+
   public PacienteBean setInfo(PacienteInfo key, Object value) {
 
     infosPac.put(key, value);
