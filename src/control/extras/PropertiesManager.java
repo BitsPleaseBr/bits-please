@@ -46,6 +46,7 @@ public class PropertiesManager {
    * @param endereco
    * O endereço do caminho do arquivo a ser convertido
    * @return
+   * String do conteúdo de texto do arquivo.
    */
   public static String getStringFromDocument(String endereco) {
 
