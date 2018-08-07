@@ -1,6 +1,5 @@
 package control.email;
 
-import java.net.URL;
 import java.util.stream.Collectors;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
