@@ -67,16 +67,20 @@ $(document).ready(function(){
 				minlength: 14 
 			 },
 			 emailPro: {
-				 email: true
+				 email: true,
+				 emailBanco: true
 			 },
 			 senhaPro: {
 				 minlength: 6
+			 },
+			 cpf: {
+				 cpf: true,
+				 cpfBanco: true
 			 }
 		 },
 		 messages:{
 			 nome: "Obrigatório",
 			 sobrenome: "Obrigatório",
-			 cpf: "Obrigatório",
 			 data: "Obrigatório",
 			 celular: "Obrigatório",
 			 crm: "Obrigatório",
@@ -95,9 +99,14 @@ $(document).ready(function(){
 			 ufCome: "Obrigatório",
 			 ruaCome: "Obrigatório",
 			 numeroCome: "Obrigatório",
+			 cpf: {
+				 cpf: "CPF inválido",
+				 cpfBanco: "Esse CPF não pode ser usado duas vezes"
+			 },
 			 emailPro: {
 				 required: "Precisamos do seu e-mail para entrar em contato contigo",
-				 email: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
+				 email: "Seu e-mail precisa ser parecido com esse: david@dominio.com",
+				 emailBanco: "Esse E-mail não pode ser usado duas vezes"
 			 },
 			 senhaPro: {
 				 required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo.",
@@ -114,23 +123,33 @@ $(document).ready(function(){
 		  dateITA: true
  		},
 		emailPac: {
-		  email: true
+		  email: true,
+		  emailBanco: true
 		},
  		senhaPac: {
  		  minlength: 6
+ 		},
+ 		cpf: {
+ 			cpf: true,
+ 			cpfBanco: true
  		}
 	  },
 	  messages: {
 		nome: "Hey, não esquece esse",
 		sobrenome: "Esse também é importante",
-		cpf: "Vazio aqui não pode hein",
+		cpf: {
+			required: "Vazio aqui não pode hein",
+			cpf: "ta errado esse CPF aí hein",
+			cpfBanco : "o já tem gente usando esse cpf"
+		},
 		data: {
 		  required: "Faltou esse aqui",
 		  dateITA: "Formato dd/mm/aaaa por favor"
 		},
 		emailPac: {
 	      	  required: "Precisamos do seu e-mail para entrar em contato contigo",
-	      	  emailPac: "Seu e-mail precisa ser parecido com esse: david@dominio.com"
+	      	  email: "Seu e-mail precisa ser parecido com esse: david@dominio.com",
+	      	  emailBanco: "o mano já tem gente usando esse email ta ligado"
 		},
 		senhaPac: {
 		  required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo.",
@@ -219,7 +238,7 @@ $(document).ready(function(){
     	value = value.replace('.','');
     	cpf = value.replace('-','');
     	while(cpf.length < 11) cpf = "0"+ cpf;
-    	var expReg = /^[\d]{11}$/;
+    	var expReg = /^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$/;
     	var a = [];
     	var b = new Number;
     	var c = 11;
@@ -240,6 +259,60 @@ $(document).ready(function(){
 
     }, "Informe um CPF válido");
     
+	//Função para verificar se o Email já existe no banco
+    
+    jQuery.validator.addMethod("emailBanco", function(value, element) {
+    	
+    	var resultado = false;
+    	var dados = "&email=" + value;
+    	
+    	$.ajaxSetup({async: false});
+    	
+    	$.ajax({
+    		
+    		type: "POST",
+    		url: "_acoes/verificarEmail.jsp",
+    		data: dados,
+    		success: function(data) {
+    			
+    			if (data.trim() == "true") {
+    				resultado = true;
+    			}
+    		}
+    	});
+    	
+    	$.ajaxSetup({async: true});
+    	
+    	return resultado;
+    });
+    
+    //Função para verificar se o CPF já existe no banco
+    
+    jQuery.validator.addMethod("cpfBanco", function(value, element) {
+    	
+    	var resultado = false;
+    	var dados = "&cpf=" + value;
+    	
+    	$.ajaxSetup({async: false});
+    	
+    	$.ajax({
+    		
+    		type: "POST",
+    		url: "_acoes/verificarCPF.jsp",
+    		data: dados,
+    		success: function(data) {
+
+    			if (data.trim() == "true") {
+    				resultado = true;
+    			}
+    		}
+    	});
+    	
+    	$.ajaxSetup({async: true});
+    	
+    	return resultado;
+    });
+	
     //Buscar CEP Residencial
     
     function limpa_formulário_cepResi() {

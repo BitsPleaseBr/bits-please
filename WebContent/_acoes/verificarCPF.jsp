@@ -10,5 +10,13 @@
 	StatementFactory sf = new StatementFactory();
 	ResultSet rs = sf.setTabela(Tabela.User).setTipo(sf.SELECT).setInfos(UserInfo.Situacao).setCondition(UserInfo.CPF).setConditionValue(cpf).create().executeQuery();
 	
-	out.print(rs.next() ? rs.getInt(1) > 3 ? false : true : true);
+	if (rs.next()) {
+	  if (rs.getInt(1) > 3) {
+	    out.print(true);
+	  } else {
+	    out.print(false);
+	  }
+	} else {
+	  out.println(false);
+	}
 %>
