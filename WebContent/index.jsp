@@ -174,5 +174,6 @@
 
 
 	<script src="_js/funcoes.js" type="text/javascript"></script>
+	<script src="_js/ajax.js" type="text/javascript"></script>
 </body>
 </html>

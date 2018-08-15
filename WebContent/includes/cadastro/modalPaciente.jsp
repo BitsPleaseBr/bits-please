@@ -15,7 +15,7 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <input type="text" id="cpf" class="form-control cpf" name="cpf" placeholder="CPF" required>
+            <input type="text" id="cpfPac" class="form-control cpf" name="cpf" placeholder="CPF" required>
         </div>
         <div class="form-group col-md-6">
 			<input type="datetime" class="form-control date" name="data" placeholder="Data de Nascimento" required>
