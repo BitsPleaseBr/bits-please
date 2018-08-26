@@ -10,8 +10,8 @@
 <%
   	MedicoBean pb = new MedicoBean();
 	//Obtendo email e senha
-	String email = request.getParameter("emailPro");
-	String senha = request.getParameter("senhaPro");
+	String email = request.getParameter("email");
+	String senha = request.getParameter("senha");
 	//Setando informações de um usuário comum
 	pb.setInfo(UserInfo.Nome, request.getParameter("nome"));
 	pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
@@ -61,5 +61,5 @@
   	//Cadastra o médico
 	new MedicoDao().cadastrar(pb);
 	
-	response.sendRedirect("../index.jsp");
+	response.sendRedirect("../pages/login.html");
 %>

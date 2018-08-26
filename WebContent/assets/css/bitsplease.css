@@ -4807,6 +4807,408 @@ License - nucleoapp.com/license/
   content: "\ea64"; }
 
 /* all icon font classes list here */
+
+/*--------------------------------
+
+nc-demo_outline Web Font - built using nucleoapp.com
+License - nucleoapp.com/license/
+
+-------------------------------- */
+@font-face {
+  font-family: 'nc-demo_outline';
+  src: url('../fonts/nc-demo_outline.eot');
+  src: url('../fonts/nc-demo_outline.eot') format('embedded-opentype'), url('../fonts/nc-demo_outline.woff2') format('woff2'), url('../fonts/nc-demo_outline.woff') format('woff'), url('../fonts/nc-demo_outline.ttf') format('truetype'), url('../fonts/nc-demo_outline.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*------------------------
+	base class definition
+-------------------------*/
+.nc-icon-other {
+  display: inline-block;
+  font: normal normal normal 14px/1 'nc-demo_outline';
+  font-size: inherit;
+  speak: none;
+  text-transform: none;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*------------------------
+  change icon size
+-------------------------*/
+.nc-icon-other.lg {
+  font-size: 1.33333333em;
+  vertical-align: -16%;
+}
+.nc-icon-other.x2 {
+  font-size: 2em;
+}
+.nc-icon-other.x3 {
+  font-size: 3em;
+}
+/*----------------------------------
+  add a square/circle background
+-----------------------------------*/
+.nc-icon-other.square,
+.nc-icon-other.circle {
+  padding: 0.33333333em;
+  vertical-align: -16%;
+  background-color: #eee;
+}
+.nc-icon-other.circle {
+  border-radius: 50%;
+}
+/*------------------------
+  list icons
+-------------------------*/
+.nc-icon-other-ul {
+  padding-left: 0;
+  margin-left: 2.14285714em;
+  list-style-type: none;
+}
+.nc-icon-other-ul > li {
+  position: relative;
+}
+.nc-icon-other-ul > li > .nc-icon-other {
+  position: absolute;
+  left: -1.57142857em;
+  top: 0.14285714em;
+  text-align: center;
+}
+.nc-icon-other-ul > li > .nc-icon-other.lg {
+  top: 0;
+  left: -1.35714286em;
+}
+.nc-icon-other-ul > li > .nc-icon-other.circle,
+.nc-icon-other-ul > li > .nc-icon-other.square {
+  top: -0.19047619em;
+  left: -1.9047619em;
+}
+/*------------------------
+  spinning icons
+-------------------------*/
+.nc-icon-other.spin {
+  -webkit-animation: nc-icon-spin 2s infinite linear;
+  -moz-animation: nc-icon-spin 2s infinite linear;
+  animation: nc-icon-spin 2s infinite linear;
+}
+@-webkit-keyframes nc-icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes nc-icon-spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@keyframes nc-icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/*------------------------
+  rotated/flipped icons
+-------------------------*/
+.nc-icon-other.rotate-90 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+.nc-icon-other.rotate-180 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.nc-icon-other.rotate-270 {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.nc-icon-other.flip-y {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -webkit-transform: scale(-1, 1);
+  -moz-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+.nc-icon-other.flip-x {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: scale(1, -1);
+  -moz-transform: scale(1, -1);
+  -ms-transform: scale(1, -1);
+  -o-transform: scale(1, -1);
+  transform: scale(1, -1);
+}
+/*------------------------
+	font icons
+-------------------------*/
+
+.nc-archive-2::before {
+    content: "\ea01";
+}
+
+.nc-archive-paper::before {
+    content: "\ea02";
+}
+
+.nc-award-48::before {
+    content: "\ea03";
+}
+
+.nc-badge-13::before {
+    content: "\ea04";
+}
+
+.nc-bag-09::before {
+    content: "\ea05";
+}
+
+.nc-barcode-qr::before {
+    content: "\ea06";
+}
+
+.nc-bear-2::before {
+    content: "\ea07";
+}
+
+.nc-bell-53::before {
+    content: "\ea08";
+}
+
+.nc-bookmark-2::before {
+    content: "\ea09";
+}
+
+.nc-briefcase-24::before {
+    content: "\ea0a";
+}
+
+.nc-calendar-60::before {
+    content: "\ea0b";
+}
+
+.nc-camera-20::before {
+    content: "\ea0c";
+}
+
+.nc-cart-simple::before {
+    content: "\ea0d";
+}
+
+.nc-chat-46::before {
+    content: "\ea0e";
+}
+
+.nc-check-circle-07::before {
+    content: "\ea0f";
+}
+
+.nc-cloud-26::before {
+    content: "\ea10";
+}
+
+.nc-compass-05::before {
+    content: "\ea11";
+}
+
+.nc-dashboard-level::before {
+    content: "\ea12";
+}
+
+.nc-diamond::before {
+    content: "\ea13";
+}
+
+.nc-edit-78::before {
+    content: "\ea14";
+}
+
+.nc-email-84::before {
+    content: "\ea15";
+}
+
+.nc-eye-19::before {
+    content: "\ea16";
+}
+
+.nc-favourite-31::before {
+    content: "\ea17";
+}
+
+.nc-flag-points-32::before {
+    content: "\ea18";
+}
+
+.nc-flash-21::before {
+    content: "\ea19";
+}
+
+.nc-folder-15::before {
+    content: "\ea1a";
+}
+
+.nc-gift-2::before {
+    content: "\ea1b";
+}
+
+.nc-grid-45::before {
+    content: "\ea1c";
+}
+
+.nc-handout::before {
+    content: "\ea1d";
+}
+
+.nc-heart-2::before {
+    content: "\ea1e";
+}
+
+.nc-home-52::before {
+    content: "\ea1f";
+}
+
+.nc-image::before {
+    content: "\ea20";
+}
+
+.nc-layers-3::before {
+    content: "\ea22";
+}
+
+.nc-like-2::before {
+    content: "\ea23";
+}
+
+.nc-link-72::before {
+    content: "\ea24";
+}
+
+.nc-lock-open::before {
+    content: "\ea25";
+}
+
+.nc-lock::before {
+    content: "\ea26";
+}
+
+.nc-multiple-11::before {
+    content: "\ea27";
+}
+
+.nc-notes::before {
+    content: "\ea28";
+}
+
+.nc-pencil::before {
+    content: "\ea29";
+}
+
+.nc-phone-2::before {
+    content: "\ea2a";
+}
+
+.nc-preferences::before {
+    content: "\ea2b";
+}
+
+.nc-send-2::before {
+    content: "\ea2c";
+}
+
+.nc-settings-gear-63::before {
+    content: "\ea2d";
+}
+
+.nc-single-01::before {
+    content: "\ea2e";
+}
+
+.nc-single-folded-content::before {
+    content: "\ea2f";
+}
+
+.nc-skull-2::before {
+    content: "\ea30";
+}
+
+.nc-spaceship::before {
+    content: "\ea31";
+}
+
+.nc-square-download::before {
+    content: "\ea32";
+}
+
+.nc-square-upload::before {
+    content: "\ea34";
+}
+
+.nc-support-16::before {
+    content: "\ea33";
+}
+
+.nc-trash-simple::before {
+    content: "\ea35";
+}
+
+.nc-turtle::before {
+    content: "\ea36";
+}
+
+.nc-vector::before {
+    content: "\ea37";
+}
+
+.nc-video-66::before {
+    content: "\ea38";
+}
+
+.nc-wallet-43::before {
+    content: "\ea39";
+}
+
+.nc-widget::before {
+    content: "\ea3a";
+}
+
+.nc-world::before {
+    content: "\ea3b";
+}
+
+.nc-zoom-2::before {
+    content: "\ea3c";
+}
+/* all icon font classes list here */
+
 .btn,
 .navbar .navbar-nav > a.btn {
   border-width: 2px;
@@ -4952,7 +5354,7 @@ License - nucleoapp.com/license/
       .navbar .navbar-nav > a.btn.btn-icon.btn-sm .far,
       .navbar .navbar-nav > a.btn.btn-icon.btn-sm .fas,
       .navbar .navbar-nav > a.btn.btn-icon.btn-sm .nc-icon {
-        font-size: 0.6875rem; }
+ .nc-icon-otheront-size: 0.6875rem; }
     .btn.btn-icon.btn-lg,
     .navbar .navbar-nav > a.btn.btn-icon.btn-lg {
       height: 3.6rem;
@@ -9215,8 +9617,11 @@ img {
       padding-left: 0;
       padding-right: 0; }
     .card .card-body a{
-      font-size: 80%;
-    }
+      font-size: 90%; }
+    .card .card-body label:not([class="form-check-label"]) {
+  	text-align: left;
+  	font-size: 75%;
+    color: crimson; }
   .card .card-header {
     padding: 15px 15px 0;
     border: 0; }
@@ -9592,7 +9997,7 @@ img {
 
 .card-signup .card-footer {
   margin-bottom: 10px;
-  margin-top: 24px; }
+  margin-top: 0px; }
 
 .card-stats-mini.card-background::after {
   background-image: linear-gradient(to right, #434343 0%, black 100%);
@@ -9735,10 +10140,6 @@ img {
 .login-page .card-login {
   border-radius: 6px;
   padding-bottom: 0.7rem; }
-  .login-page .card-login label {
-  	float: bottom;
-  	font-size: 75%;
-    color: crimson; }
   .login-page .card-login .btn-wd {
     min-width: 180px; }
   .login-page .card-login .logo-container {
@@ -9886,69 +10287,69 @@ img {
 .full-page.pricing-page .description {
   margin-bottom: 65px; }
 
-.full-page.register-page .content > .container {
+.full-page.cadastro-page .content > .container {
   margin-top: 5vh; }
 
-.full-page.register-page .info-horizontal {
+.full-page.cadastro-page .info-horizontal {
   padding: 0px 0px 20px; }
 
-.full-page.register-page .info-horizontal {
+.full-page.cadastro-page .info-horizontal {
   text-align: left !important; }
-  .full-page.register-page .info-horizontal .icon {
+  .full-page.cadastro-page .info-horizontal .icon {
     margin-top: 0; }
-    .full-page.register-page .info-horizontal .icon > i {
+    .full-page.cadastro-page .info-horizontal .icon > i {
       font-size: 2em; }
-    .full-page.register-page .info-horizontal .icon.icon-circle {
+    .full-page.cadastro-page .info-horizontal .icon.icon-circle {
       width: 65px;
       height: 65px;
       max-width: 65px;
       margin-top: 8px; }
-      .full-page.register-page .info-horizontal .icon.icon-circle i {
+      .full-page.cadastro-page .info-horizontal .icon.icon-circle i {
         display: table;
         margin: 0 auto;
         line-height: 3.5;
         font-size: 1.9em; }
-  .full-page.register-page .info-horizontal .description {
+  .full-page.cadastro-page .info-horizontal .description {
     overflow: hidden; }
 
 .full-page.lock-page .content > .container {
   margin-top: 10vh; }
 
-.register-page .navbar .navbar-collapse .nav-item .nav-link,
+.cadastro-page .navbar .navbar-collapse .nav-item .nav-link,
 .login-page .navbar .navbar-collapse .nav-item .nav-link,
 .lock-page .navbar .navbar-collapse .nav-item .nav-link {
   text-transform: capitalize;
   color: #FFFFFF !important; }
 
-.register-page .navbar.navbar-transparent,
+.cadastro-page .navbar.navbar-transparent,
 .login-page .navbar.navbar-transparent,
 .lock-page .navbar.navbar-transparent {
   border-bottom: 1px solid transparent;
   margin-top: 25px; }
 
-.register-page .navbar .navbar-brand,
+.cadastro-page .navbar .navbar-brand,
 .login-page .navbar .navbar-brand,
 .lock-page .navbar .navbar-brand {
   color: #FFFFFF !important; }
 
 @media screen and (max-width: 991px) {
-  .register-page .navbar.bg-white .navbar-toggler .navbar-toggler-bar.navbar-kebab,
+  .cadastro-page .navbar.bg-white .navbar-toggler .navbar-toggler-bar.navbar-kebab,
   .login-page .navbar.bg-white .navbar-toggler .navbar-toggler-bar.navbar-kebab,
   .lock-page .navbar.bg-white .navbar-toggler .navbar-toggler-bar.navbar-kebab {
     background: #1C77CC !important; }
-  .register-page .navbar.bg-white .navbar-collapse .navbar-nav .nav-item .nav-link,
+  .cadastro-page .navbar.bg-white .navbar-collapse .navbar-nav .nav-item .nav-link,
   .login-page .navbar.bg-white .navbar-collapse .navbar-nav .nav-item .nav-link,
   .lock-page .navbar.bg-white .navbar-collapse .navbar-nav .nav-item .nav-link {
     color: #1C77CC !important; }
-  .register-page .navbar.bg-white .navbar-brand,
+  .cadastro-page .navbar.bg-white .navbar-brand,
   .login-page .navbar.bg-white .navbar-brand,
   .lock-page .navbar.bg-white .navbar-brand {
     color: #1C77CC !important; }
-  .register-page .navbar.navbar-transparent .navbar-toggle,
+  .cadastro-page .navbar.navbar-transparent .navbar-toggle,
   .login-page .navbar.navbar-transparent .navbar-toggle,
   .lock-page .navbar.navbar-transparent .navbar-toggle {
     display: none; }
-  .register-page .navbar.navbar-transparent .navbar-toggler .navbar-toggler-bar.navbar-kebab,
+  .cadastro-page .navbar.navbar-transparent .navbar-toggler .navbar-toggler-bar.navbar-kebab,
   .login-page .navbar.navbar-transparent .navbar-toggler .navbar-toggler-bar.navbar-kebab,
   .lock-page .navbar.navbar-transparent .navbar-toggler .navbar-toggler-bar.navbar-kebab {
     background: #FFFFFF !important; } }
@@ -10742,6 +11143,8 @@ img {
 @media screen and (min-width: 992px) {
   .navbar-collapse {
     background: none !important; }
+    .navbar-collapse .btn{
+    margin-left:5em}
   .navbar .navbar-toggle {
     display: none; }
   .navbar-nav .nav-link.profile-photo {
@@ -10806,18 +11209,18 @@ img {
       width: 60px !important; }
   .login-page .navbar,
   .lock-page .navbar,
-  .register-page .navbar {
+  .cadastro-page .navbar {
     padding: .5rem 1rem; }
   .footer .footer-nav,
   .footer .credits {
     margin: 0 auto !important; }
   .footer .footer-nav {
     margin-bottom: 10px !important; }
-  .register-page .content {
+  .cadastro-page .content {
     padding-top: 5vh; }
-  .register-page .footer {
+  .cadastro-page .footer {
     position: relative; }
-  .register-page .info-area.info-horizontal {
+  .cadastro-page .info-area.info-horizontal {
     margin-top: 0; } }
 
 @media screen and (max-width: 374px) {

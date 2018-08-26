@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    S2 Saúde
+    Login
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!-- Fonts and icons -->
@@ -16,7 +16,8 @@
   <link href="../assets/css/bitsplease.css?v=2.0.1" rel="stylesheet" />
 </head>
 
-<body class="login-page">
+<body class="login-page" style="overflow:hidden">
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
     <div class="container">
@@ -41,6 +42,7 @@
             </a>
           </li>
         </ul>
+		<button type="button" class="btn btn-success btn-round" onclick="location.href='cadastrar.html;'">Registre-se</button>
       </div>
     </div>
   </nav>
@@ -53,10 +55,10 @@
       <div class="content">
         <div class="container">
           <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-            <form class="formLogin" method="post" action="../acoes/login.jsp">
+            <form class="formLogin" method="get" action="../acoes/login.jsp">
               <div class="card card-login">
                 <div class="card-header">
-                  <h3 class="header text-center card-title">Bem vindo! <span><i class="nc-icon nc-satisfied"></i></span></h3>
+                  <h3 class="header text-center card-title">Como é bom te ver por aqui! <span><i class="nc-icon nc-satisfied"></i></span></h3>
                 </div>
                 <div class="card-body">
                   <div class="input-group">
@@ -85,6 +87,7 @@
           </div>
         </div>
       </div>
+      
       <footer class="footer footer-black footer-white ">
         <div class="container-fluid">
           <div class="row">

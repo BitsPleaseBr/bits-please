@@ -6,8 +6,8 @@
   PacienteBean pb = new PacienteBean();
 
   //Obtendo email e senha
-  String email = request.getParameter("emailPac");
-  String senha = request.getParameter("senhaPac");
+  String email = request.getParameter("email");
+  String senha = request.getParameter("senha");
 
   pb.setInfo(UserInfo.Nome, request.getParameter("nome"));
   pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
@@ -19,5 +19,5 @@
   //Inserindo no banco de dados
   new PacienteDao().cadastrar(pb);
 
-  response.sendRedirect("../index.jsp");
+  response.sendRedirect("../pages/login.html");
 %>

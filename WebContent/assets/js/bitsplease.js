@@ -10,14 +10,8 @@ function checkFullPageBackgroundImage() {
   }
 }
 
-function setTopo(){
-  $(window).scrollTop(0);
-}
-
 $(document).ready(function() {
   checkFullPageBackgroundImage();
-      
-  $(window).bind('scroll', setTopo);
   
   var formLog = $('.formLogin');
   formLog.validate({
