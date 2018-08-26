@@ -6,8 +6,13 @@
   <title>
     S2 Saúde
   </title>
-  <meta http-equiv="refresh" content=1;"BitsPlease/pages/login.html">
 </head>
 <body>
+<script src="assets/js/core/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+	location.href="pages/login.html"
+})
+</script>
 </body>
 </html>

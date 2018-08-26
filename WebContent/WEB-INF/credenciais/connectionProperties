@@ -1,8 +1,0 @@
-#sem comentario
-#Wed Aug 01 13:29:11 BRT 2018
-nomeBD=/bitsplease
-prefixoConnection=jdbc\:mysql\://
-user=bitsadmin
-urlBD=bits-please.c6g4ywjszepf.sa-east-1.rds.amazonaws.com
-password=nullpointerexception123
-porta=\:3306
