@@ -12,11 +12,11 @@
 	
 	if (rs.next()) {
 	  if (rs.getInt(1) > 3) {
-	    out.print(true);
-	  } else {
 	    out.print(false);
+	  } else {
+	    out.print(true);
 	  }
 	} else {
-	  out.println(false);
+	  out.println(true);
 	}
 %>

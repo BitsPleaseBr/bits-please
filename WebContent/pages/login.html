@@ -11,6 +11,7 @@
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!-- Fonts and icons -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
   <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../assets/css/bitsplease.css?v=2.0.1" rel="stylesheet" />
@@ -27,7 +28,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navigation">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="landpage.html" class="nav-link">
+            <a href="leadpage.html" class="nav-link">
               <i class="nc-icon nc-globe"></i> Home
             </a>
           </li>
@@ -58,7 +59,7 @@
             <form class="formLogin" method="get" action="../acoes/login.jsp">
               <div class="card card-login">
                 <div class="card-header">
-                  <h3 class="header text-center card-title">Como é bom te ver por aqui! <span><i class="nc-icon nc-satisfied"></i></span></h3>
+                  <h4 class="header text-center card-title">Como é bom te ver por aqui! <span><i class="nc-icon nc-satisfied"></i></span></h4>
                 </div>
                 <div class="card-body">
                   <div class="input-group">
@@ -77,6 +78,8 @@
                     </div>
                     <input type="password" name="senha" class="form-control" placeholder="Senha" required>
                   </div>
+                  <small><a href="#confirmação" data-toggle="modal" data-target="#EsqueciModal">Esqueceu sua senha?</a></small>
+                  <br>
                   <a href="cadastrar.html">Não tem uma conta? Bora fazer! xD</a>
                 </div>
                 <div class="card-footer text-center">
@@ -87,6 +90,8 @@
           </div>
         </div>
       </div>
+      
+      <div class="Esqueci"></div>
       
       <footer class="footer footer-black footer-white ">
         <div class="container-fluid">
@@ -108,11 +113,13 @@
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <script src="../assets/js/plugins/jquery.mask.min.js"></script>
   <script src="../assets/js/bitsplease.js"></script>
-  <script src="https://rawgit.com/igorescobar/jQuery-Mask-Plugin/master/dist/jquery.mask.min.js"></script>
   <!-- Forms Validations Plugin -->
-  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <script src="../assets/js/plugins/additional-methods.min.js"></script>
 </body>
 
 </html>
