@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Cadastro
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!-- Fonts and icons -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/bitsplease.css?v=2.0.1" rel="stylesheet" />
+</head>
+
+<body class="cadastro-page">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+    <div class="container">
+      <div class="navbar-wrapper">
+        <a class="navbar-brand" href="#"><span><img src="../assets/img/brand.png" width="25%"></span></a>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="navbar-nav">
+        
+          <li class="nav-item">
+            <a href="leadpage.html" class="nav-link">
+              <i class="nc-icon nc-globe"></i> Home
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="contato.html" class="nav-link">
+              <i class="nc-icon nc-email-85"></i> Contatos
+            </a>
+          </li>
+          
+          <li class="nav-item">
+            <a href="sobre.html" class="nav-link">
+              <i class="nc-icon nc-bulb-63"></i> Quem&nbsp;somos
+            </a>
+          </li>
+        </ul>
+        <button type="button" class="btn btn-success btn-round" onclick="location.href='login.html;'">Acesse</button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Ajuste da página -->
+  <div class="wrapper wrapper-full-page ">
+    <!-- Imagem de Fundo -->
+    <div class="full-page register-page section-image"data-image="../assets/img/bg/pk-pro-cover.jpg">
+      <!-- Conteúdo -->
+      <div class="content">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 ml-auto" style="margin-top:-50px">
+            
+              <div class="info-area info-horizontal mt-5">
+                <div class="icon icon-primary">
+                  <i class="nc-icon nc-ambulance"></i>
+                </div>
+                <div class="description">
+                  <h5 class="info-title">Sistema de Suporte a Saúde</h5>
+                  <p class="description">
+                    A ideia é facilitar sua vida deixando a gestão da sua saúde muito mais simples e com alguns cliques você conseguirá estar agendando consultas e observando os seus diagnósticos.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="info-area info-horizontal">
+                <div class="icon icon-primary">
+                  <i class="nc-icon-other nc-lock"></i>
+                </div>
+                <div class="description">
+                  <h5 class="info-title">Segurança</h5>
+                  <p class="description">
+                    Mantemos seus registros o mais seguro cumprindo sempre com a lei de sigilo médico - paciente!
+                  </p>
+                </div>
+              </div>
+              
+              <div class="info-area info-horizontal">
+                <div class="icon icon-info">
+                  <i class="nc-icon nc-paper" style="position:relative; top:0px; left:0px"></i>
+                  <i class="nc-icon nc-simple-remove" style="position:absolute; top:331px; left:13px"></i>
+                </div>
+                <div class="description">
+                  <h5 class="info-title">Socioambiental</h5>
+                  <p class="description">
+                    Um dia você já pensou "Por que em pleno século 21 eu tenho que ficar carregando toda essa papelada por ai quando tenho um computador no meu bolso?" estamos aqui para acabar com esse paradigma ;)
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Card do Form de Registrar -->
+            <div class="col-lg-4 col-md-6 mr-auto" style="top:-15px">
+              <div class="card card-signup text-center">
+                <div class="card-header ">
+                  <h4 class="card-title">Cadastre-se</h4>
+                </div>
+				<small class="text-right" style="margin-right: 5%"><a href=cadastrarprofissional.html>És um Médico? Chega mais</a></small>
+                <div class="card-body ">
+                  <form class="formCadastroPaciente" method="get" action="../acoes/cadastrarPaciente.jsp">
+                    <div class="input-group">
+                    
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon nc-single-02"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="nome" class="form-control" placeholder="Nome..." required>
+                    </div>
+                    
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon nc-circle-10"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="sobrenome" class="form-control" placeholder="Sobrenome..." required>
+                    </div>
+                    
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon nc-badge"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="cpf" class="form-control cpf" placeholder="CPF..." required>
+                    </div>
+
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon-other nc-gift-2"></i>
+                        </span>
+                      </div>
+                      <input type="text" name="data" class="form-control data" placeholder="Data de Nascimento..." required>
+                    </div>
+
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon nc-email-85"></i>
+                        </span>
+                      </div>
+                      <input type="email" name="email" id="emailPac" class="form-control" placeholder="Email..." required>
+                    </div>
+                    
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="nc-icon nc-key-25"></i>
+                        </span>
+                      </div>
+                      <input type="password" name="senha" id="senhaPac" class="form-control" placeholder="Senha..." required>
+                    </div>
+                  </form>
+                </div>
+				<small class="text-left" style="margin-left: 5%"><a href="#confirmação" data-toggle="modal" data-target="#EsqueciModal">Esqueceu sua senha?</a></small>
+                <div class="card-footer">
+                  <button type="button" class="btn btn-primary btn-round" id="btn_cadastrar">Confirmar Dados</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+	  <div class="modal fade modal-primary" id="ConfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	    <div class="modal-dialog modal-login">
+	      <div class="modal-content">
+	        <div class="card card-login card-plain">
+	          <div class="modal-header justify-content-center">
+	            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	              <span aria-hidden="true">&times;</span>
+	            </button>
+	  
+	            <div class="header header-primary text-center">
+	              <div class="logo-container">
+	                  <img src="../assets/img/brand.png" alt="S2 saúde" style="width: 20%;border-radius:0%">
+	              </div>
+	            </div>
+	          </div>
+	          <div class="modal-body">
+	            <form class="formConfirmaçãoPaciente">
+	              <div class="card-body">
+	  				<h5 style="text-size: 50%; text-align: center">Por favor, confirme seus dados para podermos progredir! <span><i class="nc-icon nc-satisfed"></i></span></h5>
+	                <div class="input-group">
+	                  <div class="input-group-prepend">
+	                    <span class="input-group-text"><i class="nc-icon nc-email-85"></i></span>
+	                  </div>
+	                  <input type="email" name="email" class="form-control" autocomplete="off" placeholder="Email..." required>
+	                </div>
+	  
+	                <div class="input-group">
+	                  <div class="input-group-prepend">
+	                    <span class="input-group-text"><i class="nc-icon nc-key-25"></i></span>
+	                  </div>
+	                  <input type="password" name="senha" class="form-control" autocomplete="off" placeholder="Senha..." required>
+	                </div>
+	              </div>
+	  
+                  <div class="form-check text-left">
+                    <label class="form-check-label">
+                      <input type="checkbox" name="termos" class="form-check-input" value="">
+                      <span class="form-check-sign"></span>
+                      Eu concordo com os
+                      <a href="#modalcompdf">termos e condições de uso</a>.
+                    </label>
+                  </div>
+	            </form>
+	          </div>
+	          <div class="modal-footers text-center">
+	            <button type="button" class="btn btn-primary btn-round" id="btn_confirmar">Vamos começar!</button>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	  
+	  <div class="Esqueci"></div>
+      
+      <footer class="footer footer-black footer-white ">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="credits ml-auto">
+              <span class="copyright">
+                ©
+                <script>
+                  document.write(new Date().getFullYear())
+                </script>, made with <i class="fa fa-heart heart"></i> by Us
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../assets/js/plugins/moment.min.js"></script>
+  <script src="../assets/js/plugins/jquery.mask.min.js"></script>
+  <script src="../assets/js/bitsplease.js"></script>
+  <!-- Forms Validations Plugin -->
+  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+  <script src="../assets/js/plugins/additional-methods.min.js"></script>
+</body>
+
+</html>

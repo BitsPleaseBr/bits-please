@@ -47,11 +47,15 @@ public class ConnectionFactory {
 
     // Realizar a conexão
     try {
+      Class.forName("com.mysql.jdbc.Driver");
       conexao = DriverManager.getConnection(connectionURL, user, password);
     } catch (SQLException e) {
       e.printStackTrace();
       throw new RuntimeException(e);
-    }
+    } catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
     return conexao;
   }
   
