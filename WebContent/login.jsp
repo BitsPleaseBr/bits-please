@@ -11,7 +11,7 @@
 <script src="assets/js/core/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
-	location.href="login.jsp"
+	location.href="pages/login.jsp"
 })
 </script>
 </body>

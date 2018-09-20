@@ -7,7 +7,7 @@
   "use strict";
   var e = {
     tagClass: function(t) {
-      return "badge badge-success"
+      return "badge badge-default"
     },
     focusClass: "focus",
     itemValue: function(t) {
