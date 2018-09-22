@@ -21,7 +21,7 @@
                     
           <div class="wizard-container">
             <div class="card card-wizard" id="wizardProfile">
-              <form class="formCadastroProfissional" method="post" action="../../acoes/login.jsp">
+              <form class="formCadastroProfissional" method="post" action="../acoes/cadastrarProfissional.jsp">
                 
                 <div class="card-header text-center">
                   <h4 class="card-title">

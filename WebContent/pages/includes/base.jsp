@@ -4,6 +4,7 @@
   <script src="../assets/js/core/jquery.min.js"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/core/cookies.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
   <script src="../assets/js/plugins/moment.min.js"></script>
   <script src="../assets/js/plugins/moment-with-locales.min.js"></script>

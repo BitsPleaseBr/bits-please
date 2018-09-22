@@ -15,7 +15,7 @@
   pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
   pb.setInfo(UserInfo.DataNascimento, request.getParameter("data"));
   pb.setInfo(UserInfo.Email, email);
-  pb.setInfo(UserInfo.Senha, PswdStorage.clientPswdHash(senha, email));
+  pb.setInfo(UserInfo.Senha, senha);
 
   //Inserindo no banco de dados
   out.print(MethodCallerFactory.cadastrarUser(pb).call().getBody());

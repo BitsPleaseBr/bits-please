@@ -3,5 +3,5 @@
 
 	String cpf = request.getParameter("cpf");
 
-	out.print(MethodCallerFactory.verificarCpf(cpf).call().getBody());
+	out.print(MethodCallerFactory.verificarCpf(cpf).call().getHashBody().get("valido"));
 %>

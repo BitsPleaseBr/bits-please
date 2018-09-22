@@ -66,38 +66,9 @@
 	Pace.on("done", function(){
 		  $(".content").fadeIn(1500);
 		});
-
-
-	function setCookie() {
-		
-		var cookie = "nome=" + "Nathan" +
-	    ";tipo=" + "1" +
-	    ";token=" + "asdjaskdsha";
-	 
-	    document.cookie = cookie;
-	}
-
-	function getCookie(key) {
-		var parametro = key + "=";
-
-		var cke = document.cookie.split(";");
-
-	    for(i=0; i<cke.length; i++){
-	    	console.log(cke[i]);
-	    	
-	    	if(name.includes(cke[i])){
-	        	var value = cke[i].replace(name, "");
-				alert(cke[i]);
-	        }
-	    }
-	}
-
-	function checkCookie() {
-	    var vari=getCookie("tipo");
-	    if (vari != "") {
-	        alert('foi');
-	    } else {
-			alert('não foi')
-	    }
-	}
+	
+	cookies.put("nome", "Nathan");
+	cookies.put("tipo", "2");
+	cookies.save;
+	alert(cookies.load);
   </script>
