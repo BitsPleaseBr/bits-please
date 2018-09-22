@@ -33,7 +33,7 @@
   <!-- Plugin Froala Editor -->
   <script src="../assets/js/plugins/froala_editor.min.js"></script>
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the pages etc -->
-  <script src="../assets/js/paper-dashboard.min.js?v=2.0.1"></script>
+  <script src="../assets/js/paper-dashboard.min.js"></script>
   <!-- Aplicações dos Plugins -->
   <script src="../assets/js/bitsplease.js"></script>
   <script>  

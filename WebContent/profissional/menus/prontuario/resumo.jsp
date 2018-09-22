@@ -13,7 +13,7 @@
                 <h4 class="card-title text-center">Histórico 1</h4>
               </div>
               </div>
-              <div class="card-body pront" style="display: none">
+              <div class="card-body" style="display: none">
                         
 		        <div class="row">
 		          <div class="col-md-12">
@@ -98,15 +98,20 @@
             </div>
             <!--  end card  -->
           </div>
+          <!-- end row -->
+        </div>
           
+		<div class="row">
+		  <div class="col-md-1"></div>
+		
           <div class="col-md-4">
             <div class="card">
             <div class="row">
               <div class="card-header col-sm-12">
-                <h4 class="card-title text-center">Histórico 1</h4>
+                <h4 class="card-title text-center">Histórico 2</h4>
               </div>
               </div>
-              <div class="card-body pront" style="display: none">
+              <div class="card-body" style="display: none">
                         
 		        <div class="row">
 		          <div class="col-md-12">
@@ -191,33 +196,29 @@
             </div>
             <!--  end card  -->
           </div>
-          <!-- end col-md-12 -->
+          <!-- end row -->
         </div>
 
 <script>
 
-$('button').click(function(){
-	
-	alert($(this).hasClass('toshow'));
-	
+$('.btn').click(function(){
+			
 	if($(this).hasClass('toshow')){
+		
+		$(this).parents('.col-md-4').addClass('col-md-9').removeClass('col-md-4');
+		$(this).parents('.card').find('.card-body').css('display', 'block');
+		$(this).parents('.text-center').addClass('text-left').removeClass('text-center');
+		$(this).addClass('tohide').removeClass('toshow');
+		$(this).text('Minimixar');
+		
+	}else if($(this).hasClass('tohide')){
 
-	$(this).parents('.col-md-4').removeClass('col-md-4').addClass('col-md-9');
-	$(this).parents('.pront .col-sm-12').css('display','block');
-	$(this).parents('.col-sm-12').removeClass('text-center').addClass('text-left');
-	$(this).text('Minimizar');
-	$(this).removeClass('toshow').addClass('tohide');
-
-	}
-	
-	if($(this).hasClass('.tohide')){
-	
-	$(this).parents('.col-md-9').removeClass('col-md-9').addClass('col-md-4');
-	$(this).parents('.pront .col-sm-12').css('display','none');
-	$(this).parents('.col-sm-12').removeClass('text-left').addClass('text-center');
-	$(this).text('Mostrar');
-	$(this).removeClass('tohide').addClass('toshow');
-	
+		$(this).parents('.col-md-9').addClass('col-md-4').removeClass('col-md-9');
+		$(this).parents('.card').find('.card-body').css('display', 'none');
+		$(this).parents('.text-left').addClass('text-center').removeClass('text-left');
+		$(this).addClass('toshow').removeClass('tohide');
+		$(this).text('Mostrar');
+		
 	}
 });
 </script>

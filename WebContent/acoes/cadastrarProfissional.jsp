@@ -1,65 +1,45 @@
-<%@page import="model.dao.MedicoDao"%>
-<%@page import="model.bean.info.TelefoneInfo"%>
-<%@page import="model.bean.TelefoneBean"%>
-<%@page import="model.bean.info.EnderecoInfo"%>
-<%@page import="model.bean.EnderecoBean"%>
 <%@page import="control.crypto.PswdStorage"%>
+<%@page import="model.dao.ProfissionalDao"%>
 <%@page import="model.bean.info.UserInfo"%>
 <%@page import="model.bean.info.MedicoInfo"%>
 <%@page import="model.bean.MedicoBean"%>
+<%@page import="s3.api.access.MethodCallerFactory"%>
 <%
-  	MedicoBean pb = new MedicoBean();
+  MedicoBean pb = new MedicoBean();
+
 	//Obtendo email e senha
-	String email = request.getParameter("email");
-	String senha = request.getParameter("senha");
-	//Setando informações de um usuário comum
+	String email = request.getParameter("emailPro");
+	String senha = request.getParameter("senhaPro");
+
+	//Setando informaÃ§Ãµes de um usuÃ¡rio comum
 	pb.setInfo(UserInfo.Nome, request.getParameter("nome"));
 	pb.setInfo(UserInfo.Sobrenome, request.getParameter("sobrenome"));
 	pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
-	pb.setInfo(UserInfo.DataNascimento, request.getParameter("data"));
+	pb.setInfo(UserInfo.DataNasc, request.getParameter("data"));
 	pb.setInfo(UserInfo.Email, email);
 	pb.setInfo(UserInfo.Senha, PswdStorage.clientPswdHash(senha, email));
 	
-	//Obtendo informações do médico
-	pb.setInfo(MedicoInfo.CRM, request.getParameter("crm"));
-	pb.setInfo(MedicoInfo.UF, request.getParameter("uf"));
-	pb.setInfo(MedicoInfo.Pais, request.getParameter("pais"));
+	//Setando informaÃ§Ãµes de um mÃ©dico
+	String[] parIndex = new String[] {"cepResi", "cidadeResi", "bairroResi", "ruaResi", "numeroResi", "complementoResi", "celular",
+									  "cepCome", "cidadeCome", "bairroCome", "ruaCome", "numeroCome", "complementoCome", "telefone",
+									  "pais", "uf", "crm", "especializacao"};
 	
-	//Obtendo informações de endereço residencial
-	EnderecoBean ebr = new EnderecoBean();
-	ebr.setInfo(EnderecoInfo.Tipo, ebr.RESIDENCIAL);
-	ebr.setInfo(EnderecoInfo.Cep, request.getParameter("cepResi"));
-	ebr.setInfo(EnderecoInfo.Cidade, request.getParameter("cidadeResi"));
-	ebr.setInfo(EnderecoInfo.Bairro, request.getParameter("bairroResi"));
-	ebr.setInfo(EnderecoInfo.Rua, request.getParameter("ruaResi"));
-	ebr.setInfo(EnderecoInfo.Numero, request.getParameter("numeroResi"));
-	ebr.setInfo(EnderecoInfo.Complemento, request.getParameter("complementoResi"));
+	MedicoInfo[] enums = new MedicoInfo[] {EnderecoInfo.CepResidencial, EnderecoInfo.CidadeResidencial, EnderecoInfo.BairroResidencial, 
+										   EnderecoInfo.RuaResidencial, EnderecoInfo.NumeroResidencial, EnderecoInfo.ComplementoResidencial, EnderecoInfo.Celular,
+										   EnderecoInfo.CepComercial, EnderecoInfo.CidadeComercial, EnderecoInfo.BairroComercial,
+										   EnderecoInfo.RuaComercial, EnderecoInfo.NumeroComercial, EnderecoInfo.ComplementoComercial, EnderecoInfo.TelefoneComercial,
+										   MedicoInfo.Pais, MedicoInfo.UF, MedicoInfo.CRM, MedicoInfo.Especializacao};
+
+	for (int i = 0; i < parIndex.length; i++) {
+		
+		if (parIndex[i].equals("especializacao"))
+			continue;
+		
+		pb.setInfo(enums[i], request.getParameter(parIndex[i]));
+	}
 	
-	//Obtendo informações de endereço comercial
-	EnderecoBean ebc = new EnderecoBean();
-	ebc.setInfo(EnderecoInfo.Tipo, ebc.COMERCIAL);
-	ebc.setInfo(EnderecoInfo.Cep, request.getParameter("cepCome"));
-	ebc.setInfo(EnderecoInfo.Cidade, request.getParameter("cidadeCome"));
-	ebc.setInfo(EnderecoInfo.Bairro, request.getParameter("bairroCome"));
-	ebc.setInfo(EnderecoInfo.Rua, request.getParameter("ruaCome"));
-	ebc.setInfo(EnderecoInfo.Numero, request.getParameter("numeroCome"));
-	ebc.setInfo(EnderecoInfo.Complemento, request.getParameter("complementoCome"));
-	
-	//Obtendo informações de celular
-	TelefoneBean tbc = new TelefoneBean();
-	tbc.setInfo(TelefoneInfo.Tipo, tbc.CELULAR);
-	tbc.setInfo(TelefoneInfo.Numero, request.getParameter("celular"));
-	
-	//Obtendo informações de telefone comercial
-	TelefoneBean tbt = new TelefoneBean();
-	tbt.setInfo(TelefoneInfo.Tipo, tbt.TELEFONE);
-	tbt.setInfo(TelefoneInfo.Numero, request.getParameter("telefone"));
-	
-	//Adicionando informações de telefones e endereços ao médico
-	pb.addEndereco(ebr).addEndereco(ebc).addTelefone(tbc).addTelefone(tbt);
-	
-  	//Cadastra o médico
-	new MedicoDao().cadastrar(pb);
-	
-	response.sendRedirect("../pages/login.html");
+  //Cadastra o médico
+  out.print(MethodCallerFactory.cadastraruser(pb).call().getBody());
+  
+  response.sendRedirect("../index.jsp");
 %>

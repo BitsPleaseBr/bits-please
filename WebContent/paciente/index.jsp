@@ -8,9 +8,7 @@
 <body>
   <div class="wrapper ">
     <div class="sidebar" data-active-color="blue">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
+
       <div class="logo">
       	<a href="#" class="simple-text logo-mini">
             <img src="../assets/img/logo-small.png">

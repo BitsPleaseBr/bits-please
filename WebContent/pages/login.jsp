@@ -48,7 +48,7 @@
                   <a href="cadastrar.jsp">Não tem uma conta? Bora fazer! xD</a>
                 </div>
                 <div class="card-footer text-center">
-                  <button type="button" id="btn_login" class="btn btn-primary btn-round">Entrar</button>
+                  <button type="button" id="btn_login" onclick="checkCookie()" class="btn btn-primary btn-round">Entrar</button>
                 </div>
               </div>
             </form>
@@ -66,4 +66,38 @@
 	Pace.on("done", function(){
 		  $(".content").fadeIn(1500);
 		});
+
+
+	function setCookie() {
+		
+		var cookie = "nome=" + "Nathan" +
+	    ";tipo=" + "1" +
+	    ";token=" + "asdjaskdsha";
+	 
+	    document.cookie = cookie;
+	}
+
+	function getCookie(key) {
+		var parametro = key + "=";
+
+		var cke = document.cookie.split(";");
+
+	    for(i=0; i<cke.length; i++){
+	    	console.log(cke[i]);
+	    	
+	    	if(name.includes(cke[i])){
+	        	var value = cke[i].replace(name, "");
+				alert(cke[i]);
+	        }
+	    }
+	}
+
+	function checkCookie() {
+	    var vari=getCookie("tipo");
+	    if (vari != "") {
+	        alert('foi');
+	    } else {
+			alert('não foi')
+	    }
+	}
   </script>

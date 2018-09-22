@@ -67,7 +67,7 @@
                 </div>
 				<small class="text-right" style="margin-right: 5%"><a href="cadastrarprofissional.jsp">Você um Médico? Chega mais</a></small>
                 <div class="card-body ">
-                  <form class="formCadastroPaciente" method="post" action="../../acoes/cadastrarPaciente.jsp">
+                  <form class="formCadastroPaciente" method="post" action="../acoes/cadastrarPaciente.jsp">
                     <div class="input-group">
                     
                       <div class="input-group-prepend">
@@ -145,7 +145,7 @@
 	  
 	            <div class="header header-primary text-center">
 	              <div class="logo-container">
-	                  <img src="../../assets/img/brand.png" alt="S2 saúde" style="width: 20%;border-radius:0%">
+	                  <img src="../assets/img/brand.png" alt="S2 saúde" style="width: 20%;border-radius:0%">
 	              </div>
 	            </div>
 	          </div>
@@ -205,7 +205,8 @@
     var div = $('.nc-paper');
     
   $(document).ready(function() {
-      
+	  
+	  //Responsivar o icone X no paper
       var xisy = div.position();
       
       $('.nc-simple-remove').css('top', xisy.top);
@@ -216,5 +217,108 @@
           
           $('.nc-simple-remove').css('top', xisy.top);
       });
+	  
+		//Regras de validação do form de Cadastro do Paciente
+		var formCadPac = $('.formCadastroPaciente');
+		formCadPac.validate({
+			  rules: {
+				  nome: {
+					  required: true,
+					  letterswithbasicpunc: true
+				  },
+				  sobrenome: {
+					  required: true,
+					  letterswithbasicpunc: true
+				  },
+				  cpf: {
+					  required: true,
+					  cpfBR: true
+				  },
+				  data: {
+					  required: true,
+					  dateITA: true
+				  },
+				  email: {
+					  required: true,
+					  email: true
+				  },
+				  senha: {
+					  required: true,
+					  stgpass: true
+				  }		  
+			  },
+			  messages: {
+				  nome: {
+					  required: "Por favor, precisamos saber como vamos chamar você",
+					  letterswithbasicpunc: "Acredito que na sua certidão não tenha esses caracteres ai"
+				  },
+				  sobrenome: {
+					  required: "Qualé, você preencheu o anterior, por que não esse?",
+					  letterswithbasicpunc: "Acredito que na sua certidão não tenha esses caracteres ai"
+				  },
+				  cpf: {
+						required: "Infelizmente não da pra deixar esse aqui em branco",
+						cpfBR: "Tem 11 digítos aqui e cuidado para não errar nenhum",
+						cpfBanco: "Já temos um cadastro utilizando esse cpf, contate-nos caso não saiba do que se trata"
+				  },
+				  data: {
+					  required: "A gente precisa saber quando te parabenizar por mais um ano de vida!",
+					  dateITA: "Deixando claro que a data precisa ter um formato dd/mm/aaaa beleza?"
+				  },
+				  email: {
+			      	  required: "Precisamos do seu e-mail para entrar em contato contigo",
+			      	  email: "Seu e-mail precisa ser parecido com esse: david@dominio.com",
+			      	  emailBanco: "Esse e-mail já está sendo usado, se necessário peça uma redefinição de senha"
+				  },
+				  senha: {
+					  required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo."
+				  }
+			  }
+		});
+		
+		//Regras de validação do form de Confirmação de Cadastro do Paciente
+		var formConfPac = $('.formConfirmaçãoPaciente');
+		formConfPac.validate({
+			  rules: {
+				  email: {
+					  required: true,
+					  email: true,
+					  equalTo: "#emailPac",
+				  },
+				  senha: {
+					  required: true,
+					  stgpass: true,
+					  equalTo: "#senhaPac"
+				  }
+			  },
+			  messages: {
+				  email: {
+					  required: "Temos que ter certeza se nenhum engano foi cometido entende?",
+			      	  email: "Lembrando que seu e-mail precisa ser parecido com esse: david@dominio.com",
+					  equalTo: "Lembrando que tem que ser o mesmo e-mail que você colocou anteriormente"
+				  },
+				  senha: {
+					  required: "Temos que certificar que não aconteceu nenhum engano anteriormente",
+					  equalTo: "Da uma olhada lá atrás, por que parece que as senhas informadas não são as mesmas :c"
+				  }
+			  }
+		});
+		
+		$('#btn_cadastrar').click(function(){
+			  if(formCadPac.valid()){
+				$('#ConfirmModal').modal('show');
+			  };
+		});
+		
+		$('#btn_confirmar').click(function(){
+			  if(formConfPac.valid()){
+				if (($("input[name='termos']:checked").length)<=0) {
+					alert("Precisamos saber se você chegou a ler nossos termos de uso");
+				}else{
+			  	  $('.formCadastroPaciente').submit();
+			  	  alert('Enviamos um e-mail de confirmação para o seu e-mail, da um olhada lá, please ;)');
+				};
+			  };
+		});
   })
   </script>

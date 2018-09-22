@@ -6,56 +6,8 @@
 </head>
   
 <body>
-  <div class="wrapper ">
-    <div class="sidebar" data-active-color="blue">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo">
-      	<a href="#" class="simple-text logo-mini">
-            <img src="../assets/img/logo-small.png">
-        </a>
-      	<a href="#" class="simple-text logo-normal">
-		  <img src="../assets/img/negativebrand.png" atl="S2saúde" style="width: 75%">
-		</a>
-      </div>
-      <div class="sidebar-wrapper">
-        <div class="user">
-          <div class="photo">
-            <img src="../assets/img/faces/eu.jpg" />
-          </div>
-          <div class="info">
-            <a data-toggle="collapse" href="#collapseExample" class="collapsed">
-              <span>
-                Dr. Nathan
-                <b class="caret"></b>
-              </span>
-            </a>
-            <div class="clearfix"></div>
-            <div class="collapse" id="collapseExample">
-              <ul class="nav">
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">MP</span>
-                    <span class="sidebar-normal">Meu Perfil</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">EP</span>
-                    <span class="sidebar-normal">Editar Perfil</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <span class="sidebar-mini-icon">Cf</span>
-                    <span class="sidebar-normal">Configurações</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+	<%@include file = "../profissional/includes/sidebarup.jsp" %> 
+        
         <ul class="nav">
           <li class="active">
             <a id="painel">
@@ -63,7 +15,7 @@
               <p>Painel</p>
             </a>
           </li>
-          <li class="inactive">
+          <li>
             <a id="prontuarios">
               <i class="nc-icon nc-paper"></i>
               <p>Prontuários</p>
@@ -72,29 +24,10 @@
         </ul>
       </div>
     </div>
+    
     <div class="main-panel">
     
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-minimize">
-              <button id="minimizeSidebar" class="btn btn-icon btn-default btn-round">
-                <i class="nc-icon nc-minimal-right text-center visible-on-sidebar-mini"></i>
-                <i class="nc-icon nc-minimal-left text-center visible-on-sidebar-regular"></i>
-              </button>
-            </div>
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <!-- End Navbar -->
+	<%@include file="../pages/includes/usernavbar.jsp" %>
 
       <div class="content">
 
