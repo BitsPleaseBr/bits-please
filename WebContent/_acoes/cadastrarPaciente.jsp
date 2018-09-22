@@ -2,6 +2,7 @@
 <%@page import="model.dao.PacienteDao"%>
 <%@page import="model.bean.info.UserInfo"%>
 <%@page import="model.bean.PacienteBean"%>
+<%@page import="s3.api.access.MethodCallerFactory" %>
 <%
   PacienteBean pb = new PacienteBean();
 
@@ -14,10 +15,10 @@
   pb.setInfo(UserInfo.CPF, request.getParameter("cpf"));
   pb.setInfo(UserInfo.DataNascimento, request.getParameter("data"));
   pb.setInfo(UserInfo.Email, email);
-  pb.setInfo(UserInfo.Senha, PswdStorage.clientPswdHash(senha, email));
+  pb.setInfo(UserInfo.Senha, senha);
 
   //Inserindo no banco de dados
-  new PacienteDao().cadastrar(pb);
+  out.print(MethodCallerFactory.cadastrarUser(pb).call().getBody());
 
   response.sendRedirect("../index.jsp");
 %>
