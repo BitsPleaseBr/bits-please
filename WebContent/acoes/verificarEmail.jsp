@@ -3,5 +3,5 @@
 
 	String email = request.getParameter("email");
 
-	out.print(MethodCallerFactory.verificarEmail(email).call().getHashBody().get("valido"));
+	out.print(MethodCallerFactory.verificarEmail(email).call().getResponse().getHttpResponse().getStatusCode() == 200);
 %>

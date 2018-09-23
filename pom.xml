@@ -94,7 +94,7 @@
 			<artifactId>s3-api-acess</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}lib/S3APIAccess.jar</systemPath>
+			<systemPath>${project.basedir}/lib/S3APIAccess.jar</systemPath>
 			<type>jar</type>
 			<optional>true</optional>
 		</dependency>
