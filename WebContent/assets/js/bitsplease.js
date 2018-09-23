@@ -9,20 +9,23 @@ $(document).ready(function() {
 	$('.cpf').mask('000.000.000-00');
 	$('.data').mask('00/00/0000');
 	$('.celular').mask('(00) 00000-0000');
+	$('.telefone').mask('(00) 0000-0000');
 	$('.cep').mask('00000-000');
 	
 	//API cep
     function limpa_formulário_cep() {
         // Limpa valores do formulário de cep.
-        $('input[name="rua"').val('');
-        $('input[name="numero"').val('');
-        $('input[name="bairro"').val('');
-        $('input[name="cidade"').val('');
-        $('input[name="uf"').val('');
+    	$(campocep).parents('.row').find('input[placeholder="Logradouro..."]').val('');
+    	$(campocep).parents('.row').find('input[placeholder="Número..."]').val('');
+        $(campocep).parents('.row').find('input[placeholder="Bairro..."]').val('');
+        $(campocep).parents('.row').find('input[placeholder="Cidade..."]').val('');
+        $(campocep).parents('.row').find('input[placeholder="UF..."]').val('');
     }
     
     //Quando o campo cep perde o foco.
     $(".cep").blur(function() {
+    	
+    	var campocep = $(this);
 
         //Nova variável "cep" somente com dígitos.
         var cep = $(this).val().replace(/\D/g, '');
@@ -37,20 +40,20 @@ $(document).ready(function() {
             if(validacep.test(cep)) {
 
                 //Preenche os campos com "..." enquanto consulta webservice.
-                $('input[name="rua"').val('...');
-                $('input[name="bairro"').val('...');
-                $('input[name="cidade"').val('...');
-                $('input[name="uf"').val('...');
+                $(campocep).parents('.row').find('input[placeholder="Logradouro..."]').val('...');
+                $(campocep).parents('.row').find('input[placeholder="Bairro..."]').val('...');
+                $(campocep).parents('.row').find('input[placeholder="Cidade..."]').val('...');
+                $(campocep).parents('.row').find('input[placeholder="UF..."]').val('...');
 
                 //Consulta o webservice viacep.com.br/
                 $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
 
                     if (!("erro" in dados)) {
                         //Atualiza os campos com os valores da consulta.
-                        $('input[name="rua"').val(dados.logradouro);
-                        $('input[name="bairro"').val(dados.bairro);
-                        $('input[name="cidade"').val(dados.localidade);
-                        $('input[name="uf"').val(dados.uf);
+                    	$(campocep).parents('.row').find('input[placeholder="Logradouro..."]').val(dados.logradouro);
+                        $(campocep).parents('.row').find('input[placeholder="Bairro..."]').val(dados.bairro);
+                        $(campocep).parents('.row').find('input[placeholder="Cidade..."]').val(dados.localidade);
+                        $(campocep).parents('.row').find('input[placeholder="UF..."]').val(dados.uf);
                     } //end if.
                     else {
                         //CEP pesquisado não foi encontrado.
@@ -71,25 +74,195 @@ $(document).ready(function() {
         }
     });
     
-    bits = {
+   var S3 = {
     		
 	  initWizard: function() {
 		    // Code for the Validator
-		    var $validator = $('.card-wizard form').validate({
-		      rules: {
-		        firstname: {
-		          required: true,
-		          minlength: 3
-		        },
-		        lastname: {
-		          required: true,
-		          minlength: 3
-		        },
-		        email: {
-		          required: true,
-		          minlength: 3,
-		        }
-		      },
+		    var $validator = $('.formCadastroProfissional').validate({
+		    	rules: {
+	  			  nome: {
+	  				  required: true,
+	  				  letterswithbasicpunc: true
+	  			  },
+	  			  sobrenome: {
+	  				  required: true,
+	  				  letterswithbasicpunc: true
+	  			  },
+	  			  cpf: {
+	  				  required: true,
+	  				  cpfBR: true,
+	  				  cpfBanco: true
+	  			  },
+	  			  celular: {
+	  				  required: true,
+	  				  phoneNL: true
+	  			  },
+	  			  data: {
+	  				  required: true,
+	  				  dateITA: true
+	  			  },
+	  			  email: {
+	  				  required: true,
+	  				  email: true,
+	  				  emailBanco: true
+	  			  },
+	  			  cepResi: {
+	  				  required: true,
+	  				  postalcodeBR: true
+	  			  },
+	  			  ruaResi: {
+	  				  required: true
+	  			  },
+	  			  numeroResi: {
+	  				  required: true,
+	  				  digits: true
+	  			  },
+	  			  bairroResi: {
+	  				  required: true
+	  			  },
+	  			  cidadeResi: {
+	  				  required: true
+	  			  },
+	  			  ufResi: {
+	  				  required: true,
+	  				  lettersonly: true,
+	  				  minlength : 2
+	  			  },
+	  			  telefone: {
+	  				  required: true,
+	  				  phoneNL: true
+	  			  },
+	  			  cepCome: {
+	  				  required: true,
+	  				  postalcodeBR: true
+	  			  },
+	  			  ruaCome: {
+	  				  required: true
+	  			  },
+	  			  numeroCome: {
+	  				  required: true,
+	  				  digits: true
+	  			  },
+	  			  bairroCome: {
+	  				  required: true
+	  			  },
+	  			  cidadeCome: {
+	  				  required: true
+	  			  },
+	  			  ufCome: {
+	  				  required: true,
+	  				  lettersonly: true,
+	  				  minlength : 2
+	  			  },
+	  			  crm: {
+	  				  required: true
+	  			  },
+	  			  emailConf: {
+	  				  required: true,
+	  				  email: true,
+	  				  equalTo: '#email'
+	  			  },
+	  			  senha: {
+	  				  required: true,
+	  				  pass: true,
+	  			  },
+	  			  senhaConf: {
+	  				  required: true,
+	  				  pass: true,
+	  				  equalTo: '#senha'
+	  			  }
+	  		  },
+	  		  messages: {
+	  			  nome: {
+	  				  required: "Por favor, precisamos saber como vamos chamar você",
+	  				  letterswithbasicpunc: "Acredito que na sua certidão não tenha esses caracteres ai"
+	  			  },
+	  			  sobrenome: {
+	  				  required: "Qualé, você preencheu o anterior, por que não esse?",
+	  				  letterswithbasicpunc: "Acredito que na sua certidão não tenha esses caracteres ai"
+	  			  },
+	  			  cpf: {
+	  				  required: "Infelizmente não da pra deixar esse aqui em branco",
+	  				  cpfBR: "Tem 11 digítos aqui e cuidado para não errar nenhum",
+	  				  cpfBanco: "Já temos um cadastro utilizando esse cpf, contate-nos caso não saiba do que se trata"
+	  			  },
+	  			  celular: {
+	  				  required: "Seria bom preencher esse aqui também",
+	  				  phoneNL: "Lembrando que é um celular não um telefone, beleza?"
+	  			  },
+	  			  data: {
+	  				  required: "A gente precisa saber quando te parabenizar por mais um ano de vida!",
+	  				  dateITA: "Deixando claro que a data precisa ter um formato dd/mm/aaaa beleza?"
+	  			  },
+	  			  email: {
+	  		      	  required: "Precisamos do seu e-mail para entrar em contato contigo",
+	  		      	  email: "Seu e-mail precisa ser parecido com esse: david@dominio.com",
+	  		      	  emailBanco: "Esse e-mail já está sendo usado, se necessário peça uma redefinição de senha"
+	  			  },
+	  			  cepResi: {
+	  				  required: "É esse número que o correio identifica sua casa",
+	  				  postalcodeBR: "Preenche esse aqui que os outros vão automaticamente c:"
+	  			  },
+	  			  ruaResi: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui"
+	  			  },
+	  			  numeroResi: {
+	  				  required: "Informe esse aqui também por favor",
+	  				  digits: "Deixando claro que só pode números aqui"
+	  			  },
+	  			  bairroResi: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
+	  			  },
+	  			  cidadeResi: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
+	  			  },
+	  			  ufResi: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
+	  				  lettersonly: "Só as iniciais do estado por favor",
+	  				  minlength : "Acredito que tenha 2 letras"
+	  			  },
+	  			  telefone: {
+	  				  required: "Seria bom preencher esse aqui também",
+	  				  phoneNL: "Lembrando que é um celular não um telefone, beleza?"
+	  			  },
+	  			  cepCome: {
+	  				  required: "É esse número que o correio identifica sua casa",
+	  				  postalcodeBR: "Preenche esse aqui que os outros vão automaticamente c:"
+	  			  },
+	  			  ruaCome: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui"
+	  			  },
+	  			  numeroCome: {
+	  				  required: "Informe esse aqui também por favor",
+	  				  digits: "Deixando claro que só pode números aqui"
+	  			  },
+	  			  bairroCome: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
+	  			  },
+	  			  cidadeCome: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
+	  			  },
+	  			  ufCome: {
+	  				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
+	  				  lettersonly: "Só as iniciais do estado por favor",
+	  				  minlength : "Acredito que tenha 2 letras"
+	  			  },
+	  			  crm: {
+	  				  required: "Por favor, precisamos averiguar a verisidade dos dados por questões de privacidade"
+	  			  },
+	  			  emailConf: {
+					  required: "Temos que ter certeza se nenhum engano foi cometido entende?",
+			      	  email: "Lembrando que seu e-mail precisa ser parecido com esse: david@dominio.com",
+					  equalTo: "Lembrando que tem que ser o mesmo e-mail que você colocou anteriormente"
+	  			  },
+	  			  senha: {
+	  				  required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo."
+	  			  },
+	  			  senhaConf: {
+					  required: "Temos que certificar que não aconteceu nenhum engano anteriormente",
+					  equalTo: "Da uma olhada lá atrás, por que parece que as senhas informadas não são as mesmas :c"
+	  			  },
+	  		  },
 		      highlight: function(element) {
 		        $(element).closest('.input-group').removeClass('has-success').addClass('has-danger');
 		      },
@@ -105,7 +278,7 @@ $(document).ready(function() {
 		      'previousSelector': '.btn-previous',
 
 		      onNext: function(tab, navigation, index) {
-		        var $valid = $('.card-wizard form').valid();
+		        var $valid = $('.formCadastroProfissional').valid();
 		        if (!$valid) {
 		          $validator.focusInvalid();
 		          return false;
@@ -130,7 +303,7 @@ $(document).ready(function() {
 		      },
 
 		      onTabClick: function(tab, navigation, index) {
-		        var $valid = $('.card-wizard form').valid();
+		        var $valid = $('.formCadastroProfissional').valid();
 
 		        if (!$valid) {
 		          return false;
@@ -255,11 +428,11 @@ $(document).ready(function() {
 
 		      $current = index + 1;
 
-		      // if($current == 1 || (mobile_device == true && (index % 2 == 0) )){
-		      //     move_distance -= 8;
-		      // } else if($current == total_steps || (mobile_device == true && (index % 2 == 1))){
-		      //     move_distance += 8;
-		      // }
+		      if($current == 1 || (mobile_device == true && (index % 2 == 0) )){
+		          move_distance -= 8;
+		      } else if($current == total_steps || (mobile_device == true && (index % 2 == 1))){
+		          move_distance += 8;
+		      }
 
 		      if (mobile_device) {
 		        vertical_level = parseInt(index / 2);
@@ -466,8 +639,8 @@ $(document).ready(function() {
 				  },
     }
 	
-	//Criação do Metódo de senha forte
-	$.validator.addMethod("stgpass", function(value) {
+	//Criação do Metódo de senha
+	$.validator.addMethod("pass", function(value) {
 		   return /[a-z]/.test(value) // Tem uma letra minúscula
 		       && /\d/.test(value) // Tem um dígito
 		       && /[a-zA-Z0-9]{8,}/.test(value) // Minímo 8 caracteres
@@ -520,189 +693,5 @@ $(document).ready(function() {
     	
     	return resultado;
     });
-    
-//Referente ao Login
-	
-	//Regras de validação do form de Login
-	var formLog = $('.formLogin');
-	formLog.validate({
-		rules: {
-			email: {
-				required: true,
-				email: true
-			},
-			senha: {
-				required: true,
-				stgpass: 8
-			}
-		},
-		messages: {
-			email: {
-				required: "Informe um email para podermos te encontrar aqui",
-				email: "Lembrando que e-mails se parecem com: david@dominio.com"
-			},
-			senha: {
-				required: "Por questões de segurança você tem que informar a sua senha, relaxa, ninguém tem acesso a ela",
-				stgpass: "A senha tem pelo menos 8 caracteres, sendo pelo menos 1 dígito e 1 letra lembra?"
-			}
-		}
-	});
-	
-	function setCookie(nome, tipo, token) {
-        var cookie = "Nome =" + nome +
-        "; Tipo =" + tipo +
-        "; Token = " + token;
- 
-        document.cookie = cookie;
-	}
-	  
-	$("#btn_login").click(function() {
-		if(formLog.valid()){
-			$(".formLogin").submit();
-			setCookie();
-		}
-	});
-	
-    
-//Referente ao cadastro
-    	
-	//Regras de validação do form de Cadastro do Profissional
-	var formCadPac = $('#formCadastroProfissional');
-	formCadPac.validate({
-		  rules: {
-			  nome: {
-				  required: true,
-				  letterswithbasicpunc: true
-			  },
-			  sobrenome: {
-				  required: true,
-				  letterswithbasicpunc: true
-			  },
-			  cpf: {
-				  required: true,
-				  cpfBR: true,
-				  cpfBanco: true
-			  },
-			  celular: {
-				  required: true,
-				  phoneNL: true
-			  },
-			  data: {
-				  required: true,
-				  dateITA: true
-			  },
-			  email: {
-				  required: true,
-				  email: true,
-				  emailBanco: true
-			  },
-			  cep: {
-				  required: true,
-				  postalcodeBR: true
-			  },
-			  rua: {
-				  required: true
-			  },
-			  numero: {
-				  required: true,
-				  digits: true
-			  },
-			  bairro: {
-				  required: true
-			  },
-			  cidade: {
-				  required: true
-			  },
-			  uf: {
-				  required: true,
-				  lettersonly: true,
-				  minlength : 2
-			  },
-			  crm: {
-				  required: true
-			  },
-			  emailConf: {
-				  required: true,
-				  email: true,
-				  equalTo: '#email'
-			  },
-			  senha: {
-				  required: true,
-				  stgpass: true,
-			  },
-			  senhaConf: {
-				  required: true,
-				  stgpass: true,
-				  equalTo: '#senha'
-			  }
-		  },
-		  messages: {
-			  nome: {
-				  required: "Por favor, precisamos saber como vamos chamar você",
-				  letterswithbasicpunc: "Acredito que na sua certidão não tenha esses caracteres ai"
-			  },
-			  sobrenome: {
-				  required: "Qualé, você preencheu o anterior, por que não esse?",
-				  letterswithbasicpunc: "Acredito que na sua certidão não tenha esses caracteres ai"
-			  },
-			  cpf: {
-				  required: "Infelizmente não da pra deixar esse aqui em branco",
-				  cpfBR: "Tem 11 digítos aqui e cuidado para não errar nenhum",
-				  cpfBanco: "Já temos um cadastro utilizando esse cpf, contate-nos caso não saiba do que se trata"
-			  },
-			  celular: {
-				  required: "Seria bom preencher esse aqui também",
-				  phoneNL: "Lembrando que é um celular não um telefone, beleza?"
-			  },
-			  data: {
-				  required: "A gente precisa saber quando te parabenizar por mais um ano de vida!",
-				  dateITA: "Deixando claro que a data precisa ter um formato dd/mm/aaaa beleza?"
-			  },
-			  email: {
-		      	  required: "Precisamos do seu e-mail para entrar em contato contigo",
-		      	  email: "Seu e-mail precisa ser parecido com esse: david@dominio.com",
-		      	  emailBanco: "Esse e-mail já está sendo usado, se necessário peça uma redefinição de senha"
-			  },
-			  cep: {
-				  required: "É esse número que o correio identifica sua casa",
-				  postalcodeBR: "Preenche esse aqui que os outros vão automaticamente c:"
-			  },
-			  rua: {
-				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui"
-			  },
-			  numero: {
-				  required: "Informe esse aqui também por favor",
-				  digits: "Deixando claro que só pode números aqui"
-			  },
-			  bairro: {
-				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
-			  },
-			  cidade: {
-				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
-			  },
-			  uf: {
-				  required: "Caso a busca do CEP não funcionar você pode inserir manualmente aqui",
-				  lettersonly: "Só as iniciais do estado por favor",
-				  minlength : "Acredito que tenha 2 letras"
-			  },
-			  crm: {
-				  required: "SL"
-			  },
-			  emailConf: {
-				  required: "",
-				  email: "",
-				  equalTo: ""
-			  },
-			  senha: {
-				  required: "A gente não da sua senha pra ninguém, esperamos que faça o mesmo.",
-				  stgpass: "",
-			  },
-			  senhaConf: {
-			  	  required: "",
-			  	  stgpass: "",
-			  	  equalTo: ""
-			  }
-		  }
-	});
-});
 
+});

@@ -17,7 +17,7 @@
   <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
   <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
   <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-  <!-- Plugin for DateTimePicker -->
+  <!-- Plugin for DateTimePicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
   <script src="../assets/js/plugins/bootstrap-datetimepicker.js"></script>
   <!--  Plugin for Sweet Alert -->
   <script src="../assets/js/plugins/sweetalert2.min.js"></script>
@@ -50,21 +50,17 @@
 
 	    $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('update');
 	}
-	
-  	function checkFullPageBackgroundImage() {
-	  $page = $('.full-page');
+	  	
+  	$('content').css('z-index','7');
+  
+    $(document).ready(function() {
+  	  $page = $('.full-page');
 	  image_src = $page.data('image');
 
 	  if (image_src !== undefined) {
 	    image_container = '<div class="full-page-background" style="background-image: url(' + image_src + ') "/>';
 	    $page.append(image_container);
 	  }
-  	}
-  	
-  	$('content').css('z-index','7');
-  
-    $(document).ready(function() {
-      checkFullPageBackgroundImage();
     });
   </script>
 </body>

@@ -67,6 +67,37 @@
 		  $(".content").fadeIn(1500);
 		});
 	
+	//Regras de validação do form de Login
+	var formLog = $('.formLogin');
+	formLog.validate({
+		rules: {
+			email: {
+				required: true,
+				email: true
+			},
+			senha: {
+				required: true,
+				stgpass: 8
+			}
+		},
+		messages: {
+			email: {
+				required: "Informe um email para podermos te encontrar aqui",
+				email: "Lembrando que e-mails se parecem com: david@dominio.com"
+			},
+			senha: {
+				required: "Por questões de segurança você tem que informar a sua senha, relaxa, ninguém tem acesso a ela",
+				stgpass: "A senha tem pelo menos 8 caracteres, sendo pelo menos 1 dígito e 1 letra lembra?"
+			}
+		}
+	});
+	
+	$("#btn_login").click(function() {
+		if(formLog.valid()){
+			$(".formLogin").submit();
+		}
+	});
+	
 	cookies.put("nome", "Nathan");
 	cookies.put("tipo", "2");
 	cookies.save;

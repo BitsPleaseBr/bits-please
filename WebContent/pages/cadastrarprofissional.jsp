@@ -94,7 +94,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon-other nc-gift-2"></i></span>
                             </div>
-                            <input type="text" placeholder="Nascimento" class="form-control" name="datanascimento" />
+                            <input type="text" name="data" class="form-control data" placeholder="Nascimento"/>
                           </div>
                         </div>
                         <div class="col-sm-4 mt-3">
@@ -124,7 +124,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-box-2"></i></span>
                             </div>
-                            <input type="text" name="cep" class="form-control cep" placeholder="CEP...">
+                            <input type="text" name="cepResi" class="form-control cep" placeholder="CEP...">
                           </div>
                         </div>
                         <div class="col-md-7"></div>
@@ -133,7 +133,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="rua" class="form-control" placeholder="Logradouro...">
+                            <input type="text" name="ruaResi" class="form-control" placeholder="Logradouro...">
                           </div>
                         </div>
                         <div class="col-md-2">
@@ -141,7 +141,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="numero" class="form-control" placeholder="Número...">
+                            <input type="text" name="numeroResi" class="form-control" placeholder="Número...">
                           </div>
                         </div>
                         <div class="col-md-4">
@@ -149,7 +149,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="bairro" class="form-control" placeholder="Bairro...">
+                            <input type="text" name="bairroResi" class="form-control" placeholder="Bairro...">
                           </div>
                         </div>
                         <div class="col-md-4">
@@ -157,7 +157,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="cidade" class="form-control" placeholder="Cidade...">
+                            <input type="text" name="cidadeResi" class="form-control" placeholder="Cidade...">
                           </div>
                         </div>
                         <div class="col-md-2">
@@ -165,7 +165,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="uf" class="form-control" placeholder="UF...">
+                            <input type="text" name="ufResi" class="form-control" placeholder="UF...">
                           </div>
                         </div>
                       </div>
@@ -187,7 +187,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-pin-3"></i></span>
                             </div>
-                            <input type="text" name="uf" class="form-control" placeholder="SC...">
+                            <input type="text" name="pais" class="form-control" placeholder="UF...">
                           </div>
                         </div>
                         <p class="mt-3">
@@ -325,7 +325,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-box-2"></i></span>
                             </div>
-                            <input type="text"  name="cep" class="form-control cep" placeholder="CEP...">
+                            <input type="text"  name="cepCome" class="form-control cep" placeholder="CEP...">
                           </div>
                         </div>
                         <div class="col-md-4"></div>
@@ -334,7 +334,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-mobile"></i></span>
                             </div>
-                            <input type="text" name="celular" class="form-control celular" placeholder="Telefone...">
+                            <input type="text" name="telefone" class="form-control telefone" placeholder="Telefone...">
                           </div>
                         </div>
                         <div class="col-md-7"></div>
@@ -343,7 +343,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="rua" class="form-control" placeholder="Logradouro...">
+                            <input type="text" name="ruaCome" class="form-control" placeholder="Logradouro...">
                           </div>
                         </div>
                         <div class="col-md-2">
@@ -351,7 +351,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="numero" class="form-control" placeholder="Número...">
+                            <input type="text" name="numeroCome" class="form-control" placeholder="Número...">
                           </div>
                         </div>
                         <div class="col-md-4">
@@ -359,7 +359,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="bairro" class="form-control" placeholder="Bairro...">
+                            <input type="text" name="bairroCome" class="form-control" placeholder="Bairro...">
                           </div>
                         </div>
                         <div class="col-md-4">
@@ -367,7 +367,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="cidade" class="form-control" placeholder="Cidade...">
+                            <input type="text" name="cidadeCome" class="form-control" placeholder="Cidade...">
                           </div>
                         </div>
                         <div class="col-md-2">
@@ -375,7 +375,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-map-big"></i></span>
                             </div>
-                            <input type="text" name="uf" class="form-control" placeholder="UF...">
+                            <input type="text" name="ufCome" class="form-control" placeholder="UF...">
                           </div>
                         </div>
                       </div>
@@ -403,7 +403,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-key-25"></i></span>
                             </div>
-                            <input type="text" name="senha" class="form-control" placeholder="Senha...">
+                            <input type="password" name="senha" class="form-control" placeholder="Senha...">
                           </div>
                         </div>
                         <div class="col-md-5 mt-3">
@@ -411,7 +411,7 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text"><i class="nc-icon nc-key-25"></i></span>
                             </div>
-                            <input type="text" name="senhaConf" class="form-control" placeholder="Confirmação da Senha...">
+                            <input type="password" name="senhaConf" class="form-control" placeholder="Confirmação da Senha...">
                           </div>
                         </div>
 	                  <div class="form-check text-left mt-3">
@@ -430,11 +430,11 @@
                 
                 <div class="card-footer">
                   <div class="pull-right">
-                    <input type='button' class='btn btn-next btn-fill btn-rose btn-wd' name='proximo' value='Próximo' />
-                    <input type='button' class='btn btn-finish btn-fill btn-rose btn-wd' name='pronto' value='Pronto' />
+                    <button type='button' class='btn btn-next btn-fill btn-rose btn-wd' name='proximo'>Próximo</button>
+                    <button type='button' class='btn btn-finish btn-fill btn-rose btn-wd' name='pronto'>Pronto</button>
                   </div>
                   <div class="pull-left">
-                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='anterior' value='Anterior' />
+                    <button type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='anterior'>Anterior</button>
                   </div>
                   <div class="clearfix"></div>
                 </div>
@@ -456,7 +456,7 @@
     
     $(document).ready(function() {
       // Initialise the wizard
-      bits.initWizard();
+      S3.initWizard();
       setTimeout(function() {
         $('.card.card-wizard').addClass('active');
       }, 600);
@@ -474,5 +474,16 @@
     		  $('.tagsinput').tagsinput('add', slecteditem);
     	  }
       });
-    });
+      
+  	
+  	//Regras de validação do form de Cadastro do Profissional
+
+    $('.btn-finish').click(function(){
+  	  if(formCadPac.valid()){
+  		  formCadPac.submit();
+  	  	  alert('Enviamos um e-mail de confirmação para o seu e-mail, da um olhada lá, please ;)');
+  	  }
+  	  
+    })  
+  });
   </script>

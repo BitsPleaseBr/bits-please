@@ -244,7 +244,7 @@
 				  },
 				  senha: {
 					  required: true,
-					  stgpass: true
+					  pass: true
 				  }		  
 			  },
 			  messages: {
@@ -287,7 +287,7 @@
 				  },
 				  senha: {
 					  required: true,
-					  stgpass: true,
+					  pass: true,
 					  equalTo: "#senhaPac"
 				  }
 			  },
@@ -315,7 +315,7 @@
 				if (($("input[name='termos']:checked").length)<=0) {
 					alert("Precisamos saber se você chegou a ler nossos termos de uso");
 				}else{
-			  	  $('.formCadastroPaciente').submit();
+				  formConfPac.submit();
 			  	  alert('Enviamos um e-mail de confirmação para o seu e-mail, da um olhada lá, please ;)');
 				};
 			  };
