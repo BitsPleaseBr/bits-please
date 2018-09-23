@@ -33,7 +33,6 @@
   String[] enderecoInfoComplemento = new String[] {"Resi", "Come"};
 
   String[] endInfos = new String[] {"Cep", "Cidade", "Bairro", "Rua", "Numero", "Complemento"};
-  String[] endInfosComplemento = new String[] {"Residencial", "Comercial"};
 
   for (int enderecoInfoIndex = 0; enderecoInfoIndex < 2; enderecoInfoIndex++) {
 
@@ -42,7 +41,7 @@
 
     for (int infoIndex = 0; infoIndex < enderecoInfo.length; infoIndex++) {
 
-      String info = endInfos[infoIndex] + endInfosComplemento[enderecoInfoIndex];
+      String info = endInfos[infoIndex];
       String parameter =
           enderecoInfo[enderecoInfoIndex] + enderecoInfoComplemento[enderecoInfoIndex];
 
@@ -66,7 +65,7 @@
   pb.addTelefone(celular);
 
   //Cadastra o médico
-  out.print(MethodCallerFactory.cadastrarUser(pb).call().getBody());
+  out.print(MethodCallerFactory.cadastrarUser(pb).call().getResponse().getBody());
 
   response.sendRedirect("../index.jsp");
 %>

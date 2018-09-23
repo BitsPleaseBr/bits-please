@@ -18,7 +18,7 @@
   pb.setInfo(UserInfo.Senha, senha);
 
   //Inserindo no banco de dados
-  out.print(MethodCallerFactory.cadastrarUser(pb).call().getBody());
+  out.print(MethodCallerFactory.cadastrarUser(pb).call().getResponse().getBody());
 
   response.sendRedirect("../index.jsp");
 %>
